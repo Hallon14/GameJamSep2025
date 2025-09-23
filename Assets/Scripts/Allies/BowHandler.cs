@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BowHandler : MonoBehaviour
 {
+    private bool canShoot = true;
+    public float reloadTime = 3f;
     private Vector2 velocity;
     public Rigidbody2D rb2D;
 
@@ -45,13 +47,23 @@ public class BowHandler : MonoBehaviour
 
     public void ShootArrow(Vector2 direction)
     {
-        Projectile arrow = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
-        arrow.Initialize(direction, projectileSpeed, projectileLifetime);
+        if (!canShoot) return;
+        canShoot = false;
+            Projectile arrow = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+            arrow.Initialize(direction, projectileSpeed, projectileLifetime);
+            Invoke(nameof(Reload), reloadTime);
+        }
+
+
+    private void Reload()
+    {
+        canShoot = true;
     }
 
     public void ShootVolley(Vector2 aimDirection)
     {
-    if (aimDirection == Vector2.zero) aimDirection = Vector2.right;
-    ShootArrow(aimDirection);
+        if (aimDirection == Vector2.zero) aimDirection = Vector2.right;
+        ShootArrow(aimDirection);
     }
 }
+

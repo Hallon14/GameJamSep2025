@@ -2,6 +2,16 @@ using UnityEngine;
 
 public class BruteBehavior : MonoBehaviour
 {
+    public float separationForce = 5f;
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject != null && collision.gameObject != this.gameObject && collision.gameObject.GetComponent<BruteBehavior>() != null)
+        {
+            Vector2 away = (rb.position - (Vector2)collision.transform.position).normalized;
+            rb.AddForce(away * separationForce, ForceMode2D.Force);
+        }
+    }
+    
     private int bruteHP = 3;
     private int bruteDamage = 1;
     public float startSpeed = 6f; // Increased start speed
