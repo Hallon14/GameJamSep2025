@@ -27,7 +27,7 @@ public class RangedEnemy : Enemy
     public void Move()
     {
 
-        if ((attackTarget.position - transform.position).sqrMagnitude > (attackRange / 3) * (attackRange / 3))
+        if ((attackTarget.position - transform.position).sqrMagnitude < (attackRange / 3) * (attackRange / 3))
         {
             rb2D.linearVelocity = -(attackTarget.position - transform.position).normalized * movementSpeed;
         }
