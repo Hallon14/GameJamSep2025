@@ -904,8 +904,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   gameManager: {fileID: 1154447349}
-  robertUI: {fileID: 226710168}
-  textRobert: {fileID: 120018789}
   portal: {fileID: 1870332311}
 --- !u!1001 &580502483
 PrefabInstance:
@@ -30439,9 +30437,9 @@ SceneRoots:
   - {fileID: 319768306}
   - {fileID: 900217481}
   - {fileID: 1154447350}
+  - {fileID: 513838423}
   - {fileID: 1668497644}
   - {fileID: 702493132}
   - {fileID: 580502483}
-  - {fileID: 513838423}
   - {fileID: 4978710084585557425}
   - {fileID: 371526528746348525}

@@ -28,7 +28,6 @@ public class robert : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         nextSpriteIndex = 0;
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
 
         //Swap sprites every .15 seconds.
         InvokeRepeating(nameof(swapSprite), 0.25f, 0.25f);
@@ -52,7 +51,6 @@ public class robert : MonoBehaviour
         //Roberts speech during level 1
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            Debug.Log("HEj");
             InputHandler.onInteract += level1Speech;
         }
     }
@@ -64,12 +62,13 @@ public class robert : MonoBehaviour
         if (robertSpeechIndex == 6)
         {
             robertUI.SetActive(false);
+            gameObject.SetActive(false);
         }
         if (robertSpeechIndex < 6)
         {
         textRobert.text = robertSpeech[robertSpeechIndex];  
         }
-        
+
         robertSpeechIndex++;
     }
     
