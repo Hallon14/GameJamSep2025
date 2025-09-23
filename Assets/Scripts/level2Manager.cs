@@ -42,7 +42,7 @@ public class level2Manager : MonoBehaviour
         //Swaps back to Roberts sprite
         if (dialougeIndex == 6)
         {
-            portraitPicture.sprite = portrait[0];
+            portraitPicture.sprite = portrait[0]; // This line is bugging
         }
 
         if (dialougeIndex == 8)
