@@ -240,7 +240,6 @@ GameObject:
   - component: {fileID: 5601416277358823323}
   - component: {fileID: 983587884696551442}
   - component: {fileID: 3733990865084455262}
-  - component: {fileID: 7921993312855404672}
   - component: {fileID: 4416046219636925327}
   m_Layer: 0
   m_Name: Player
@@ -264,7 +263,6 @@ Transform:
   m_Children:
   - {fileID: 1666489880448269603}
   - {fileID: 846977469130508318}
-  - {fileID: 499709542510325351}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6502520178054861356
@@ -364,7 +362,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  aimDirection: {x: 0, y: 0}
+  interactAction:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5965bceb-78fb-4d91-9e2c-8e18b905f15c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &983587884696551442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,42 +386,6 @@ MonoBehaviour:
   maxSpeed: 3
   sights: {fileID: 1666489880448269603}
 --- !u!58 &3733990865084455262
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8148824359126380828}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!58 &7921993312855404672
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
