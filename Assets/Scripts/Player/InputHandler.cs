@@ -8,6 +8,7 @@ public class InputHandler : MonoBehaviour
     public InputAction chargeAction;
     public InputAction aimAction;
     public InputAction interactAction;
+    public InputAction volleyAction;
     private Vector2 aimDirection;
 
     //Charge started event
@@ -21,6 +22,9 @@ public class InputHandler : MonoBehaviour
     //Interact event
     public delegate void OnInteract();
     public static event OnInteract onInteract;
+
+    public delegate void OnVolley(Vector2 aimDirection);
+    public static event OnVolley onVolley;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,6 +32,7 @@ public class InputHandler : MonoBehaviour
         chargeAction = InputSystem.actions.FindAction("Charge");
         aimAction = InputSystem.actions.FindAction("Aim");
         interactAction = InputSystem.actions.FindAction("Interact");
+        volleyAction = InputSystem.actions.FindAction("Volley");
 
     }
 
@@ -36,19 +41,28 @@ public class InputHandler : MonoBehaviour
         CalculateShotDirection();
         CheckChargeAction();
         CheckInteractAction();
+        CheckVolleyAction();
     }
 
     void CheckChargeAction()
     {
         if (chargeAction.WasPressedThisFrame())
         {
-            Debug.Log("charge started");
+            
             onChargeStarted?.Invoke(aimDirection);
         }
         if (chargeAction.WasReleasedThisFrame())
         {
-            Debug.Log("charge ended");
+            
             onChargeEnded?.Invoke();
+        }
+    }
+
+    void CheckVolleyAction()
+    {
+        if (volleyAction.WasPressedThisFrame())
+        {
+            onVolley?.Invoke(aimDirection);
         }
     }
 

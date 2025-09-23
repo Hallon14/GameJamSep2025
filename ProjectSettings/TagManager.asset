@@ -5,17 +5,19 @@ TagManager:
   serializedVersion: 3
   tags:
   - Portal
+  - ArcherAlly
+  - BruteAlly
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ArcherAlly
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - BruteAlly
+  - Enemy
+  - Arrow
   - 
   - 
   - 
