@@ -2,21 +2,39 @@ using UnityEngine;
 
 public class BruteBehavior : MonoBehaviour
 {
-    public float maxSpeed = 3f;
-    private float rotationspeed = 120f; // degrees per second (360/5 = 72 for 5 seconds per orbit)
+    private int bruteHP = 3;
+    private int bruteDamage = 1;
+    public float startSpeed = 6f; // Increased start speed
+    public float chargeSpeed = 18f; // Much faster charge speed
+    private float currentSpeed;
+    private float rotationspeed = 60f; // Slower orbit (degrees per second)
     public float radius = 2f;
     Rigidbody2D rb;
     Transform player;
     float angle;
     bool reachedRadius = false;
+    bool isCharging = false;
+    Vector2 chargeDirection;
+
+    void OnEnable()
+    {
+        InputHandler.onChargeStarted += Charge;
+        InputHandler.onChargeEnded += EndCharge;
+    }
+
+    void OnDisable()
+    {
+        InputHandler.onChargeStarted -= Charge;
+        InputHandler.onChargeEnded -= EndCharge;
+    }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentSpeed = startSpeed;
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
-        // Set initial angle based on current position relative to player
         if (player != null)
         {
             Vector2 toBrute = rb.position - (Vector2)player.position;
@@ -24,34 +42,51 @@ public class BruteBehavior : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (player == null) return;
+        if (isCharging)
+        {
+            currentSpeed = chargeSpeed;
+            // Move in the charge direction at chargeSpeed
+            rb.MovePosition(rb.position + chargeDirection * currentSpeed * Time.deltaTime);
+            return;
+        }
         Vector2 toBrute = rb.position - (Vector2)player.position;
         float currentDistance = toBrute.magnitude;
         if (!reachedRadius)
         {
-            // Move toward the radius
             if (Mathf.Abs(currentDistance - radius) > 0.05f)
             {
+                currentSpeed = startSpeed;
                 Vector2 desiredPos = (Vector2)player.position + toBrute.normalized * radius;
-                Vector2 newPos = Vector2.MoveTowards(rb.position, desiredPos, maxSpeed * Time.fixedDeltaTime);
+                Vector2 newPos = Vector2.MoveTowards(rb.position, desiredPos, currentSpeed * Time.deltaTime);
                 rb.MovePosition(newPos);
             }
             else
             {
                 reachedRadius = true;
-                // Set angle for smooth orbit
                 angle = Mathf.Atan2(toBrute.y, toBrute.x) * Mathf.Rad2Deg;
             }
         }
         else
         {
-            // Use degrees per second for orbit
-            angle += rotationspeed * Time.fixedDeltaTime;
+            angle += rotationspeed * Time.deltaTime;
             float angleRad = angle * Mathf.Deg2Rad;
             Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * radius;
             rb.MovePosition(orbitPos);
         }
+    }
+
+    void Charge(Vector2 direction)
+    {
+        isCharging = true;
+        chargeDirection = direction.normalized;
+    }
+
+    void EndCharge()
+    {
+        isCharging = false;
+        reachedRadius = false; // Move back to radius and resume orbit
     }
 }
