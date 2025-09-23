@@ -53,6 +53,14 @@ Till detta önskas två olika "levels" varav en lite mer öppen. Så våra spela
 **(Uppdelningar)**
 Otto börjar på level design
 
+TODO: (Otto)
+Jag ska göra om min tile map pallette. Och sedan fixa collitions till de övre lagren och "dekorationer"
+Tänker prioritera att göra level 1 och level 2 så att de ser så bra ut som möjligt. Med efter det är det mycket UI och meny pillande.
+- []Update tilemap palette.
+- []Complete level 1
+- []Complete level 2
+- []menying and UI
+
 
 
 
