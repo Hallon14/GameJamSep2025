@@ -26,12 +26,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
     #endregion
+    
     #region In-game Functions
     public void levelComplete()
     {
         //Finds the current scene index and loads the next one
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        SceneManager.LoadScene(currentSceneIndex + 1, LoadSceneMode.Single);
     }
 
     public void pauseGame()
