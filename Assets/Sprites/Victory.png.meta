@@ -1,160 +1,91 @@
 fileFormatVersion: 2
-guid: 88979beb9b9ce0b479f29e9e78836ef7
+guid: 39bc344af729df143943a38431e7a303
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7352339073622421304
-    second: Title_0
+      213: -7642986446173420197
+    second: Victory_0
   - first:
-      213: 578584420991164872
-    second: Title_1
+      213: -1213821068326169202
+    second: Victory_1
   - first:
-      213: -2586058674264470982
-    second: Title_2
+      213: -1810436841963963296
+    second: Victory_2
   - first:
-      213: -7455755055849233376
-    second: Title_3
+      213: 5022149424062018482
+    second: Victory_3
   - first:
-      213: -2920429353955323833
-    second: Title_4
+      213: 2721468719747651066
+    second: Victory_4
   - first:
-      213: -8183731707024800371
-    second: Title_5
+      213: 6460854664996107045
+    second: Victory_5
   - first:
-      213: -2698452132489872219
-    second: Title_6
+      213: 8283843702638372321
+    second: Victory_6
   - first:
-      213: -4950144012914721142
-    second: Title_7
+      213: 647112397095841742
+    second: Victory_7
   - first:
-      213: 3188867983059848843
-    second: Title_8
+      213: 350760623906906078
+    second: Victory_8
   - first:
-      213: 7852301220439587256
-    second: Title_9
+      213: 5023837419885308568
+    second: Victory_9
   - first:
-      213: 1883129450418887258
-    second: Title_10
+      213: -5574196273773876081
+    second: Victory_10
   - first:
-      213: 831226060202523121
-    second: Title_11
+      213: 1813406814424012589
+    second: Victory_11
   - first:
-      213: -5611296808718163769
-    second: Title_12
+      213: 497755245995652686
+    second: Victory_12
   - first:
-      213: -2980618429333584377
-    second: Title_13
+      213: -2412791811159042524
+    second: Victory_13
   - first:
-      213: -6489994065110802945
-    second: Title_14
+      213: 8473038441466402512
+    second: Victory_14
   - first:
-      213: 1185279196486844169
-    second: Title_15
+      213: -44941018120161835
+    second: Victory_15
   - first:
-      213: -8938237866032844517
-    second: Title_16
+      213: 4508596063866831141
+    second: Victory_16
   - first:
-      213: 7549936563529260177
-    second: Title_17
+      213: 4230900606370678670
+    second: Victory_17
   - first:
-      213: -3912535757841368806
-    second: Title_18
+      213: -574647487889566362
+    second: Victory_18
   - first:
-      213: 7986414349913673620
-    second: Title_19
+      213: 6767721958162840991
+    second: Victory_19
   - first:
-      213: -5473989836383813982
-    second: Title_20
+      213: -5386912239465275205
+    second: Victory_20
   - first:
-      213: -3945733060299393030
-    second: Title_21
+      213: -1961556954266509071
+    second: Victory_21
   - first:
-      213: -8649738602703228084
-    second: Title_22
+      213: -1578812576748310993
+    second: Victory_22
   - first:
-      213: -5348464669708909733
-    second: Title_23
+      213: 1647971408828650008
+    second: Victory_23
   - first:
-      213: -4699841759642437723
-    second: Title_24
+      213: 6228506454697418125
+    second: Victory_24
   - first:
-      213: -9086561684665523175
-    second: Title_25
+      213: 7856267202997578099
+    second: Victory_25
   - first:
-      213: 1882604650658863205
-    second: Title_26
+      213: -5923513480170950760
+    second: Victory_26
   - first:
-      213: 6527579019921147228
-    second: Title_27
-  - first:
-      213: 7014816605549478080
-    second: Title_28
-  - first:
-      213: -3863732647898295551
-    second: Title_29
-  - first:
-      213: -5421475909282905177
-    second: Title_30
-  - first:
-      213: -6899762407534483280
-    second: Title_31
-  - first:
-      213: -5562957769956093291
-    second: Title_32
-  - first:
-      213: 8603381141915477333
-    second: Title_33
-  - first:
-      213: -2754575735528168044
-    second: Title_34
-  - first:
-      213: 6035042475474431981
-    second: Title_35
-  - first:
-      213: -2295587258739268581
-    second: Title_36
-  - first:
-      213: 4305824345603381659
-    second: Title_37
-  - first:
-      213: 22342238444747185
-    second: Title_38
-  - first:
-      213: 979736554165904594
-    second: Title_39
-  - first:
-      213: -8785068195768418704
-    second: Title_40
-  - first:
-      213: -7656258393866059805
-    second: Title_41
-  - first:
-      213: -7100585993335614454
-    second: Title_42
-  - first:
-      213: -2495748221009937188
-    second: Title_43
-  - first:
-      213: -4942498820496533244
-    second: Title_44
-  - first:
-      213: 8667136967479829455
-    second: Title_45
-  - first:
-      213: -5835220293595659438
-    second: Title_46
-  - first:
-      213: -5804945335265095955
-    second: Title_47
-  - first:
-      213: 3353463797067293131
-    second: Title_48
-  - first:
-      213: 9152229681708237317
-    second: Title_49
-  - first:
-      213: 4894114665244810917
-    second: Title_50
+      213: 4245379163397208604
+    second: Victory_27
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -263,13 +194,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Title_0
+      name: Victory_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 512
-        height: 128
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,8 +209,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c0d280219e37f990800000000000000
-      internalID: -7352339073622421304
+      spriteID: b5545bc4258aee590800000000000000
+      internalID: -7642986446173420197
       vertices: []
       indices: 
       edges: []
@@ -288,7 +219,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 76db03fd4eab4b943bae18cf83ca8e73
+    spriteID: bde3ba289fa19c447831a5f358fb06bd
     internalID: 0
     vertices: []
     indices: 
@@ -298,9 +229,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":512.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":512.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Title_0: -7352339073622421304
+      Victory_0: -7642986446173420197
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
