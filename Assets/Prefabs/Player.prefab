@@ -367,7 +367,7 @@ MonoBehaviour:
     m_Name: Interact
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 5965bceb-78fb-4d91-9e2c-8e18b905f15c
+    m_Id: e2519fa7-de4b-4c7b-87a8-f5fd9c1fa14b
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
