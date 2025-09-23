@@ -6,7 +6,7 @@ public class ArcherAllyBehavior : MonoBehaviour
     private int ArcherHP;
     public float startSpeed = 8f; // Slightly faster than brute
     private float rotationspeed = 90f; // Faster orbit (degrees per second)
-    public float radius = 1.2f; // Closer to player than brute
+    public float radius = 2f; // Closer to player than brute
     Rigidbody2D rb;
     Transform player;
     float angle;

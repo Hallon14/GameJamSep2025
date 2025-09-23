@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8026936427058938412}
   - component: {fileID: 7076187180773918367}
   - component: {fileID: 3374224882097220851}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1666489880448269603}
   - component: {fileID: 2252583975136918452}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 3733990865084455262}
   - component: {fileID: 4858809727307435466}
   - component: {fileID: 4938951741322779458}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1515540735, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -368,6 +368,15 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: e2519fa7-de4b-4c7b-87a8-f5fd9c1fa14b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  volleyAction:
+    m_Name: Volley
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 03666f60-bef0-4b5a-b8ef-5713614b533e
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []

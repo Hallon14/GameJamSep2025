@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4402251252176589523}
   - component: {fileID: 2781786813486671053}
   - component: {fileID: 5199911385464889222}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Brute1
   m_TagString: BruteAlly
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2311515568224563882, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

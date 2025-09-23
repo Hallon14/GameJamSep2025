@@ -8,7 +8,7 @@ public class BruteBehavior : MonoBehaviour
     public float chargeSpeed = 18f; // Much faster charge speed
     private float currentSpeed;
     private float rotationspeed = 60f; // Slower orbit (degrees per second)
-    public float radius = 2f;
+    public float radius = 4f;
     Rigidbody2D rb;
     Transform player;
     float angle;
@@ -31,10 +31,12 @@ public class BruteBehavior : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        currentSpeed = startSpeed;
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
+        {
             player = playerObj.transform;
+        }
+        currentSpeed = startSpeed;
         if (player != null)
         {
             Vector2 toBrute = rb.position - (Vector2)player.position;
