@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    #region Main Menu and Victory Screen buttons
     public void play()
     {
         SceneManager.LoadScene("Level1");
@@ -18,6 +20,13 @@ public class GameManager : MonoBehaviour
 #endif
     }
 
+
+    public void back2Main()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    #endregion
+    #region In-game Functions
     public void levelComplete()
     {
         //Finds the current scene index and loads the next one
@@ -25,8 +34,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
-    public void back2Main()
+    public void pauseGame()
     {
-        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 0f;
     }
+
+    public void resumeGame()
+    {
+        Time.timeScale = 1f;
+    }
+    
+    #endregion
 }
