@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class level2Manager : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class level2Manager : MonoBehaviour
     public GameObject dialougeBox;
     public GameObject robert;
     public GameObject anton;
-    public List<Sprite> portrait = new List<Sprite>();
+    public Sprite antonSprite;
+    public Sprite robertSprite;
+    //public List<Sprite> portrait = new List<Sprite>();
 
     private int dialougeIndex;
     List<String> lines = new List<String>()
@@ -26,23 +29,28 @@ public class level2Manager : MonoBehaviour
         "Anyway... heh... \nOff you go to befriend some more creatures. I'll make sure Anton doesn't bother you again."
     };
 
-    void Awake()
+    void Start()
     {
         dialougeIndex = 0;
-        InputHandler.onInteract += level2Speech;
-    } 
+        InputHandler.onInteract += levelTwoSpeech; 
+    }
 
-    public void level2Speech()
+    public void levelTwoSpeech()
     {
         //Swaps to anton's sprite 
         if (dialougeIndex == 1)
         {
-            portraitPicture.sprite = portrait[1];
+            portraitPicture.sprite = antonSprite;
         }
         //Swaps back to Roberts sprite
         if (dialougeIndex == 6)
         {
-            portraitPicture.sprite = portrait[0]; // This line is bugging
+            portraitPicture.sprite = robertSprite;
+        }
+
+        if (dialougeIndex < 8)
+        {
+            textComponent.text = lines[dialougeIndex];
         }
 
         if (dialougeIndex == 8)
@@ -50,14 +58,10 @@ public class level2Manager : MonoBehaviour
             dialougeBox.SetActive(false);
             robert.SetActive(false);
             anton.SetActive(false);
-            InputHandler.onInteract -= level2Speech;
+            InputHandler.onInteract -= levelTwoSpeech;
         }
-        if (dialougeIndex < 8)
-        {
-            textComponent.text = lines[dialougeIndex];
-        }
+
         dialougeIndex++;
-        Debug.Log(dialougeIndex);
     }
 
 }

@@ -8,7 +8,6 @@ public class robert : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     int nextSpriteIndex;
     public List<Sprite> robertFaces = new List<Sprite>();
-    public level1Manager manager;
 
     void Awake()
     {

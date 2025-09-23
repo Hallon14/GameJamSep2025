@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     #region Main Menu and Victory Screen buttons
     public void play()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level1", LoadSceneMode.Single);
     }
 
     public void exit()
