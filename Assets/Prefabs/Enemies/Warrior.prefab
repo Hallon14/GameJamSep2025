@@ -116,7 +116,9 @@ MonoBehaviour:
   projectile: {fileID: 6459682172970791448, guid: caee8451500ad6f46b43b7997d3020bf, type: 3}
   projectileSpeed: 0
   projectileLifetime: 0.1
+  contactDPS: 20
   rb2D: {fileID: 0}
+  allyParent: {fileID: 0}
   hasTarget: 1
 --- !u!58 &277094773872015049
 CircleCollider2D:

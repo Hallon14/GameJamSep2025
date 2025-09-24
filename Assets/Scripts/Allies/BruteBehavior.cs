@@ -6,8 +6,8 @@ public class BruteBehavior : MonoBehaviour
     [Tooltip("Minimum spacing to keep from other brutes")] public float separationDistance = 0.9f;
     [Tooltip("How strongly to apply separation positional offset (0-1 typical)")] public float separationWeight = 0.5f;
 
-    public int maxHealth = 12;
-    private int currentHealth;
+    public float maxHealth = 12;
+    private float currentHealth;
     public float startSpeed = 6f; // Increased start speed
     public float chargeSpeed = 18f; // Much faster charge speed
     private float currentSpeed;
@@ -135,7 +135,17 @@ public class BruteBehavior : MonoBehaviour
         }
     }
 
-    public virtual void TakeDamage(int damage)
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+
+            TakeDamage(40f * Time.deltaTime);
+        }
+    }
+
+
+    public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
@@ -146,7 +156,10 @@ public class BruteBehavior : MonoBehaviour
 
     public virtual void Die()
     {
-        GameManager.Instance.decreaseFriendCount();
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.decreaseFriendCount();
+        }
         Destroy(gameObject);
     }
 

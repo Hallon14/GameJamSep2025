@@ -7,8 +7,8 @@ public class ArcherAllyBehavior : MonoBehaviour
     [Tooltip("Minimum spacing to keep from other archers")] public float separationDistance = 0.6f;
     [Tooltip("How strongly to apply separation positional offset (0-1 typical)")] public float separationWeight = 0.5f;
 
-    public int maxHealth = 4;
-    private int currentHealth;
+    public float maxHealth = 4f;
+    private float currentHealth;
     public float startSpeed = 8f; // Slightly faster than brute
     private float rotationSpeed = 90f; // Faster orbit (degrees per second)
     public float radius = 2f; // Closer to player than brute
@@ -108,10 +108,10 @@ public class ArcherAllyBehavior : MonoBehaviour
         }
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        if (currentHealth <= 0)
+        if (currentHealth <= 0f)
         {
             Die();
         }
@@ -119,7 +119,11 @@ public class ArcherAllyBehavior : MonoBehaviour
 
     public virtual void Die()
     {
-        GameManager.Instance.decreaseFriendCount();
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.decreaseFriendCount();
+        }
+
         Destroy(gameObject);
     }
 
