@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7545219477182267391}
   - component: {fileID: 6805957069316065173}
   - component: {fileID: 1144615971799769294}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MeleeAttack
-  m_TagString: Untagged
+  m_TagString: EnemyWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   rb2D: {fileID: 0}
+  damage: 3
 --- !u!61 &6805957069316065173
 BoxCollider2D:
   m_ObjectHideFlags: 0

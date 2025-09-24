@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 397948702122150544}
   - component: {fileID: 8030251530894938090}
   - component: {fileID: 5795916235486965996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Archer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,9 @@ MonoBehaviour:
   attackTarget: {fileID: 0}
   attackRange: 6
   attackRate: 1
-  movementSpeed: 2
+  movementSpeed: 5
+  preferredDistance: 5
+  preferredDistanceRange: 2
   projectile: {fileID: 6459682172970791448, guid: 1b4b40937a81a5343998147954bb5a05, type: 3}
   projectileSpeed: 10
   projectileLifetime: 2
@@ -127,9 +129,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 2
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

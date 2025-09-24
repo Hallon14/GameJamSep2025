@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7153667096512267768
+--- !u!1 &6459682172970791448
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6238028984202730367}
-  - component: {fileID: 5881351384296567394}
-  - component: {fileID: 5019953831006832293}
-  - component: {fileID: 277094773872015049}
-  - component: {fileID: 3761798749625656778}
-  m_Layer: 8
-  m_Name: Warrior
-  m_TagString: Untagged
+  - component: {fileID: 5725130558367445765}
+  - component: {fileID: 1899367179715186947}
+  - component: {fileID: 7545219477182267391}
+  - component: {fileID: 6805957069316065173}
+  - component: {fileID: 1144615971799769294}
+  m_Layer: 9
+  m_Name: PlayerFireball
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6238028984202730367
+--- !u!4 &5725130558367445765
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7153667096512267768}
+  m_GameObject: {fileID: 6459682172970791448}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -35,13 +35,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5881351384296567394
+--- !u!212 &1899367179715186947
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7153667096512267768}
+  m_GameObject: {fileID: 6459682172970791448}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3045790869634923072, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
+  m_Sprite: {fileID: 6271209775162594135, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,37 +93,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5019953831006832293
+--- !u!114 &7545219477182267391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7153667096512267768}
+  m_GameObject: {fileID: 6459682172970791448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af46346ef631f034eb019fd7a68dff0a, type: 3}
+  m_Script: {fileID: 11500000, guid: bcb92a47140af3d4791b7235254a0141, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemy
-  maxHealth: 4
-  attackTarget: {fileID: 0}
-  attackRange: 4
-  attackRate: 0.5
-  movementSpeed: 5
-  preferredDistance: 0.5
-  preferredDistanceRange: 0.2
-  projectile: {fileID: 6459682172970791448, guid: caee8451500ad6f46b43b7997d3020bf, type: 3}
-  projectileSpeed: 0
-  projectileLifetime: 0.2
+  m_EditorClassIdentifier: Assembly-CSharp::Projectile
   rb2D: {fileID: 0}
-  hasTarget: 1
---- !u!58 &277094773872015049
-CircleCollider2D:
+  damage: 2
+--- !u!61 &6805957069316065173
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7153667096512267768}
+  m_GameObject: {fileID: 6459682172970791448}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -147,20 +137,30 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!50 &3761798749625656778
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.55, y: 0.55}
+  m_EdgeRadius: 0
+--- !u!50 &1144615971799769294
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7153667096512267768}
+  m_GameObject: {fileID: 6459682172970791448}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
