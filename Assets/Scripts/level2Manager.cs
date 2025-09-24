@@ -3,7 +3,6 @@ using TMPro;
 using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 
 public class level2Manager : MonoBehaviour
 {
@@ -19,7 +18,7 @@ public class level2Manager : MonoBehaviour
     private int dialougeIndex;
     List<String> lines = new List<String>()
     {
-        "Lets gather up some more! You know, humans commonly use the phrase the more the merrier.",
+        "Lets gather up some more! Set your sights on 100! You know, humans commonly use the phrase the more the merrier.",
         "Oh! Hi! Sir! Sir! Sir! You are sooooooo coool!!!!",
         "Fwends are awesome!",
         "I like fwends!",
