@@ -13,7 +13,7 @@ public class level2Manager : MonoBehaviour
     public GameObject anton;
     public Sprite antonSprite;
     public Sprite robertSprite;
-    //public List<Sprite> portrait = new List<Sprite>();
+    public GameObject healthbar;
 
     private int dialougeIndex;
     List<String> lines = new List<String>()
@@ -57,6 +57,7 @@ public class level2Manager : MonoBehaviour
             dialougeBox.SetActive(false);
             robert.SetActive(false);
             anton.SetActive(false);
+            healthbar.SetActive(true);
             InputHandler.onInteract -= levelTwoSpeech;
         }
 

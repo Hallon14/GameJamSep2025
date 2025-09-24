@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public Animator levelTransition;
+    public GameObject gameOverUIElement;
 
 
     #region Main Menu and Victory Screen buttons
@@ -54,6 +55,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
+    }
+
+    public void gameOver()
+    {
+        pauseGame();
+        gameOverUIElement.SetActive(true);
+
     }
     
     #endregion
