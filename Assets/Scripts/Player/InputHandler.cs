@@ -41,6 +41,13 @@ public class InputHandler : MonoBehaviour
         interactAction = InputSystem.actions.FindAction("Interact");
         volleyAction = InputSystem.actions.FindAction("Volley");
 
+        // Ensure actions are enabled so movement & input work
+        moveAction?.Enable();
+        chargeAction?.Enable();
+        aimAction?.Enable();
+        interactAction?.Enable();
+        volleyAction?.Enable();
+
     }
 
     void Update()
@@ -86,7 +93,6 @@ public class InputHandler : MonoBehaviour
     {
         if (interactAction.WasPressedThisFrame())
         {
-            Debug.Log("interacted");
             onInteract?.Invoke();
         }
 

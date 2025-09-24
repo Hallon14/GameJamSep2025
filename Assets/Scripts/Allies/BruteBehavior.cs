@@ -54,14 +54,13 @@ public class BruteBehavior : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (player == null) return;
         if (isCharging)
         {
             currentSpeed = chargeSpeed;
-            // Move in the charge direction at chargeSpeed
-            rb.MovePosition(rb.position + chargeDirection * currentSpeed * Time.deltaTime);
+            rb.MovePosition(rb.position + chargeDirection * currentSpeed * Time.fixedDeltaTime);
             return;
         }
         Vector2 toBrute = rb.position - (Vector2)player.position;
@@ -72,7 +71,7 @@ public class BruteBehavior : MonoBehaviour
             {
                 currentSpeed = startSpeed;
                 Vector2 desiredPos = (Vector2)player.position + toBrute.normalized * radius;
-                Vector2 newPos = Vector2.MoveTowards(rb.position, desiredPos, currentSpeed * Time.deltaTime);
+                Vector2 newPos = Vector2.MoveTowards(rb.position, desiredPos, currentSpeed * Time.fixedDeltaTime);
                 rb.MovePosition(newPos);
             }
             else
@@ -83,7 +82,7 @@ public class BruteBehavior : MonoBehaviour
         }
         else
         {
-            angle += rotationspeed * Time.deltaTime;
+            angle += rotationspeed * Time.fixedDeltaTime;
             float angleRad = angle * Mathf.Deg2Rad;
             Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * radius;
             rb.MovePosition(orbitPos);

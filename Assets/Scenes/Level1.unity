@@ -778,7 +778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &226710169
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1497,8 +1497,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5403568058531698415, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5403568058531698415, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.26
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5403568058531698415, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1510,15 +1514,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5403568058531698415, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5403568058531698415, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5403568058531698415, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5403568058531698415, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -32288,7 +32292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1911340241
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32847,7 +32851,6 @@ SceneRoots:
   - {fileID: 1154447350}
   - {fileID: 1668497644}
   - {fileID: 702493132}
-  - {fileID: 580502483}
   - {fileID: 4978710084585557425}
   - {fileID: 371526528746348525}
   - {fileID: 2067511887}

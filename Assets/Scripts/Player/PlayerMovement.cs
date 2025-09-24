@@ -32,11 +32,9 @@ public class PlayerMovement : MonoBehaviour
         if (canMove)
         {
             transform.position += (Vector3)input.moveAction.ReadValue<Vector2>() * maxSpeed * Time.deltaTime;
-
             Vector2 aimDirection = input.GetAimDirection();
             sights.position = aimDirection + (Vector2)transform.position;
             sights.up = aimDirection;
         }
-
     }
 }
