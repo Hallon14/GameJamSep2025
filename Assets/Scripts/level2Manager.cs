@@ -3,7 +3,6 @@ using TMPro;
 using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 
 public class level2Manager : MonoBehaviour
 {
@@ -14,12 +13,12 @@ public class level2Manager : MonoBehaviour
     public GameObject anton;
     public Sprite antonSprite;
     public Sprite robertSprite;
-    //public List<Sprite> portrait = new List<Sprite>();
+    public GameObject healthbar;
 
     private int dialougeIndex;
     List<String> lines = new List<String>()
     {
-        "Lets gather up some more! You know, humans commonly use the phrase the more the merrier.",
+        "Lets gather up some more! Set your sights on 100! You know, humans commonly use the phrase the more the merrier.",
         "Oh! Hi! Sir! Sir! Sir! You are sooooooo coool!!!!",
         "Fwends are awesome!",
         "I like fwends!",
@@ -58,6 +57,7 @@ public class level2Manager : MonoBehaviour
             dialougeBox.SetActive(false);
             robert.SetActive(false);
             anton.SetActive(false);
+            healthbar.SetActive(true);
             InputHandler.onInteract -= levelTwoSpeech;
         }
 
