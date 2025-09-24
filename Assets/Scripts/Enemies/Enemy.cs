@@ -101,7 +101,7 @@ public class Enemy : MonoBehaviour
         SpawnUndead();
         if (GameManager.Instance)
         {
-            GameManager.Instance.decreaseFriendCount();
+            GameManager.Instance.increaseFriendCount();
         }
         Destroy(gameObject);
     }
