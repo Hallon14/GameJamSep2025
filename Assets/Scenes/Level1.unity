@@ -1119,6 +1119,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4858809727307435466, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5403568058531698415, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -31381,7 +31385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c061594747ac3284ab93ae3735fecc33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::level1Manager
-  gameManager: {fileID: 1154447349}
   portal: {fileID: 1258063246}
   robertUI: {fileID: 226710168}
   robert: {fileID: 1442372054}
@@ -31615,3 +31618,5 @@ SceneRoots:
   - {fileID: 49450941}
   - {fileID: 791936648}
   - {fileID: 2067511887}
+  - {fileID: 1567744116}
+  - {fileID: 1302607278}

@@ -70,7 +70,6 @@ public class InputHandler : MonoBehaviour
     {
         if (interactAction.WasPressedThisFrame())
         {
-            Debug.Log("interacted");
             onInteract?.Invoke();
         }
 
