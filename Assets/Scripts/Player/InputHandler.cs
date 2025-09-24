@@ -10,6 +10,8 @@ public class InputHandler : MonoBehaviour
     public InputAction interactAction;
     public InputAction volleyAction;
     private Vector2 aimDirection;
+    private GameObject enemyParent;
+    private GameObject allyParent;
 
     private bool inputsEnabled = true;
 
@@ -48,6 +50,8 @@ public class InputHandler : MonoBehaviour
         interactAction?.Enable();
         volleyAction?.Enable();
 
+
+
     }
 
     void Update()
@@ -71,12 +75,12 @@ public class InputHandler : MonoBehaviour
     {
         if (chargeAction.WasPressedThisFrame())
         {
-            
+
             onChargeStarted?.Invoke(aimDirection);
         }
         if (chargeAction.WasReleasedThisFrame())
         {
-            
+
             onChargeEnded?.Invoke();
         }
     }

@@ -94,8 +94,6 @@ public class Enemy : MonoBehaviour
 
             TakeDamage(contactDPS * Time.deltaTime);
         }
-
-
     }
 
     public virtual void Die()
