@@ -138,8 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da92970a5a514945a856c89d00ea0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  separationForce: 10
-  startSpeed: 4
+  separationForce: 2
+  startSpeed: 5
   chargeSpeed: 10
   radius: 3
 --- !u!212 &4402251252176589523
