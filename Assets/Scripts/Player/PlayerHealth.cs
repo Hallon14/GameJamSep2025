@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public static event OnPlayerDeath onPlayerDeath;
 
     // send message whenever the Player's HP changes.
-    public delegate void OnPlayerHPChanged(int newHP);
+    public delegate void OnPlayerHPChanged(float newHP);
     public static event OnPlayerHPChanged onPlayerHPChanged;
 
     void Start()
@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        onPlayerHPChanged?.Invoke(currentHealth);
+        onPlayerHPChanged?.Invoke(currentHealth / maxHealth);
         if (currentHealth <= 0)
         {
             KillPlayer();

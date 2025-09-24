@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 
 public class healthBarScript : MonoBehaviour
 {
-    
+
     public List<Sprite> sprites = new List<Sprite>();
     public GameObject fountain;
     private int spriteIndex = 1;
@@ -13,7 +13,7 @@ public class healthBarScript : MonoBehaviour
     void Awake()
     {
         InvokeRepeating(nameof(swapSprite), 0, 1.5F);
-    }   
+    }
 
 
     void swapSprite()
@@ -25,7 +25,7 @@ public class healthBarScript : MonoBehaviour
         }
         else
         {
-        spriteIndex++;    
+            spriteIndex++;
         }
     }
 }
