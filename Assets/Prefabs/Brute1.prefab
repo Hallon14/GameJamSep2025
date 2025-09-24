@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   separationDistance: 1.2
   separationWeight: 0.5
-  maxHealth: 12
+  maxHealth: 4
   startSpeed: 5
   chargeSpeed: 10
   radius: 3
