@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject portal;
     private int totalFriends;
+    [SerializeField]
     private int activeFriends;
     public float playerHealth = 100;
     public List<GameObject> spawners = new List<GameObject>();

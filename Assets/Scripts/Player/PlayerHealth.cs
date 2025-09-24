@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float maxHealth;
-    public float currentHealth;
+    private float maxHealth;
+    private float currentHealth;
 
     //send message when the player drops to 0 HP
     public delegate void OnPlayerDeath();
