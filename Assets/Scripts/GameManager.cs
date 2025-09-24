@@ -1,8 +1,11 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public Animator levelTransition;
+
 
     #region Main Menu and Victory Screen buttons
     public void play()
@@ -26,13 +29,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
     #endregion
-    
+
     #region In-game Functions
     public void levelComplete()
     {
-        //Finds the current scene index and loads the next one
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1, LoadSceneMode.Single);
+        StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void pauseGame()
@@ -43,6 +44,16 @@ public class GameManager : MonoBehaviour
     public void resumeGame()
     {
         Time.timeScale = 1f;
+    }
+
+    IEnumerator loadLevel(int levelIndex)
+    {
+        levelTransition.SetTrigger("Start");
+
+        //Match with transition time
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
     }
     
     #endregion
