@@ -95,7 +95,6 @@ public class ArcherAllyBehavior : MonoBehaviour
             separationOffset = Vector2.ClampMagnitude(separationOffset, separationDistance) * separationWeight;
             targetPos += separationOffset;
         }
-
         rb.MovePosition(targetPos);
     }
     // NOTE: Removed physics AddForce separation (ineffective for kinematic bodies) in favor of manual positional separation above.
@@ -123,4 +122,5 @@ public class ArcherAllyBehavior : MonoBehaviour
         GameManager.Instance.decreaseFriendCount();
         Destroy(gameObject);
     }
+
 }
