@@ -3,7 +3,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject[] enemyTypes;
-    public float spawnRate;
+    public float spawnInterval;
     private GameObject enemyParent;
     private GameObject allyParent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,7 +30,7 @@ public class Spawner : MonoBehaviour
             allyParent = new GameObject("AllyParent");
         }
 
-        InvokeRepeating("SpawnEnemy", 0f, spawnRate);
+        InvokeRepeating("SpawnEnemy", 0f, spawnInterval);
     }
 
     public void DisableSpawner()
