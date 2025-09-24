@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual void Start()
     {
+        enemyParent = GameObject.Find("EnemyParent").transform;
         InvokeRepeating("TryAttack", 0, attackRate);
     }
 
@@ -34,11 +35,14 @@ public class PlayerAttack : MonoBehaviour
 
     public GameObject GetTarget()
     {
-        foreach (Transform enemy in enemyParent)
+        if (enemyParent)
         {
-            if ((transform.position - enemy.position).sqrMagnitude < attackRange * attackRange)
+            foreach (Transform enemy in enemyParent)
             {
-                return enemy.gameObject;
+                if ((transform.position - enemy.position).sqrMagnitude < attackRange * attackRange)
+                {
+                    return enemy.gameObject;
+                }
             }
         }
 

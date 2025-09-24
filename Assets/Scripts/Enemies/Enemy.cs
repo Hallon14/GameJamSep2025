@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject undeadVersion;
     public int maxHealth;
     private int currentHealth;
     public Transform attackTarget;
@@ -16,6 +17,7 @@ public class Enemy : MonoBehaviour
     public float projectileLifetime = 2f;
 
     public Rigidbody2D rb2D;
+    public Transform allyParent;
 
     public bool hasTarget = true;
 
@@ -33,6 +35,7 @@ public class Enemy : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         attackTarget = GameObject.Find("Player")?.transform;
+        allyParent = GameObject.Find("AllyParent")?.transform;
         InvokeRepeating("TryAttack", 0, attackRate);
     }
 
@@ -83,7 +86,14 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die()
     {
+        SpawnUndead();
         Destroy(gameObject);
+
+    }
+
+    public void SpawnUndead()
+    {
+        Instantiate(undeadVersion, transform.position, Quaternion.identity, allyParent);
     }
 
     public virtual void Move()
