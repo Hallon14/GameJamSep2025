@@ -141,7 +141,7 @@ MonoBehaviour:
   separationForce: 5
   startSpeed: 4
   chargeSpeed: 10
-  radius: 2.5
+  radius: 3
 --- !u!212 &4402251252176589523
 SpriteRenderer:
   m_ObjectHideFlags: 0

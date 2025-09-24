@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728f03e9c820ac74baaf913caf671b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Archer
-  undeadVersion: {fileID: 605184292219105407, guid: 9b84be974e677ca4887837bf32cb02e8, type: 3}
+  undeadVersion: {fileID: 9183417797936899427, guid: 9b84be974e677ca4887837bf32cb02e8, type: 3}
   maxHealth: 4
   attackTarget: {fileID: 0}
   attackRange: 6
@@ -117,6 +117,7 @@ MonoBehaviour:
   projectileSpeed: 10
   projectileLifetime: 2
   rb2D: {fileID: 0}
+  allyParent: {fileID: 0}
   hasTarget: 1
 --- !u!50 &8030251530894938090
 Rigidbody2D:
