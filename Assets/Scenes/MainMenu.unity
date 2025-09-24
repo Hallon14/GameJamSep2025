@@ -746,7 +746,7 @@ GameObject:
   - component: {fileID: 197178392}
   - component: {fileID: 197178391}
   m_Layer: 0
-  m_Name: ProjectUtumno_full_64
+  m_Name: robertOnGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -891,7 +891,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -3599392025293366166, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -909,7 +909,7 @@ Transform:
   m_GameObject: {fileID: 226744075}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.88, y: -0.22, z: 0}
+  m_LocalPosition: {x: -8.22, y: -0.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1251,7 +1251,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 3045790869634923072, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -1443,7 +1443,7 @@ Transform:
   m_GameObject: {fileID: 683588174}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.97, y: -1.1, z: 0}
+  m_LocalPosition: {x: -7.28, y: -1.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6040,7 +6040,7 @@ GameObject:
   - component: {fileID: 1458639852}
   - component: {fileID: 1458639851}
   m_Layer: 0
-  m_Name: ProjectUtumno_full_4760
+  m_Name: playerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6343,7 +6343,7 @@ GameObject:
   - component: {fileID: 1845323548}
   - component: {fileID: 1845323547}
   m_Layer: 0
-  m_Name: ProjectUtumno_full_764
+  m_Name: portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6461,7 +6461,7 @@ Transform:
   m_GameObject: {fileID: 2045612734}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 259.65164, y: 205.49251, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6599,7 +6599,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play'nt
+  m_text: Playn't
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
