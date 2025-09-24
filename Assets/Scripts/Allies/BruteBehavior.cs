@@ -2,15 +2,9 @@ using UnityEngine;
 
 public class BruteBehavior : MonoBehaviour
 {
-    public float separationForce = 5f;
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject != null && collision.gameObject != this.gameObject && collision.gameObject.GetComponent<BruteBehavior>() != null)
-        {
-            Vector2 away = (rb.position - (Vector2)collision.transform.position).normalized;
-            rb.AddForce(away * separationForce, ForceMode2D.Force);
-        }
-    }
+    // Old AddForce-based separation removed (ineffective for kinematic bodies)
+    [Tooltip("Minimum spacing to keep from other brutes")] public float separationDistance = 0.9f;
+    [Tooltip("How strongly to apply separation positional offset (0-1 typical)")] public float separationWeight = 0.5f;
 
     public int maxHealth = 12;
     private int currentHealth;
@@ -26,14 +20,19 @@ public class BruteBehavior : MonoBehaviour
     bool isCharging = false;
     Vector2 chargeDirection;
 
+    // Static registry for manual separation (kinematic friendly)
+    private static readonly System.Collections.Generic.List<BruteBehavior> AllBrutes = new System.Collections.Generic.List<BruteBehavior>();
+
     void OnEnable()
     {
+        if (!AllBrutes.Contains(this)) AllBrutes.Add(this);
         InputHandler.onChargeStarted += Charge;
         InputHandler.onChargeEnded += EndCharge;
     }
 
     void OnDisable()
     {
+        AllBrutes.Remove(this);
         InputHandler.onChargeStarted -= Charge;
         InputHandler.onChargeEnded -= EndCharge;
     }
@@ -58,14 +57,18 @@ public class BruteBehavior : MonoBehaviour
     void FixedUpdate()
     {
         if (player == null) return;
+
         if (isCharging)
         {
+            // During charge we skip separation to keep a decisive motion.
             currentSpeed = chargeSpeed;
             rb.MovePosition(rb.position + chargeDirection * currentSpeed * Time.fixedDeltaTime);
             return;
         }
+
         Vector2 toBrute = rb.position - (Vector2)player.position;
         float currentDistance = toBrute.magnitude;
+        Vector2 targetPos;
         if (!reachedRadius)
         {
             if (Mathf.Abs(currentDistance - radius) > 0.05f)
@@ -73,12 +76,13 @@ public class BruteBehavior : MonoBehaviour
                 currentSpeed = startSpeed;
                 Vector2 desiredPos = (Vector2)player.position + toBrute.normalized * radius;
                 Vector2 newPos = Vector2.MoveTowards(rb.position, desiredPos, currentSpeed * Time.fixedDeltaTime);
-                rb.MovePosition(newPos);
+                targetPos = newPos;
             }
             else
             {
                 reachedRadius = true;
                 angle = Mathf.Atan2(toBrute.y, toBrute.x) * Mathf.Rad2Deg;
+                targetPos = rb.position; // snapped to orbit
             }
         }
         else
@@ -86,8 +90,29 @@ public class BruteBehavior : MonoBehaviour
             angle += rotationspeed * Time.fixedDeltaTime;
             float angleRad = angle * Mathf.Deg2Rad;
             Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * radius;
-            rb.MovePosition(orbitPos);
+            targetPos = orbitPos;
         }
+
+        // --- Separation positional adjustment (kinematic friendly) ---
+        Vector2 separationOffset = Vector2.zero;
+        foreach (var other in AllBrutes)
+        {
+            if (other == null || other == this) continue;
+            Vector2 diff = targetPos - (Vector2)other.rb.position;
+            float dist = diff.magnitude;
+            if (dist > 0f && dist < separationDistance)
+            {
+                float strength = (separationDistance - dist) / separationDistance; // 0..1
+                separationOffset += diff.normalized * strength;
+            }
+        }
+        if (separationOffset.sqrMagnitude > 0f)
+        {
+            separationOffset = Vector2.ClampMagnitude(separationOffset, separationDistance) * separationWeight;
+            targetPos += separationOffset;
+        }
+
+        rb.MovePosition(targetPos);
     }
 
     void Charge(Vector2 direction)
