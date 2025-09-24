@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject portal;
     private int totalFriends;
     private int activeFriends;
-    public float playerHealth;
+    public float playerHealth = 100;
     public List<GameObject> spawners = new List<GameObject>();
 
     private void Awake()
