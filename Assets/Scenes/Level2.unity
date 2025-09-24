@@ -4106,6 +4106,8 @@ MonoBehaviour:
   _levelData:
     portal: {fileID: 1488930159}
     levelTransition: {fileID: 458271990}
+    spawners: []
+  _gameManagerPrefab: {fileID: 0}
 --- !u!4 &396799103
 Transform:
   m_ObjectHideFlags: 0

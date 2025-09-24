@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject portal;
     private int totalFriends;
     private int activeFriends;
+    public float playerHealth;
+    public List<GameObject> spawners = new List<GameObject>();
 
     private void Awake()
     {
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
     {
         portal = levelData.portal;
         levelTransition = levelData.levelTransition;
+        spawners = levelData.spawners;
     }
 
     #region Main Menu and Victory Screen buttons
@@ -88,6 +92,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
     }
 
+    public void updatePlayerHealth(float healthValue)
+    {
+        playerHealth = healthValue;
+    }
+
     //funcitons to calc active friends
     public void increaseFriendCount()
     {
@@ -110,13 +119,13 @@ public class GameManager : MonoBehaviour
             case 1:
                 if (activeFriends >= 50)
                 {
-                    //Open portal
+                    portal.SetActive(true);
                 }
                 break;
             case 2:
                 if (activeFriends >= 100)
                 {
-                    //Open portal
+                    portal.SetActive(true);
                 }
                 break;
         }

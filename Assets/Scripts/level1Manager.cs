@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 public class level1Manager : MonoBehaviour
 {
-    public GameObject portal;
 
     //Robert variables
     public GameObject robertUI;
@@ -30,11 +29,6 @@ public class level1Manager : MonoBehaviour
         InputHandler.onInteract += levelOneSpeech;
         Resources.UnloadUnusedAssets();
     }
-
-    public void setPortalActive()
-    {
-        portal.SetActive(true);
-    }
     
     #region Level 1 Robert
     public void levelOneSpeech()
@@ -45,6 +39,10 @@ public class level1Manager : MonoBehaviour
             robertUI.SetActive(false);
             robert.SetActive(false);
             healthBar.SetActive(true);
+            foreach (GameObject spawner in GameManager.Instance.spawners)
+            {
+                spawner.SetActive(true);
+            }
         }
         if (robertSpeechIndex < 6)
         {

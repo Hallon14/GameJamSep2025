@@ -59,6 +59,10 @@ public class level2Manager : MonoBehaviour
             anton.SetActive(false);
             healthbar.SetActive(true);
             InputHandler.onInteract -= levelTwoSpeech;
+            foreach (GameObject spawner in GameManager.Instance.spawners)
+            {
+                spawner.SetActive(true);
+            }
         }
 
         dialougeIndex++;

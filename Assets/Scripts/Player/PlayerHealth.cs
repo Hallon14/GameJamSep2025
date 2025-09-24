@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = GameManager.Instance.playerHealth;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -37,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
         {
             KillPlayer();
         }
+        GameManager.Instance.updatePlayerHealth(currentHealth);
     }
 
     public void KillPlayer()
