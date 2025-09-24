@@ -7,19 +7,17 @@ TagManager:
   - Portal
   - ArcherAlly
   - BruteAlly
-  - EnemyWeapon
-  - PlayerWeapon
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ArcherAlly
   - Water
   - UI
   - Player
-  - Ally
+  - BruteAlly
   - Enemy
-  - EnemyWeapon
+  - Arrow
   - 
   - 
   - 

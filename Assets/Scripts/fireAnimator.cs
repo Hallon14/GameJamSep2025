@@ -1,26 +1,24 @@
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
-
-public class robert : MonoBehaviour
+public class fireAnimator : MonoBehaviour
 {
+
+    private int nextSpriteIndex;
+    public List<Sprite> fireSprites = new List<Sprite>();
     private SpriteRenderer spriteRenderer;
-    int nextSpriteIndex;
-    public List<Sprite> robertFaces = new List<Sprite>();
+
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        nextSpriteIndex = 0;
-
-        
-        InvokeRepeating(nameof(swapSprite), .5f, .5f);
+        InvokeRepeating(nameof(animateFire), 1, 1);
     }
 
-    private void swapSprite()
+    private void animateFire()
     {
-        spriteRenderer.sprite = robertFaces[nextSpriteIndex];
+        spriteRenderer.sprite = fireSprites[nextSpriteIndex];
+        nextSpriteIndex++;
         if (nextSpriteIndex == 7)
         {
             nextSpriteIndex = 0;

@@ -2,13 +2,23 @@ using UnityEngine;
 
 public class BruteBehavior : MonoBehaviour
 {
+    public float separationForce = 5f;
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject != null && collision.gameObject != this.gameObject && collision.gameObject.GetComponent<BruteBehavior>() != null)
+        {
+            Vector2 away = (rb.position - (Vector2)collision.transform.position).normalized;
+            rb.AddForce(away * separationForce, ForceMode2D.Force);
+        }
+    }
+    
     private int bruteHP = 3;
     private int bruteDamage = 1;
     public float startSpeed = 6f; // Increased start speed
     public float chargeSpeed = 18f; // Much faster charge speed
     private float currentSpeed;
     private float rotationspeed = 60f; // Slower orbit (degrees per second)
-    public float radius = 2f;
+    public float radius = 4f;
     Rigidbody2D rb;
     Transform player;
     float angle;
@@ -31,10 +41,12 @@ public class BruteBehavior : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        currentSpeed = startSpeed;
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
+        {
             player = playerObj.transform;
+        }
+        currentSpeed = startSpeed;
         if (player != null)
         {
             Vector2 toBrute = rb.position - (Vector2)player.position;

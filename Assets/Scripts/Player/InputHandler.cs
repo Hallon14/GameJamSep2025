@@ -25,7 +25,7 @@ public class InputHandler : MonoBehaviour
     public delegate void OnInteract();
     public static event OnInteract onInteract;
 
-    public delegate void OnVolley();
+    public delegate void OnVolley(Vector2 aimDirection);
     public static event OnVolley onVolley;
 
     void OnEnable()
@@ -64,12 +64,12 @@ public class InputHandler : MonoBehaviour
     {
         if (chargeAction.WasPressedThisFrame())
         {
-            Debug.Log("charge started");
+            
             onChargeStarted?.Invoke(aimDirection);
         }
         if (chargeAction.WasReleasedThisFrame())
         {
-            Debug.Log("charge ended");
+            
             onChargeEnded?.Invoke();
         }
     }
@@ -78,8 +78,7 @@ public class InputHandler : MonoBehaviour
     {
         if (volleyAction.WasPressedThisFrame())
         {
-            Debug.Log("Volley started");
-            onVolley?.Invoke();
+            onVolley?.Invoke(aimDirection);
         }
     }
 

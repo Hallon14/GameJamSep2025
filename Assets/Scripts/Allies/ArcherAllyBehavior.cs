@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class ArcherAllyBehavior : MonoBehaviour
 {
+    public float separationForce = 5f;
 
     private int ArcherHP;
     public float startSpeed = 8f; // Slightly faster than brute
     private float rotationspeed = 90f; // Faster orbit (degrees per second)
-    public float radius = 1.2f; // Closer to player than brute
+    public float radius = 2f; // Closer to player than brute
     Rigidbody2D rb;
     Transform player;
     float angle;
@@ -49,10 +50,19 @@ public class ArcherAllyBehavior : MonoBehaviour
         }
         else
         {
-            angle += rotationspeed * Time.deltaTime;
+            angle -= rotationspeed * Time.deltaTime;
             float angleRad = angle * Mathf.Deg2Rad;
             Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * radius;
             rb.MovePosition(orbitPos);
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject != null && collision.gameObject != this.gameObject && collision.gameObject.GetComponent<ArcherAllyBehavior>() != null)
+        {
+            Vector2 away = (rb.position - (Vector2)collision.transform.position).normalized;
+            rb.AddForce(away * separationForce, ForceMode2D.Force);
         }
     }
 }
