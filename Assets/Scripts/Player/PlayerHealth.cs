@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth;
-    public int currentHealth;
+    public float maxHealth;
+    public float currentHealth;
 
     //send message when the player drops to 0 HP
     public delegate void OnPlayerDeath();
@@ -29,10 +29,10 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-    currentHealth -= damage;
-    onPlayerHPChanged?.Invoke((float)currentHealth / maxHealth); // ensure floating point ratio
+        currentHealth -= damage;
+        onPlayerHPChanged?.Invoke(currentHealth / maxHealth); // ensure floating point ratio
         if (currentHealth <= 0)
         {
             KillPlayer();

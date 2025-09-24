@@ -4,7 +4,7 @@ public class Projectile : MonoBehaviour
 {
     private Vector2 velocity;
     public Rigidbody2D rb2D;
-    public int damage;
+    public float damage;
 
 
 

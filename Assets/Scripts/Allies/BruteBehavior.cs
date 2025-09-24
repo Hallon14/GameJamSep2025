@@ -12,8 +12,8 @@ public class BruteBehavior : MonoBehaviour
         }
     }
 
-    public int maxHealth = 12;
-    private int currentHealth;
+    public float maxHealth = 12;
+    private float currentHealth;
     public float startSpeed = 6f; // Increased start speed
     public float chargeSpeed = 18f; // Much faster charge speed
     private float currentSpeed;
@@ -111,7 +111,7 @@ public class BruteBehavior : MonoBehaviour
         }
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
@@ -122,7 +122,10 @@ public class BruteBehavior : MonoBehaviour
 
     public virtual void Die()
     {
-        GameManager.Instance.decreaseFriendCount();
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.decreaseFriendCount();
+        }
         Destroy(gameObject);
     }
 }

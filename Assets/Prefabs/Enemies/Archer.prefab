@@ -116,6 +116,7 @@ MonoBehaviour:
   projectile: {fileID: 6459682172970791448, guid: 1b4b40937a81a5343998147954bb5a05, type: 3}
   projectileSpeed: 10
   projectileLifetime: 2
+  contactDPS: 20
   rb2D: {fileID: 0}
   allyParent: {fileID: 0}
   hasTarget: 1

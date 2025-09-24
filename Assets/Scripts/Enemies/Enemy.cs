@@ -3,8 +3,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject undeadVersion;
-    public int maxHealth;
-    private int currentHealth;
+    public float maxHealth;
+    private float currentHealth;
     public Transform attackTarget;
     public float attackRange;
     public float attackRate;
@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     public GameObject projectile;
     public float projectileSpeed = 10f;
     public float projectileLifetime = 2f;
+
+    public float contactDPS = 20;
 
     public Rigidbody2D rb2D;
     public Transform allyParent;
@@ -65,10 +67,10 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        if (currentHealth <= 0)
+        if (currentHealth <= 0f)
         {
             Die();
         }
@@ -85,10 +87,24 @@ public class Enemy : MonoBehaviour
 
     }
 
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("BruteAlly"))
+        {
+
+            TakeDamage(contactDPS * Time.deltaTime);
+        }
+
+
+    }
+
     public virtual void Die()
     {
         SpawnUndead();
-        GameManager.Instance.increaseFriendCount();
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.decreaseFriendCount();
+        }
         Destroy(gameObject);
     }
 
