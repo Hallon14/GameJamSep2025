@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     private Animator levelTransition;
     [SerializeField]
     private GameObject gameOverUIElement;
+    [SerializeField]
+    private Slider healthBar;
 
 
     public GameObject portal;
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
         portal = levelData.portal;
         levelTransition = levelData.levelTransition;
         spawners = levelData.spawners;
+        healthBar = levelData.healthBar;
     }
 
     #region Main Menu and Victory Screen buttons
@@ -96,6 +100,7 @@ public class GameManager : MonoBehaviour
     public void updatePlayerHealth(float healthValue)
     {
         playerHealth = healthValue;
+        healthBar.value = playerHealth/100;
     }
 
     //funcitons to calc active friends
