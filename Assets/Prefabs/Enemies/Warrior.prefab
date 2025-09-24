@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5019953831006832293}
   - component: {fileID: 277094773872015049}
   - component: {fileID: 3761798749625656778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Warrior
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,12 +107,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemy
   maxHealth: 4
   attackTarget: {fileID: 0}
-  attackRange: 2
+  attackRange: 4
   attackRate: 0.5
-  movementSpeed: 0
+  movementSpeed: 5
+  preferredDistance: 0.5
+  preferredDistanceRange: 0.2
   projectile: {fileID: 6459682172970791448, guid: caee8451500ad6f46b43b7997d3020bf, type: 3}
   projectileSpeed: 0
-  projectileLifetime: 0.2
+  projectileLifetime: 0.1
+  rb2D: {fileID: 0}
+  hasTarget: 1
 --- !u!58 &277094773872015049
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -157,14 +161,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7153667096512267768}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 2
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -175,4 +179,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

@@ -23,9 +23,4 @@ public class MeleeEnemy : Enemy
         arrow.Initialize(projectileDirection, projectileSpeed, projectileLifetime);
     }
 
-    public void Move()
-    {
-
-    }
-
 }

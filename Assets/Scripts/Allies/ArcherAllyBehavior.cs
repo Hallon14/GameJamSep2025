@@ -5,6 +5,7 @@ public class ArcherAllyBehavior : MonoBehaviour
     public float separationForce = 5f;
 
     private int ArcherHP;
+    private int ArcherDamage;
     public float startSpeed = 8f; // Slightly faster than brute
     private float rotationspeed = 90f; // Faster orbit (degrees per second)
     public float radius = 2f; // Closer to player than brute
@@ -29,7 +30,7 @@ public class ArcherAllyBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (player == null) return;
         Vector2 toArcher = rb.position - (Vector2)player.position;
@@ -39,7 +40,7 @@ public class ArcherAllyBehavior : MonoBehaviour
             if (Mathf.Abs(currentDistance - radius) > 0.05f)
             {
                 Vector2 desiredPos = (Vector2)player.position + toArcher.normalized * radius;
-                Vector2 newPos = Vector2.MoveTowards(rb.position, desiredPos, startSpeed * Time.deltaTime);
+                Vector2 newPos = Vector2.MoveTowards(rb.position, desiredPos, startSpeed * Time.fixedDeltaTime);
                 rb.MovePosition(newPos);
             }
             else
@@ -50,7 +51,7 @@ public class ArcherAllyBehavior : MonoBehaviour
         }
         else
         {
-            angle -= rotationspeed * Time.deltaTime;
+            angle -= rotationspeed * Time.fixedDeltaTime;
             float angleRad = angle * Mathf.Deg2Rad;
             Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * radius;
             rb.MovePosition(orbitPos);

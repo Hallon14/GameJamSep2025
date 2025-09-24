@@ -11,6 +11,8 @@ public class InputHandler : MonoBehaviour
     public InputAction volleyAction;
     private Vector2 aimDirection;
 
+    private bool inputsEnabled = true;
+
     //Charge started event
     public delegate void OnChargeStarted(Vector2 aimDirection);
     public static event OnChargeStarted onChargeStarted;
@@ -25,6 +27,11 @@ public class InputHandler : MonoBehaviour
 
     public delegate void OnVolley(Vector2 aimDirection);
     public static event OnVolley onVolley;
+
+    void OnEnable()
+    {
+        PlayerHealth.onPlayerDeath += DisableInputs;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,14 +41,30 @@ public class InputHandler : MonoBehaviour
         interactAction = InputSystem.actions.FindAction("Interact");
         volleyAction = InputSystem.actions.FindAction("Volley");
 
+        // Ensure actions are enabled so movement & input work
+        moveAction?.Enable();
+        chargeAction?.Enable();
+        aimAction?.Enable();
+        interactAction?.Enable();
+        volleyAction?.Enable();
+
     }
 
     void Update()
     {
-        CalculateShotDirection();
-        CheckChargeAction();
-        CheckInteractAction();
-        CheckVolleyAction();
+        if (inputsEnabled)
+        {
+            CalculateShotDirection();
+            CheckChargeAction();
+            CheckInteractAction();
+            CheckVolleyAction();
+        }
+
+    }
+
+    public void DisableInputs()
+    {
+        inputsEnabled = false;
     }
 
     void CheckChargeAction()

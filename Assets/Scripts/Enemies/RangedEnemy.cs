@@ -11,7 +11,7 @@ public class RangedEnemy : Enemy
     public override void Attack()
     {
         base.Attack();
-        Move();
+
         ShootArrow();
 
 
@@ -24,22 +24,6 @@ public class RangedEnemy : Enemy
         arrow.Initialize(projectileDirection, projectileSpeed, projectileLifetime);
     }
 
-    public void Move()
-    {
 
-        if ((attackTarget.position - transform.position).sqrMagnitude < (attackRange / 3) * (attackRange / 3))
-        {
-            rb2D.linearVelocity = -(attackTarget.position - transform.position).normalized * movementSpeed;
-        }
-        else if ((attackTarget.position - transform.position).sqrMagnitude > (attackRange / 2) * (attackRange / 2))
-        {
-            rb2D.linearVelocity = (attackTarget.position - transform.position).normalized * movementSpeed;
-        }
-        else
-        {
-            rb2D.linearVelocity = Vector2.zero;
-        }
-
-    }
 
 }
