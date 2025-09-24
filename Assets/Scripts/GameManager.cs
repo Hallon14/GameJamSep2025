@@ -1,13 +1,29 @@
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance = null;
     public Animator levelTransition;
     public GameObject gameOverUIElement;
+    private int totalFriends;
+    private int activeFriends;
 
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     #region Main Menu and Victory Screen buttons
     public void play()
     {
@@ -29,13 +45,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
     #endregion
 
     #region In-game Functions
-    public void levelComplete()
-    {
-        StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-    }
 
     public void pauseGame()
     {
@@ -47,6 +60,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void levelComplete()
+    {
+        StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
     IEnumerator loadLevel(int levelIndex)
     {
         levelTransition.SetTrigger("Start");
@@ -56,6 +73,40 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
     }
+
+    public void increaseFriendCount()
+    {
+        totalFriends++;
+        activeFriends++;
+        checkWinCondition(SceneManager.GetActiveScene().buildIndex);
+
+    }
+    public void decreaseFriendCount()
+    {
+        activeFriends--;
+        checkWinCondition(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void checkWinCondition(int currentLevel)
+    {
+        switch (currentLevel)
+        {
+            case 1:
+                if (activeFriends >= 50)
+                {
+                    //Open portal
+                }
+                break;
+            case 2:
+                if (activeFriends >= 100)
+                {
+                    //Open portal
+                }
+                break;
+        }
+
+    }
+
 
     public void gameOver()
     {
