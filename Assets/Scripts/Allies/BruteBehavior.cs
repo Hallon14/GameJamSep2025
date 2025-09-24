@@ -122,6 +122,7 @@ public class BruteBehavior : MonoBehaviour
 
     public virtual void Die()
     {
+        GameManager.Instance.decreaseFriendCount();
         Destroy(gameObject);
     }
 }

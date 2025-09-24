@@ -89,6 +89,7 @@ public class ArcherAllyBehavior : MonoBehaviour
 
     public virtual void Die()
     {
+        GameManager.Instance.decreaseFriendCount();
         Destroy(gameObject);
     }
 }
