@@ -261,6 +261,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArcherAllyBehavior
   separationForce: 5
+  ArcherHP: 4
+  ArcherDamage: 3
   startSpeed: 8
   radius: 1.5
 --- !u!1001 &4001934353924062377

@@ -1,13 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ArcherAllyBehavior : MonoBehaviour
 {
     public float separationForce = 5f;
 
-    private int ArcherHP;
-    private int ArcherDamage;
+    public int maxHealth = 4;
+    private int currentHealth;
     public float startSpeed = 8f; // Slightly faster than brute
-    private float rotationspeed = 90f; // Faster orbit (degrees per second)
+    private float rotationSpeed = 90f; // Faster orbit (degrees per second)
     public float radius = 2f; // Closer to player than brute
     Rigidbody2D rb;
     Transform player;
@@ -17,14 +18,15 @@ public class ArcherAllyBehavior : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ArcherHP = 1;
+        currentHealth = maxHealth;
+        //ArcherHP = 1;
         rb = GetComponent<Rigidbody2D>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
         if (player != null)
         {
-            Vector2 toArcher = rb.position - -1*(Vector2)player.position;
+            Vector2 toArcher = rb.position - -1 * (Vector2)player.position;
             angle = Mathf.Atan2(toArcher.y, toArcher.x) * Mathf.Rad2Deg;
         }
     }
@@ -51,7 +53,7 @@ public class ArcherAllyBehavior : MonoBehaviour
         }
         else
         {
-            angle -= rotationspeed * Time.fixedDeltaTime;
+            angle -= rotationSpeed * Time.fixedDeltaTime;
             float angleRad = angle * Mathf.Deg2Rad;
             Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * radius;
             rb.MovePosition(orbitPos);
@@ -65,5 +67,28 @@ public class ArcherAllyBehavior : MonoBehaviour
             Vector2 away = (rb.position - (Vector2)collision.transform.position).normalized;
             rb.AddForce(away * separationForce, ForceMode2D.Force);
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("EnemyWeapon"))
+        {
+            TakeDamage(other.gameObject.GetComponent<Projectile>().damage);
+            Destroy(other.gameObject);
+        }
+    }
+
+    public virtual void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    public virtual void Die()
+    {
+        Destroy(gameObject);
     }
 }
