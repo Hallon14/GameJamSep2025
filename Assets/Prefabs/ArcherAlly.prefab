@@ -265,7 +265,7 @@ MonoBehaviour:
   separationWeight: 0.5
   maxHealth: 4
   startSpeed: 4
-  radius: 1.5
+  radius: 2
 --- !u!1001 &4001934353924062377
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -111,7 +111,6 @@ public class BruteBehavior : MonoBehaviour
             separationOffset = Vector2.ClampMagnitude(separationOffset, separationDistance) * separationWeight;
             targetPos += separationOffset;
         }
-
         rb.MovePosition(targetPos);
     }
 
@@ -163,4 +162,5 @@ public class BruteBehavior : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
 }
