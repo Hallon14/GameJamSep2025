@@ -7,8 +7,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
-    public Animator levelTransition;
-    public GameObject gameOverUIElement;
+    [SerializeField]
+    private Animator levelTransition;
+    [SerializeField]
+    private GameObject gameOverUIElement;
+
+
+    public GameObject portal;
     private int totalFriends;
     private int activeFriends;
 
@@ -24,10 +29,18 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void InitLevel(LevelData levelData)
+    {
+        portal = levelData.portal;
+        levelTransition = levelData.levelTransition;
+    }
+
     #region Main Menu and Victory Screen buttons
     public void play()
     {
-        SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+        // SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+        StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void exit()
@@ -64,6 +77,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
+    
     IEnumerator loadLevel(int levelIndex)
     {
         levelTransition.SetTrigger("Start");
@@ -74,6 +88,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
     }
 
+    //funcitons to calc active friends
     public void increaseFriendCount()
     {
         totalFriends++;
@@ -87,6 +102,7 @@ public class GameManager : MonoBehaviour
         checkWinCondition(SceneManager.GetActiveScene().buildIndex);
     }
 
+    //Checks wincondition, called everytime we update amount of active friends
     public void checkWinCondition(int currentLevel)
     {
         switch (currentLevel)
@@ -106,12 +122,11 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
-
     public void gameOver()
     {
         pauseGame();
         gameOverUIElement.SetActive(true);
+        Instantiate(gameOverUIElement, new Vector3(960,540,0), Quaternion.identity);
 
     }
     
