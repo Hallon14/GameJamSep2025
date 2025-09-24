@@ -1413,6 +1413,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1937732707282008592, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
+      propertyPath: attackRate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4858809727307435466, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
       propertyPath: m_Constraints
       value: 7
@@ -29421,6 +29425,8 @@ MonoBehaviour:
   - {fileID: 9125289457278207555, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
   - {fileID: -5402853969886485558, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
   fountain: {fileID: 637323085}
+  redSlider: {fileID: 905240408}
+  redSliderChildName: RedSlider
 --- !u!1001 &1359979305
 PrefabInstance:
   m_ObjectHideFlags: 0
