@@ -136,6 +136,16 @@ public class BruteBehavior : MonoBehaviour
         }
     }
 
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+
+            TakeDamage(40f * Time.deltaTime);
+        }
+    }
+
+
     public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
