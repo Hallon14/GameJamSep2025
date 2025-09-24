@@ -121,12 +121,14 @@ public class GameManager : MonoBehaviour
                 if (activeFriends >= 50)
                 {
                     portal.SetActive(true);
+                    Debug.Log("Win level1");
                 }
                 break;
             case 2:
                 if (activeFriends >= 100)
                 {
                     portal.SetActive(true);
+                    Debug.Log("win level 2");
                 }
                 break;
         }
