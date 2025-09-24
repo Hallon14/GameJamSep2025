@@ -24,7 +24,7 @@ public class ArcherAllyBehavior : MonoBehaviour
             player = playerObj.transform;
         if (player != null)
         {
-            Vector2 toArcher = rb.position - -1*(Vector2)player.position;
+            Vector2 toArcher = rb.position - (Vector2)player.position;
             angle = Mathf.Atan2(toArcher.y, toArcher.x) * Mathf.Rad2Deg;
         }
     }

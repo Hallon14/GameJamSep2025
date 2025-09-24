@@ -31,8 +31,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        onPlayerHPChanged?.Invoke(currentHealth / maxHealth);
+    currentHealth -= damage;
+    onPlayerHPChanged?.Invoke((float)currentHealth / maxHealth); // ensure floating point ratio
         if (currentHealth <= 0)
         {
             KillPlayer();
