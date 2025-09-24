@@ -239,12 +239,10 @@ GameObject:
   - component: {fileID: 6502520178054861356}
   - component: {fileID: 5601416277358823323}
   - component: {fileID: 983587884696551442}
-  - component: {fileID: 3229403640996490356}
   - component: {fileID: 1937732707282008592}
   - component: {fileID: 6041164073578514318}
   - component: {fileID: 3733990865084455262}
   - component: {fileID: 4858809727307435466}
-  - component: {fileID: 4938951741322779458}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -398,24 +396,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   maxSpeed: 3
   sights: {fileID: 1666489880448269603}
---- !u!114 &3229403640996490356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8148824359126380828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2e6f584fd0df44c94c57e127a8fc12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  enemyParent: {fileID: 0}
-  attackRange: 7
-  attackRate: 0.5
-  projectile: {fileID: 6459682172970791448, guid: 0977758fa89d1c947b3ced90a35b74f9, type: 3}
-  projectileSpeed: 7
-  projectileLifetime: 2
 --- !u!114 &1937732707282008592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,40 +490,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &4938951741322779458
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8148824359126380828}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Constraints: 4
