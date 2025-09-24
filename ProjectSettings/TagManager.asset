@@ -7,6 +7,10 @@ TagManager:
   - Portal
   - ArcherAlly
   - BruteAlly
+  - Undefined
+  - PlayerWeapon
+  - EnemyWeapon
+  - Enemy
   layers:
   - Default
   - TransparentFX
