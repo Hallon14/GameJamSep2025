@@ -12,7 +12,12 @@ public class BruteBehavior : MonoBehaviour
     public float chargeSpeed = 18f; // Much faster charge speed
     private float currentSpeed;
     private float rotationspeed = 60f; // Slower orbit (degrees per second)
-    public float radius = 4f;
+    [Header("Dynamic Radius Settings")] 
+    [Tooltip("Base orbit radius when only one brute exists")] public float radius = 2.5f; // reduced to sit a bit closer to player
+    [Tooltip("Additional radius added per extra brute")] public float radiusPerBrute = 0.12f;
+    [Tooltip("Clamp the dynamic radius so it never exceeds this value")] public float maxRadius = 10f;
+    [Tooltip("How quickly the orbit radius eases toward its new size when count changes")] public float radiusSmoothing = 5f;
+    private float currentOrbitRadius;
     Rigidbody2D rb;
     Transform player;
     float angle;
@@ -47,6 +52,7 @@ public class BruteBehavior : MonoBehaviour
             player = playerObj.transform;
         }
         currentSpeed = startSpeed;
+        currentOrbitRadius = radius;
         if (player != null)
         {
             Vector2 toBrute = rb.position - (Vector2)player.position;
@@ -66,15 +72,21 @@ public class BruteBehavior : MonoBehaviour
             return;
         }
 
-        Vector2 toBrute = rb.position - (Vector2)player.position;
-        float currentDistance = toBrute.magnitude;
+    Vector2 toBrute = rb.position - (Vector2)player.position;
+    float currentDistance = toBrute.magnitude;
+
+    // --- Dynamic radius calculation ---
+    int bruteCount = AllBrutes.Count;
+    float desiredRadius = Mathf.Min(radius + (bruteCount - 1) * radiusPerBrute, maxRadius);
+    float rsLerp = 1f - Mathf.Exp(-radiusSmoothing * Time.fixedDeltaTime);
+    currentOrbitRadius = Mathf.Lerp(currentOrbitRadius, desiredRadius, rsLerp);
         Vector2 targetPos;
         if (!reachedRadius)
         {
-            if (Mathf.Abs(currentDistance - radius) > 0.05f)
+            if (Mathf.Abs(currentDistance - currentOrbitRadius) > 0.05f)
             {
                 currentSpeed = startSpeed;
-                Vector2 desiredPos = (Vector2)player.position + toBrute.normalized * radius;
+                Vector2 desiredPos = (Vector2)player.position + toBrute.normalized * currentOrbitRadius;
                 Vector2 newPos = Vector2.MoveTowards(rb.position, desiredPos, currentSpeed * Time.fixedDeltaTime);
                 targetPos = newPos;
             }
@@ -89,7 +101,7 @@ public class BruteBehavior : MonoBehaviour
         {
             angle += rotationspeed * Time.fixedDeltaTime;
             float angleRad = angle * Mathf.Deg2Rad;
-            Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * radius;
+            Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * currentOrbitRadius;
             targetPos = orbitPos;
         }
 

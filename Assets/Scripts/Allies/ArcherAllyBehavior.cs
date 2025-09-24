@@ -11,7 +11,12 @@ public class ArcherAllyBehavior : MonoBehaviour
     private float currentHealth;
     public float startSpeed = 8f; // Slightly faster than brute
     private float rotationSpeed = 90f; // Faster orbit (degrees per second)
-    public float radius = 2f; // Closer to player than brute
+    [Header("Dynamic Radius Settings")] 
+    [Tooltip("Base orbit radius when only one archer exists")] public float radius = 1.5f; 
+    [Tooltip("Additional radius added per extra archer")] public float radiusPerArcher = 0.05f; // reduced growth per added archer
+    [Tooltip("Clamp the dynamic radius so it never exceeds this value")] public float maxRadius = 6f;
+    [Tooltip("How quickly the orbit radius eases toward its new size when count changes")] public float radiusSmoothing = 6f;
+    private float currentOrbitRadius;
     Rigidbody2D rb;
     Transform player;
     float angle;
@@ -44,6 +49,7 @@ public class ArcherAllyBehavior : MonoBehaviour
             Vector2 toArcher = rb.position - (Vector2)player.position;
             angle = Mathf.Atan2(toArcher.y, toArcher.x) * Mathf.Rad2Deg;
         }
+        currentOrbitRadius = radius; // start at base radius
     }
 
     // Update is called once per frame
@@ -52,12 +58,20 @@ public class ArcherAllyBehavior : MonoBehaviour
         if (player == null) return;
         Vector2 toArcher = rb.position - (Vector2)player.position;
         float currentDistance = toArcher.magnitude;
+
+        // --- Dynamic radius calculation ---
+        int count = AllArchers.Count; // number of active archers
+        float desiredRadius = Mathf.Min(radius + (count - 1) * radiusPerArcher, maxRadius);
+        // Smooth toward desired to avoid popping when an archer is added/removed
+        float rsLerp = 1f - Mathf.Exp(-radiusSmoothing * Time.fixedDeltaTime);
+        currentOrbitRadius = Mathf.Lerp(currentOrbitRadius, desiredRadius, rsLerp);
+
         Vector2 targetPos;
         if (!reachedRadius)
         {
-            if (Mathf.Abs(currentDistance - radius) > 0.05f)
+            if (Mathf.Abs(currentDistance - currentOrbitRadius) > 0.05f)
             {
-                Vector2 desiredPos = (Vector2)player.position + toArcher.normalized * radius;
+                Vector2 desiredPos = (Vector2)player.position + toArcher.normalized * currentOrbitRadius;
                 Vector2 newPos = Vector2.MoveTowards(rb.position, desiredPos, startSpeed * Time.fixedDeltaTime);
                 targetPos = newPos;
             }
@@ -72,7 +86,7 @@ public class ArcherAllyBehavior : MonoBehaviour
         {
             angle -= rotationSpeed * Time.fixedDeltaTime;
             float angleRad = angle * Mathf.Deg2Rad;
-            Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * radius;
+            Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * currentOrbitRadius;
             targetPos = orbitPos;
         }
 

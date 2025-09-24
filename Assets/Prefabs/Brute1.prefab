@@ -142,8 +142,11 @@ MonoBehaviour:
   separationWeight: 0.5
   maxHealth: 12
   startSpeed: 5
-  chargeSpeed: 10
-  radius: 3
+  chargeSpeed: 7
+  radius: 2
+  radiusPerBrute: 0.12
+  maxRadius: 10
+  radiusSmoothing: 5
 --- !u!212 &4402251252176589523
 SpriteRenderer:
   m_ObjectHideFlags: 0
