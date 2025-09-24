@@ -11,9 +11,9 @@ public class BruteBehavior : MonoBehaviour
             rb.AddForce(away * separationForce, ForceMode2D.Force);
         }
     }
-    
-    private int bruteHP = 3;
-    private int bruteDamage = 1;
+
+    public int maxHealth = 12;
+    private int currentHealth;
     public float startSpeed = 6f; // Increased start speed
     public float chargeSpeed = 18f; // Much faster charge speed
     private float currentSpeed;
@@ -40,6 +40,7 @@ public class BruteBehavior : MonoBehaviour
 
     void Start()
     {
+        currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -99,5 +100,29 @@ public class BruteBehavior : MonoBehaviour
     {
         isCharging = false;
         reachedRadius = false; // Move back to radius and resume orbit
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("EnemyWeapon"))
+        {
+            TakeDamage(other.gameObject.GetComponent<Projectile>().damage);
+            Destroy(other.gameObject);
+        }
+    }
+
+    public virtual void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    public virtual void Die()
+    {
+        GameManager.Instance.decreaseFriendCount();
+        Destroy(gameObject);
     }
 }

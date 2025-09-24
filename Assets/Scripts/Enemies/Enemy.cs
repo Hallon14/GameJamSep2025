@@ -79,6 +79,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerWeapon"))
         {
             TakeDamage(other.gameObject.GetComponent<Projectile>().damage);
+            Destroy(other.gameObject);
         }
 
 
@@ -87,13 +88,15 @@ public class Enemy : MonoBehaviour
     public virtual void Die()
     {
         SpawnUndead();
+        GameManager.Instance.increaseFriendCount();
         Destroy(gameObject);
-
     }
 
     public void SpawnUndead()
     {
+        //allyParent = GameObject.Find("AllyParent").transform;
         Instantiate(undeadVersion, transform.position, Quaternion.identity, allyParent);
+
     }
 
     public virtual void Move()
