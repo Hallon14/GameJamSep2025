@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5795916235486965996}
   m_Layer: 8
   m_Name: Archer
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   projectileSpeed: 10
   projectileLifetime: 2
   rb2D: {fileID: 0}
+  hasTarget: 1
 --- !u!50 &8030251530894938090
 Rigidbody2D:
   serializedVersion: 5

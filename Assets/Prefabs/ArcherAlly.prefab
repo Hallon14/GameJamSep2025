@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8899265910872836027}
   m_Layer: 3
   m_Name: ArcherAlly
-  m_TagString: ArcherAlly
+  m_TagString: BruteAlly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77cc48005d6da0498040c8a9ac95fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  separationForce: 5
   startSpeed: 8
   radius: 1.2
 --- !u!1 &4780589107641909593
