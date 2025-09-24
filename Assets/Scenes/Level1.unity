@@ -768,6 +768,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226710168}
   m_CullTransparentMesh: 1
+--- !u!4 &319525349 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8540005871450333824, guid: 9b84be974e677ca4887837bf32cb02e8, type: 3}
+  m_PrefabInstance: {fileID: 2977229388686183276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &319768302
 GameObject:
   m_ObjectHideFlags: 0
@@ -28350,10 +28355,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10000
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -28364,7 +28369,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!66 &905032770
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -31863,6 +31868,7 @@ Transform:
   - {fileID: 2026944438}
   - {fileID: 1668474618}
   - {fileID: 560522274}
+  - {fileID: 319525349}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1660570599 stripped
@@ -32800,7 +32806,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1652789770}
     m_Modifications:
     - target: {fileID: 8540005871450333824, guid: 9b84be974e677ca4887837bf32cb02e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32820,15 +32826,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8540005871450333824, guid: 9b84be974e677ca4887837bf32cb02e8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8540005871450333824, guid: 9b84be974e677ca4887837bf32cb02e8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8540005871450333824, guid: 9b84be974e677ca4887837bf32cb02e8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8540005871450333824, guid: 9b84be974e677ca4887837bf32cb02e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -32940,4 +32946,3 @@ SceneRoots:
   - {fileID: 38883211}
   - {fileID: 1652789770}
   - {fileID: 580502483}
-  - {fileID: 2977229388686183276}

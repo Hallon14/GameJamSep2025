@@ -260,10 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77cc48005d6da0498040c8a9ac95fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArcherAllyBehavior
-  separationForce: 5
-  ArcherHP: 4
-  ArcherDamage: 3
-  startSpeed: 8
+  separationForce: 2
+  startSpeed: 4
   radius: 1.5
 --- !u!1001 &4001934353924062377
 PrefabInstance:
