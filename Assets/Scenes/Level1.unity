@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4988043118722744783, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4988043118722744783, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
       propertyPath: m_TagString
@@ -19800,7 +19800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4988043118722744783, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4988043118722744783, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
       propertyPath: m_TagString
@@ -57416,6 +57416,11 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1089923117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4988043118722744783, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
+  m_PrefabInstance: {fileID: 43164139}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1309649095 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 748409199431348251, guid: efd1f31745109f64aa702bc807b2403f, type: 3}
@@ -58197,6 +58202,8 @@ MonoBehaviour:
     spawners:
     - {fileID: 847485359}
     - {fileID: 1546293382}
+    - {fileID: 1089923117}
+    - {fileID: 2138158919}
     healthBar: {fileID: 905240408}
     portalUI: {fileID: 775200309}
     gameOver: {fileID: 1309649095}
@@ -58473,6 +58480,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2138158919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4988043118722744783, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
+  m_PrefabInstance: {fileID: 904201011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &371526528746348525
 PrefabInstance:
   m_ObjectHideFlags: 0
