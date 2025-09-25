@@ -141,6 +141,7 @@ MonoBehaviour:
   separationDistance: 1.2
   separationWeight: 0.5
   movementSmoothing: 10
+  separationSmoothing: 12
   maxHealth: 10
   startSpeed: 5
   chargeSpeed: 7

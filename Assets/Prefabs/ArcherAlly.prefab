@@ -263,10 +263,14 @@ MonoBehaviour:
   separationForce: 2
   separationDistance: 1
   separationWeight: 0.5
+  movementSmoothing: 10
+  useSlotDistribution: 1
+  tangentialSpeed: 6
+  fixedAngularSpeed: 15
   maxHealth: 4
   startSpeed: 4
   radius: 1.5
-  radiusPerArcher: 0.08
+  radiusPerArcher: 0.1
   maxRadius: 6
   radiusSmoothing: 6
 --- !u!1001 &4001934353924062377

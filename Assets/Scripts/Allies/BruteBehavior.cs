@@ -6,6 +6,7 @@ public class BruteBehavior : MonoBehaviour
     [Tooltip("Minimum spacing to keep from other brutes")] public float separationDistance = 0.9f;
     [Tooltip("How strongly to apply separation positional offset (0-1 typical)")] public float separationWeight = 0.5f;
     [Tooltip("Higher = snappier positional response; lower = smoother (for anti-jitter)")] public float movementSmoothing = 10f;
+    [Tooltip("Smoothing factor for separation offset (higher = snappier, 0 = off)")] public float separationSmoothing = 12f;
 
     public float maxHealth = 12;
     private float currentHealth;
@@ -25,6 +26,8 @@ public class BruteBehavior : MonoBehaviour
     bool reachedRadius = false;
     bool isCharging = false;
     Vector2 chargeDirection;
+    // Smoothed separation accumulator to prevent frame-to-frame oscillation
+    private Vector2 smoothedSeparation;
 
     // Static registry for manual separation (kinematic friendly)
     private static readonly System.Collections.Generic.List<BruteBehavior> AllBrutes = new System.Collections.Generic.List<BruteBehavior>();
@@ -82,6 +85,7 @@ public class BruteBehavior : MonoBehaviour
         float rsLerp = 1f - Mathf.Exp(-radiusSmoothing * Time.fixedDeltaTime);
         currentOrbitRadius = Mathf.Lerp(currentOrbitRadius, desiredRadius, rsLerp);
         Vector2 targetPos;
+        Vector2 baseOrbitPos = rb.position; // will be overwritten once angle path known
         if (!reachedRadius)
         {
             if (Mathf.Abs(currentDistance - currentOrbitRadius) > 0.05f)
@@ -100,30 +104,42 @@ public class BruteBehavior : MonoBehaviour
         }
         else
         {
-            angle += orbitDegreesPerSecond * Time.fixedDeltaTime;
+            angle += orbitDegreesPerSecond * Time.fixedDeltaTime; // integrate logical orbit angle (no resync to avoid jitter)
             float angleRad = angle * Mathf.Deg2Rad;
-            Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * currentOrbitRadius;
-            targetPos = orbitPos;
+            baseOrbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * currentOrbitRadius;
+            targetPos = baseOrbitPos; // separation applied after
         }
-
         // --- Separation positional adjustment (kinematic friendly) ---
-        Vector2 separationOffset = Vector2.zero;
+        // For orbit phase we separate relative to the ideal circle position (baseOrbitPos) to reduce angular feedback jitter.
+        Vector2 rawSeparation = Vector2.zero;
         foreach (var other in AllBrutes)
         {
             if (other == null || other == this) continue;
-            Vector2 diff = targetPos - (Vector2)other.rb.position;
+            Vector2 otherPos = (Vector2)other.rb.position;
+            Vector2 referencePos = reachedRadius ? baseOrbitPos : targetPos; // during approach use current targetPos
+            Vector2 diff = referencePos - otherPos;
             float dist = diff.magnitude;
             if (dist > 0f && dist < separationDistance)
             {
                 float strength = (separationDistance - dist) / separationDistance; // 0..1
-                separationOffset += diff.normalized * strength;
+                rawSeparation += diff.normalized * strength;
             }
         }
-        if (separationOffset.sqrMagnitude > 0f)
+        if (rawSeparation.sqrMagnitude > 0f)
         {
-            separationOffset = Vector2.ClampMagnitude(separationOffset, separationDistance) * separationWeight;
-            targetPos += separationOffset;
+            rawSeparation = Vector2.ClampMagnitude(rawSeparation, separationDistance) * separationWeight;
         }
+        // Smooth separation to avoid frame-to-frame oscillations (esp. with multiple brutes adjacent)
+        if (separationSmoothing > 0f)
+        {
+            float sepLerp = 1f - Mathf.Exp(-separationSmoothing * Time.fixedDeltaTime);
+            smoothedSeparation = Vector2.Lerp(smoothedSeparation, rawSeparation, sepLerp);
+        }
+        else
+        {
+            smoothedSeparation = rawSeparation;
+        }
+        targetPos += smoothedSeparation;
         if (!reachedRadius)
         {
             // While approaching the ring, move at full speed without smoothing to avoid sluggish feel.
@@ -131,17 +147,8 @@ public class BruteBehavior : MonoBehaviour
         }
         else
         {
-            // Direct orbit placement (no smoothing so angular speed stays true)
+            // Direct orbit placement (keep angle integration independent of separation so no jitter feedback)
             rb.MovePosition(targetPos);
-            // Re-sync angle (should already match, but keep for safety after separation)
-            if (!isCharging)
-            {
-                Vector2 dir = rb.position - (Vector2)player.position;
-                if (dir.sqrMagnitude > 0.0001f)
-                {
-                    angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                }
-            }
         }
     }
 

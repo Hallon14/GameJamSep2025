@@ -11,6 +11,7 @@ public partial class ArcherAllyBehavior : MonoBehaviour
     [Tooltip("Maintain evenly spaced angles instead of free-running angles")] public bool useSlotDistribution = true;
     [Tooltip("(Deprecated) Linear speed along ring. Leave >0 only if you disable fixedAngularSpeed.")] public float tangentialSpeed = 6f;
     [Tooltip("Use a constant angular speed (deg/sec) for slot orbiting")] public float fixedAngularSpeed = 90f;
+    [Tooltip("If true orbit moves clockwise (negative angle direction). False = counter-clockwise")] public bool orbitClockwise = true;
 
     public float maxHealth = 4f;
     private float currentHealth;
@@ -100,8 +101,12 @@ public partial class ArcherAllyBehavior : MonoBehaviour
                 float dynamicRotDegPerSec = fixedAngularSpeed > 0f ? fixedAngularSpeed :
                     ((currentOrbitRadius > 0.05f && tangentialSpeed > 0f) ? (tangentialSpeed / currentOrbitRadius) * Mathf.Rad2Deg : rotationSpeed);
 
-                // Advance a shared phase using the first archer as the driver to avoid multi-increment
-                AdvanceGlobalPhase(dynamicRotDegPerSec * Time.fixedDeltaTime);
+                // Advance a shared phase only once per frame by the first archer to avoid multi-increment.
+                float phaseDelta = dynamicRotDegPerSec * Time.fixedDeltaTime * (orbitClockwise ? -1f : 1f);
+                if (AllArchers.Count > 0 && ReferenceEquals(AllArchers[0], this))
+                {
+                    AdvanceGlobalPhase(phaseDelta);
+                }
 
                 float spacing = 360f / slotCount;
                 float targetAngle = globalOrbitPhase + index * spacing;
@@ -114,7 +119,8 @@ public partial class ArcherAllyBehavior : MonoBehaviour
             else
             {
                 // Legacy free-spin mode
-                angle -= rotationSpeed * Time.fixedDeltaTime;
+                float dir = orbitClockwise ? -1f : 1f;
+                angle += dir * rotationSpeed * Time.fixedDeltaTime;
                 float angleRad = angle * Mathf.Deg2Rad;
                 Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * currentOrbitRadius;
                 targetPos = orbitPos;
@@ -202,16 +208,7 @@ public partial class ArcherAllyBehavior
     private static float globalOrbitPhase = 0f;
     private static void AdvanceGlobalPhase(float deltaDegrees)
     {
-        if (AllArchers.Count == 0) return;
-        // Only the first active archer advances the shared phase to avoid accumulating multiple times per frame.
-        var first = AllArchers[0];
-        if (first == null) return;
-        // We can detect driver by reference equality
-        if (ReferenceEquals(first, AllArchers[0]))
-        {
-            // Clamp wrap
-            globalOrbitPhase = (globalOrbitPhase + deltaDegrees) % 360f;
-            if (globalOrbitPhase < 0f) globalOrbitPhase += 360f;
-        }
+        globalOrbitPhase = (globalOrbitPhase + deltaDegrees) % 360f;
+        if (globalOrbitPhase < 0f) globalOrbitPhase += 360f;
     }
 }

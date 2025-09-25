@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemy
   undeadVersion: {fileID: 6486471003376297101, guid: 8bb178299315b9a4ba67c1a32f2c9984, type: 3}
-  maxHealth: 4
+  maxHealth: 3
   attackTarget: {fileID: 0}
   attackRange: 4
   attackRate: 0.5
