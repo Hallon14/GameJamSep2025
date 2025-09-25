@@ -201,7 +201,10 @@ public partial class ArcherAllyBehavior : MonoBehaviour
         {
             GameManager.Instance.decreaseFriendCount();
         }
-
+        if (deathSequencePrefab != null)
+        {
+            Instantiate(deathSequencePrefab, transform.position, transform.rotation);
+        }
         Destroy(gameObject);
     }
 
@@ -210,6 +213,7 @@ public partial class ArcherAllyBehavior : MonoBehaviour
 // Static helpers block (kept outside class scope intentionally if needed by future orbiting allies)
 public partial class ArcherAllyBehavior
 {
+    [Header("Death Sequence")] public GameObject deathSequencePrefab;
     // Shared orbit phase used only when slot distribution is enabled.
     private static float globalOrbitPhase = 0f;
     private static void AdvanceGlobalPhase(float deltaDegrees)

@@ -282,12 +282,14 @@ MonoBehaviour:
   tangentialSpeed: 6
   fixedAngularSpeed: 15
   orbitClockwise: 1
-  maxHealth: 8
+  maxHealth: 6
   startSpeed: 4
   radius: 1.5
   radiusPerArcher: 0.1
   maxRadius: 6
   radiusSmoothing: 6
+  hitFlash: {fileID: 0}
+  deathSequencePrefab: {fileID: 8687357410651530461, guid: 24b87d2da6898f74da6ae5ac27fb98d0, type: 3}
 --- !u!1001 &4001934353924062377
 PrefabInstance:
   m_ObjectHideFlags: 0

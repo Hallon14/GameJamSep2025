@@ -32,10 +32,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void TryAttack()
     {
-
         Attack(attackTarget);
-
-
     }
 
     public void Attack(GameObject target)
@@ -43,21 +40,7 @@ public class PlayerAttack : MonoBehaviour
         Projectile fireball = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
         Vector2 projectileDirection = inputHandler.GetAimDirection();
         fireball.Initialize(projectileDirection, projectileSpeed, projectileLifetime);
-        GetComponent<SoundPlayer>().PlayAttackSound();
     }
-    // public GameObject GetTarget()
-    // {
-    //     if (enemyParent)
-    //     {
-    //         foreach (Transform enemy in enemyParent)
-    //         {
-    //             if ((transform.position - enemy.position).sqrMagnitude < attackRange * attackRange)
-    //             {
-    //                 return enemy.gameObject;
-    //             }
-    //         }
-    //     }
 
-    //     return null;
-    // }
+
 }
