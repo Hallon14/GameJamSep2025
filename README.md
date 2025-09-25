@@ -60,10 +60,10 @@ Till detta önskas två olika "levels" varav en lite mer öppen. Så våra spela
 - Hit indicators. ( For all enemies and allies) *done*
 - Credits *solved*
 - Stats display (On death and complete game) *Done*
+- Deathanimations? *done*
 
 **In Progress**
 - Sounds (Work in progress by Ludvid)
-- Deathanimations? (Work in progress by Nicolas)
 - Better transitions (Work in progress by Otto)
 
 **More to do**
