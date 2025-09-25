@@ -32,6 +32,8 @@ public class BruteBehavior : MonoBehaviour
     //On hit effect
     private HitFlash hitflash;
 
+    [Header("Death Sequence")] public GameObject deathSequencePrefab;
+
     // Static registry for manual separation (kinematic friendly)
     private static readonly System.Collections.Generic.List<BruteBehavior> AllBrutes = new System.Collections.Generic.List<BruteBehavior>();
 
@@ -202,6 +204,10 @@ public class BruteBehavior : MonoBehaviour
         if (GameManager.Instance)
         {
             GameManager.Instance.decreaseFriendCount();
+        }
+        if (deathSequencePrefab != null)
+        {
+            Instantiate(deathSequencePrefab, transform.position, transform.rotation);
         }
         Destroy(gameObject);
     }

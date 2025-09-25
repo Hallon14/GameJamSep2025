@@ -429,6 +429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
+  deathSequencePrefab: {fileID: 8687357410651530461, guid: 1c20ef2b8692f6a4687a6ebd64d994d1, type: 3}
+  hitFlash: {fileID: 0}
 --- !u!114 &472246290011509785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cfeabccd43eac04a972600c4fcbc2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitEffect
+  flashDuration: 0.05
 --- !u!58 &3733990865084455262
 CircleCollider2D:
   m_ObjectHideFlags: 0

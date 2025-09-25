@@ -19,6 +19,7 @@ public class MeleeEnemy : Enemy
         Vector2 projectileDirection = (attackTarget.position - transform.position).normalized;
         Projectile arrow = Instantiate(projectile, (Vector2)transform.position + projectileDirection, Quaternion.identity).GetComponent<Projectile>();
         arrow.Initialize(projectileDirection, projectileSpeed, projectileLifetime);
+
     }
 
 }

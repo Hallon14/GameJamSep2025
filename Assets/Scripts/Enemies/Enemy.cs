@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
 
     public bool hasTarget = true;
     public HitFlash hitFlash;
+    [Header("Death Sequence")] public GameObject deathSequencePrefab; // assign same as archer/warrior death animation
 
     UnityEngine.Vector3 bajs = new UnityEngine.Vector3(10,0,0);
 
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
         // This needs to move - attackTarget = GameObject.Find("Player")?.transform;
         allyParent = GameObject.Find("AllyParent")?.transform;
-        InvokeRepeating("TryAttack", 0, attackRate);
+        InvokeRepeating("TryAttack", Random.Range(0f, 1f), attackRate);
         hitFlash = GetComponent<HitFlash>();
     }
 
@@ -88,7 +89,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Attack()
     {
-        //Function overrides in children
+        GetComponent<SoundPlayer>().PlayAttackSound();
     }
 
     public void FixedUpdate()
@@ -131,6 +132,10 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die()
     {
+        if (deathSequencePrefab != null)
+        {
+            Instantiate(deathSequencePrefab, transform.position, transform.rotation);
+        }
         SpawnUndead();
         if (GameManager.Instance)
         {
