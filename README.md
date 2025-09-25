@@ -53,18 +53,21 @@ Till detta önskas två olika "levels" varav en lite mer öppen. Så våra spela
 
 
 *TODO:*
+**Fixed**
 - Player: Fixa movement, få bort problem med att man t.ex kan låsas i ett "driftande" läge. Lägg till mjukare rörelse med "acceleration" etc. *Solved: Ändrade spelarens rörelser till att använda fysiksystemet.*
 - Player: flippa sprite beroende på rörelseriktning. *Solved*
 - Kolla bugg med piercande fiendeprojektiler. *Solved*
 - Hit indicators. ( For all enemies and allies) *done*
 - Credits *solved*
-  
+
+**In Progress**
 - Sounds (Work in progress by Ludvid)
-- 
-- Kamerarörelser - follow-kamera istället för parentad kamera?
+
+**More to do**
+- Kamerarörelser - follow-kamera istället för parentad kamera? (Lägre prioritet)
 - Better transitions (Otto has an idea about this!)
 - Deathanimations?
-- Particles for projectiles.
+- Particles for projectiles. (Lägre prioritet)
 - Stats display (On death and complete game)
       
 
