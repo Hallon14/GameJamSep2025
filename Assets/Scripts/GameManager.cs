@@ -33,14 +33,14 @@ public class GameManager : MonoBehaviour
 
     //winconditions
     [HideInInspector]
-    public int friendsNeededForLevel1 = 100;
+    public float friendsNeededForLevel1 = 100;
     [HideInInspector]
-    public int friendsNeededForLevel2 = 200;
+    public float friendsNeededForLevel2 = 200;
 
     //Friend Variables
     private int totalFriends;
-    private int activeFriends;
-    private String StatMessage;
+    [SerializeField]
+    private float activeFriends;
 
 
     //Startup functions. Needed to make sure each level has a gamemanager
@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour
 
     public void updatePortalUI(int currentLevel)
     {
-        int friendsNeeded = 0;
+        float friendsNeeded = 0;
         switch (currentLevel)
         {
             case 1:
@@ -207,8 +207,14 @@ public class GameManager : MonoBehaviour
                 friendsNeeded = friendsNeededForLevel2;
                 break;
         }
-
-        portalUI.fillAmount = Mathf.Clamp01((float)activeFriends / friendsNeeded);
+        if (activeFriends / friendsNeeded > 1)
+        {
+            portalUI.fillAmount = 1;
+        }
+        else
+        {
+        portalUI.fillAmount = activeFriends / friendsNeeded;  
+        }
     }
 
     //Checks wincondition, called everytime we update amount of active friends

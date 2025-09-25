@@ -26,6 +26,8 @@ public class PlayerAttack : MonoBehaviour
     {
         playerIsDead = false;
         inputHandler = GetComponent<InputHandler>();
+
+        //These two groups are needed elsewhere, please leave them be
         enemyParent = GameObject.Find("EnemyParent")?.transform;
         if (!enemyParent)
         {
