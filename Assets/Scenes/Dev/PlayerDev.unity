@@ -151,7 +151,7 @@ MonoBehaviour:
   enemyTypes:
   - {fileID: 7153667096512267768, guid: b48c174695fc7a0469fcb341921b042b, type: 3}
   - {fileID: 7153667096512267768, guid: ded3acf4b21483446b999bc7dfb239f9, type: 3}
-  spawnRate: 1
+  spawnInterval: 0
 --- !u!4 &1061384358
 Transform:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   enemyTypes:
   - {fileID: 7153667096512267768, guid: b48c174695fc7a0469fcb341921b042b, type: 3}
   - {fileID: 7153667096512267768, guid: ded3acf4b21483446b999bc7dfb239f9, type: 3}
-  spawnRate: 1
+  spawnInterval: 0
 --- !u!4 &1212793250
 Transform:
   m_ObjectHideFlags: 0

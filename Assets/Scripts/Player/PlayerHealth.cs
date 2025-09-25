@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private float maxHealth;
+    public float maxHealth = 100;
     private float currentHealth;
 
     //send message when the player drops to 0 HP
@@ -16,7 +16,15 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        currentHealth = GameManager.Instance.playerHealth;
+        if (GameManager.Instance)
+        {
+            currentHealth = GameManager.Instance.playerHealth;
+        }
+        else
+        {
+            currentHealth = maxHealth;
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -37,7 +45,11 @@ public class PlayerHealth : MonoBehaviour
         {
             KillPlayer();
         }
-        GameManager.Instance.updatePlayerHealth(currentHealth);
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.updatePlayerHealth(currentHealth);
+        }
+
     }
 
     public void KillPlayer()
