@@ -66,9 +66,10 @@ Game ploish
 
   TODO:
     - Player: Fixa movement, få bort problem med att man t.ex kan låsas i ett "driftande" läge. Lägg till mjukare rörelse med "acceleration" etc. *Solved: Ändrade spelarens rörelser till att använda fysiksystemet.*
-    - Player: flippa sprite beroende på rörelseriktning. 
-    - Kolla bugg med piercande fiendeprojektiler.
+    - Player: flippa sprite beroende på rörelseriktning. *Solved*
+    - Kolla bugg med piercande fiendeprojektiler. *Solved*
     - Kamerarörelser - follow-kamera istället för parentad kamera?
+    - Hit indicators. ( For all enemies and allies)
     
 
 

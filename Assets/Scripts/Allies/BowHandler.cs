@@ -37,7 +37,7 @@ public class BowHandler : MonoBehaviour
 
     void Update()
     {
-        rb2D.linearVelocity = velocity;
+        //rb2D.linearVelocity = velocity;
     }
 
     private void Die()
@@ -49,10 +49,10 @@ public class BowHandler : MonoBehaviour
     {
         if (!canShoot) return;
         canShoot = false;
-            Projectile arrow = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
-            arrow.Initialize(direction, projectileSpeed, projectileLifetime);
-            Invoke(nameof(Reload), reloadTime);
-        }
+        Projectile arrow = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+        arrow.Initialize(direction, projectileSpeed, projectileLifetime);
+        Invoke(nameof(Reload), reloadTime);
+    }
 
 
     private void Reload()
