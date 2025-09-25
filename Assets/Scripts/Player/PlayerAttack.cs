@@ -43,6 +43,7 @@ public class PlayerAttack : MonoBehaviour
         Projectile fireball = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
         Vector2 projectileDirection = inputHandler.GetAimDirection();
         fireball.Initialize(projectileDirection, projectileSpeed, projectileLifetime);
+        GetComponent<SoundPlayer>().PlayAttackSound();
     }
     // public GameObject GetTarget()
     // {
