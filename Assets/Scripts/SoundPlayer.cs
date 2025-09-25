@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class SoundPlayer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public AudioClip[] attackClips;
+    public AudioSource audioSource;
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayAttackSound()
     {
-        
+        audioSource.PlayOneShot(attackClips[Random.Range(0, attackClips.Length)]);
     }
+
+
 }

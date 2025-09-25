@@ -58207,6 +58207,7 @@ MonoBehaviour:
     healthBar: {fileID: 905240408}
     portalUI: {fileID: 775200309}
     gameOver: {fileID: 1309649095}
+    statText: {fileID: 8101817836409240496}
   _gameManagerPrefab: {fileID: 5966207315288760522, guid: 7c7ad886e6b8e664c8f5a1fe6c106c6a, type: 3}
 --- !u!4 &1462728470
 Transform:
@@ -58829,6 +58830,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efd1f31745109f64aa702bc807b2403f, type: 3}
+--- !u!114 &8101817836409240496 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4356089117692650774, guid: efd1f31745109f64aa702bc807b2403f, type: 3}
+  m_PrefabInstance: {fileID: 8101817836409240495}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

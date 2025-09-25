@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Xml.Schema;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -20,12 +23,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Slider healthBar;
     public Image portalUI;
+    public TextMeshProUGUI statText;
 
-    //Gameobject
+    //Gameobjects
     public GameObject portal;
-    private int totalFriends;
     [SerializeField]
-    private int activeFriends;
     public float playerHealth = 100;
     public List<GameObject> spawners = new List<GameObject>();
 
@@ -34,6 +36,11 @@ public class GameManager : MonoBehaviour
     public int friendsNeededForLevel1 = 100;
     [HideInInspector]
     public int friendsNeededForLevel2 = 200;
+
+    //Friend Variables
+    private int totalFriends;
+    private int activeFriends;
+    private String StatMessage;
 
 
     //Startup functions. Needed to make sure each level has a gamemanager
@@ -53,16 +60,19 @@ public class GameManager : MonoBehaviour
     //Sets variables for each individual level.
     public void InitLevel(LevelData levelData)
     {
-        if (levelData.portal){
+        if (levelData.portal)
+        {
             portal = levelData.portal;
         }
 
-        if (levelData.levelTransition){
+        if (levelData.levelTransition)
+        {
             levelTransition = levelData.levelTransition;
         }
 
-        if (levelData.spawners.Count > 0){
-        spawners = levelData.spawners;    
+        if (levelData.spawners.Count > 0)
+        {
+            spawners = levelData.spawners;
         }
 
         if (levelData.healthBar)
@@ -78,6 +88,11 @@ public class GameManager : MonoBehaviour
         if (levelData.gameOver)
         {
             gameOverUIElement = levelData.gameOver;
+        }
+
+        if (levelData.statText)
+        {
+            statText = levelData.statText;
         }
 
     }
@@ -120,7 +135,7 @@ public class GameManager : MonoBehaviour
 
     public void gameOver()
     {
-        //pauseGame();
+        statText.text = "During your adventure you collected " + totalFriends + " friends!";
         gameOverUIElement.SetActive(true);
     }
     #endregion
@@ -134,6 +149,11 @@ public class GameManager : MonoBehaviour
     public void levelComplete()
     {
         StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+
+        if (SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.GetSceneByName("VictoryScreen").buildIndex)
+        {
+            statText.text = "During your adventure you collected " + totalFriends + " friends!";
+        }
 
         //Reset the portalvalues to 0. So the UI isnt half full when next level begins
         activeFriends = 0;

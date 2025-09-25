@@ -4185,6 +4185,7 @@ MonoBehaviour:
     healthBar: {fileID: 1028698206}
     portalUI: {fileID: 727026453}
     gameOver: {fileID: 2094003686}
+    statText: {fileID: 2094003687}
   _gameManagerPrefab: {fileID: 5966207315288760522, guid: 7c7ad886e6b8e664c8f5a1fe6c106c6a, type: 3}
 --- !u!4 &396799103
 Transform:
@@ -38396,6 +38397,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6016621202011003451, guid: 720c4aa645bfdcd4fb500ca1261de38e, type: 3}
   m_PrefabInstance: {fileID: 727026452}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &727026455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8263920772192283901, guid: 720c4aa645bfdcd4fb500ca1261de38e, type: 3}
+  m_PrefabInstance: {fileID: 727026452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &821119952
 GameObject:
   m_ObjectHideFlags: 0
@@ -63353,6 +63359,7 @@ MonoBehaviour:
   antonSprite: {fileID: -1228391995241359810, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
   robertSprite: {fileID: 2900542193166959505, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
   healthbar: {fileID: 1028698205}
+  friendsCounter: {fileID: 727026455}
 --- !u!1001 &2094003685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63467,6 +63474,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 748409199431348251, guid: efd1f31745109f64aa702bc807b2403f, type: 3}
   m_PrefabInstance: {fileID: 2094003685}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2094003687 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4356089117692650774, guid: efd1f31745109f64aa702bc807b2403f, type: 3}
+  m_PrefabInstance: {fileID: 2094003685}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

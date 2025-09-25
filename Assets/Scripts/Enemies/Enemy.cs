@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
         attackTarget = GameObject.Find("Player")?.transform;
         allyParent = GameObject.Find("AllyParent")?.transform;
-        InvokeRepeating("TryAttack", 0, attackRate);
+        InvokeRepeating("TryAttack", Random.Range(0f, 1f), attackRate);
         hitFlash = GetComponent<HitFlash>();
     }
 
@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Attack()
     {
-
+        GetComponent<SoundPlayer>().PlayAttackSound();
     }
 
     public void FixedUpdate()

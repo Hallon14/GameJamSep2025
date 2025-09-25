@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    private InputHandler inputHandler;
     private GameObject attackTarget;
     public Transform enemyParent;
     public Transform allyParent;
@@ -13,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual void Start()
     {
+        inputHandler = GetComponent<InputHandler>();
         enemyParent = GameObject.Find("EnemyParent")?.transform;
         if (!enemyParent)
         {
@@ -40,9 +42,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void Attack(GameObject target)
     {
-        Projectile arrow = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
-        Vector2 projectileDirection = (target.transform.position - transform.position).normalized;
-        arrow.Initialize(projectileDirection, projectileSpeed, projectileLifetime);
+        Projectile fireball = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+        Vector2 projectileDirection = inputHandler.GetAimDirection();
+        fireball.Initialize(projectileDirection, projectileSpeed, projectileLifetime);
     }
 
     public GameObject GetTarget()
