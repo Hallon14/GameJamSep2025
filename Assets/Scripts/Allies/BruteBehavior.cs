@@ -8,7 +8,7 @@ public class BruteBehavior : MonoBehaviour
     [Tooltip("Higher = snappier positional response; lower = smoother (for anti-jitter)")] public float movementSmoothing = 10f;
     [Tooltip("Smoothing factor for separation offset (higher = snappier, 0 = off)")] public float separationSmoothing = 12f;
 
-    public float maxHealth = 12;
+    public float maxHealth = 20;
     private float currentHealth;
     public float startSpeed = 6f; // Increased start speed
     public float chargeSpeed = 18f; // Much faster charge speed

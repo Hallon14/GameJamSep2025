@@ -19,8 +19,8 @@ public class level1Manager : MonoBehaviour
     List<String> robertSpeech = new List<String>() {
         "Looks like you've lost your way on this ¨epic¨ quest of yours",
         "I've prepared a portal so that you may be on your way",
-        "However it needs the power of 50 friends to activate",
-        "So go on! 'Befriend' 50 of these lesser creatures, and yes, I obivously mean murder them. Slaughter them all!",
+        "However it needs the power of " + GameManager.Instance.friendsNeededForLevel1+" friends to activate",
+        "So go on! 'Befriend " + GameManager.Instance.friendsNeededForLevel1 + " of these lesser creatures, and yes, I obivously mean murder them. Slaughter them all!",
         "As you bring them back to life I'll consider them to be your 'friends'",
         "Robert. Out."
     };

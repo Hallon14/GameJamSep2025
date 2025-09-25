@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
         // SceneManager.LoadScene("Level1", LoadSceneMode.Single);
         StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
         playerHealth = 100;
+        totalFriends = 0;
     }
 
     public void exit()

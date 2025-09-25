@@ -13,7 +13,7 @@ public partial class ArcherAllyBehavior : MonoBehaviour
     [Tooltip("Use a constant angular speed (deg/sec) for slot orbiting")] public float fixedAngularSpeed = 90f;
     [Tooltip("If true orbit moves clockwise (negative angle direction). False = counter-clockwise")] public bool orbitClockwise = true;
 
-    public float maxHealth = 4f;
+    public float maxHealth = 6f;
     private float currentHealth;
     public float startSpeed = 8f; // Slightly faster than brute
     private float rotationSpeed = 90f; // Faster orbit (degrees per second)
