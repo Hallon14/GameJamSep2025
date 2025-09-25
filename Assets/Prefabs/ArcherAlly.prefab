@@ -267,7 +267,8 @@ MonoBehaviour:
   useSlotDistribution: 1
   tangentialSpeed: 6
   fixedAngularSpeed: 15
-  maxHealth: 4
+  orbitClockwise: 1
+  maxHealth: 8
   startSpeed: 4
   radius: 1.5
   radiusPerArcher: 0.1

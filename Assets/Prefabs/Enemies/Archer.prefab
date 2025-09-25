@@ -108,7 +108,7 @@ MonoBehaviour:
   undeadVersion: {fileID: 9183417797936899427, guid: f2f6987e9570603468e391a8e4ed50e4, type: 3}
   maxHealth: 2
   attackTarget: {fileID: 0}
-  attackRange: 6
+  attackRange: 10
   attackRate: 2
   movementSpeed: 5
   preferredDistance: 5
