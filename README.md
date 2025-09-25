@@ -66,7 +66,13 @@ Till detta önskas två olika "levels" varav en lite mer öppen. Så våra spela
 **In Progress**
 - Sounds (Work in progress by Ludvid)
 
-**More to do**
+**Lastmin changes**
+- Easy difficulty mode
+- Allies dies at spawn (due to being in range of the enemies)
+- Animate fireball
+
+
+**Fuck these**
 - Kamerarörelser - follow-kamera istället för parentad kamera? (Lägre prioritet)
 - Particles for projectiles. (Lägre prioritet)
       
