@@ -20,12 +20,12 @@ public class SoundPlayer : MonoBehaviour
 
     public void PlayTakeDamageSound()
     {
-        audioSource.PlayOneShot(attackClips[Random.Range(0, takeDamageClips.Length)]);
+        audioSource.PlayOneShot(takeDamageClips[Random.Range(0, takeDamageClips.Length)]);
     }
 
     public void PlayDeathSound()
     {
-        audioSource.PlayOneShot(attackClips[Random.Range(0, deathClips.Length)]);
+        audioSource.PlayOneShot(deathClips[Random.Range(0, deathClips.Length)]);
     }
 
 

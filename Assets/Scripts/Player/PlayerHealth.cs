@@ -38,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(other.gameObject.GetComponent<Projectile>().damage);
             hitFlash.HitEffect();
+            GetComponent<SoundPlayer>().PlayTakeDamageSound();
         }
 
 
@@ -46,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        //GetComponent<SoundPlayer>().PlayTakeDamageSound();
         onPlayerHPChanged?.Invoke(currentHealth / maxHealth); // ensure floating point ratio
         if (currentHealth <= 0 && !isDead)
         {

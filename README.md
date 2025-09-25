@@ -61,10 +61,10 @@ Till detta önskas två olika "levels" varav en lite mer öppen. Så våra spela
 - Credits *solved*
 - Stats display (On death and complete game) *Done*
 - Deathanimations? *done*
+- Better transitions *done*
 
 **In Progress**
 - Sounds (Work in progress by Ludvid)
-- Better transitions (Work in progress by Otto)
 
 **More to do**
 - Kamerarörelser - follow-kamera istället för parentad kamera? (Lägre prioritet)
