@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
 
     public bool hasTarget = true;
     public HitFlash hitFlash;
+    [Header("Death Sequence")] public GameObject deathSequencePrefab; // assign same as archer/warrior death animation
 
     void OnEnable()
     {
@@ -101,6 +102,10 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die()
     {
+        if (deathSequencePrefab != null)
+        {
+            Instantiate(deathSequencePrefab, transform.position, transform.rotation);
+        }
         SpawnUndead();
         if (GameManager.Instance)
         {

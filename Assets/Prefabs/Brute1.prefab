@@ -143,7 +143,7 @@ MonoBehaviour:
   separationWeight: 0.5
   movementSmoothing: 10
   separationSmoothing: 12
-  maxHealth: 15
+  maxHealth: 10
   startSpeed: 5
   chargeSpeed: 7
   orbitDegreesPerSecond: 20
@@ -151,6 +151,7 @@ MonoBehaviour:
   radiusPerBrute: 0.12
   maxRadius: 8
   radiusSmoothing: 5
+  deathSequencePrefab: {fileID: 8687357410651530461, guid: 15e942a960d9d234dae63f633650d322, type: 3}
 --- !u!114 &32430564525387994
 MonoBehaviour:
   m_ObjectHideFlags: 0

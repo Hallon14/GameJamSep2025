@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemy
   undeadVersion: {fileID: 6486471003376297101, guid: 8bb178299315b9a4ba67c1a32f2c9984, type: 3}
-  maxHealth: 3
+  maxHealth: 6
   attackTarget: {fileID: 0}
   attackRange: 4
   attackRate: 0.5
@@ -122,6 +122,7 @@ MonoBehaviour:
   allyParent: {fileID: 0}
   hasTarget: 1
   hitFlash: {fileID: 0}
+  deathSequencePrefab: {fileID: 8687357410651530461, guid: 8ad5af1e03833c44abd7ccd3e81c776e, type: 3}
 --- !u!114 &5421150527050312264
 MonoBehaviour:
   m_ObjectHideFlags: 0

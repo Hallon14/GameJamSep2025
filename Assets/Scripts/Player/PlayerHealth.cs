@@ -5,6 +5,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth = 100;
     private float currentHealth;
+    [Header("Death Sequence")] public GameObject deathSequencePrefab; // optional death animation prefab
+    private bool isDead = false;
 
     //send message when the player drops to 0 HP
     public delegate void OnPlayerDeath();
@@ -45,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         onPlayerHPChanged?.Invoke(currentHealth / maxHealth); // ensure floating point ratio
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
             KillPlayer();
         }
@@ -58,6 +60,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void KillPlayer()
     {
+        if (isDead) return;
+        isDead = true;
+        // Spawn death sequence before hiding sprite
+        if (deathSequencePrefab != null)
+        {
+            Instantiate(deathSequencePrefab, transform.position, transform.rotation);
+        }
         onPlayerDeath?.Invoke();
         GetComponent<SpriteRenderer>().enabled = false;
 
