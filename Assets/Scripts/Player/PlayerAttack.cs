@@ -15,6 +15,8 @@ public class PlayerAttack : MonoBehaviour
     public virtual void Start()
     {
         inputHandler = GetComponent<InputHandler>();
+
+        //These two groups are needed elsewhere, please leave them be
         enemyParent = GameObject.Find("EnemyParent")?.transform;
         if (!enemyParent)
         {
