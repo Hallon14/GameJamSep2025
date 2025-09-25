@@ -56,5 +56,6 @@ public class PlayerHealth : MonoBehaviour
     {
         onPlayerDeath?.Invoke();
         GetComponent<SpriteRenderer>().enabled = false;
+        GameManager.Instance.gameOver();
     }
 }

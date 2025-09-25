@@ -164,7 +164,6 @@ public class GameManager : MonoBehaviour
     {
         pauseGame();
         gameOverUIElement.SetActive(true);
-
     }
     
     #endregion
