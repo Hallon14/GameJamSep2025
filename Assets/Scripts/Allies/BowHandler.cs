@@ -10,7 +10,7 @@ public class BowHandler : MonoBehaviour
 
     public GameObject projectile; // Assign your arrow prefab in the inspector
     public float projectileSpeed = 10f;
-    public float projectileLifetime = 2f;
+    public float projectileLifetime = 3f;
     public int volleyCount = 5; // Number of arrows in the volley
     public float volleySpread = 30f; // Total spread angle in degrees
 
