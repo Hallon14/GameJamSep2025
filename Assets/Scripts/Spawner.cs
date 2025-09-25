@@ -4,15 +4,17 @@ public class Spawner : MonoBehaviour
 {
     public GameObject[] enemyTypes;
     [Header("Spawn Timing")]
-    [Tooltip("Seconds between spawns (initial)")] [SerializeField] private float spawnInterval = 5f;
-    [Tooltip("Apply a single difficulty ramp after this many seconds (set <=0 to disable)")] [SerializeField] private float firstRampTime = 20f;
-    [Tooltip("How much to subtract once at ramp time")] [SerializeField] private float rampIntervalDelta = 0.5f;
-    [Tooltip("Never let spawn interval go below this value")] [SerializeField] private float minSpawnInterval = 2.5f;
+    [Tooltip("Seconds between spawns (initial)")][SerializeField] private float spawnInterval = 5f;
+    [Tooltip("Apply a single difficulty ramp after this many seconds (set <=0 to disable)")][SerializeField] private float firstRampTime = 20f;
+    [Tooltip("How much to subtract once at ramp time")][SerializeField] private float rampIntervalDelta = 0.5f;
+    [Tooltip("Never let spawn interval go below this value")][SerializeField] private float minSpawnInterval = 2.5f;
     private bool rampApplied = false;
     private GameObject enemyParent;
     private GameObject allyParent;
-    [Header("Optional Start Delay")] [Tooltip("If > 0, wait this many seconds before starting spawns.")]
+    [Header("Optional Start Delay")]
+    [Tooltip("If > 0, wait this many seconds before starting spawns.")]
     [SerializeField] private float startDelay = 0f;
+    private bool playerIsDead;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
@@ -38,6 +40,7 @@ public class Spawner : MonoBehaviour
             allyParent = new GameObject("AllyParent");
         }
 
+        playerIsDead = false;
         if (startDelay > 0f && gameObject.CompareTag("LateSpawner"))
         {
             StartCoroutine(BeginAfterDelay());
@@ -51,6 +54,9 @@ public class Spawner : MonoBehaviour
     public void DisableSpawner()
     {
         CancelInvoke();
+        StopAllCoroutines();
+        playerIsDead = true;
+
     }
 
     public void TrySpawning()
@@ -68,14 +74,18 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!rampApplied && firstRampTime > 0f && Time.timeSinceLevelLoad >= firstRampTime)
+        if (!rampApplied && firstRampTime > 0f && Time.timeSinceLevelLoad >= firstRampTime && !playerIsDead)
         {
             float newInterval = Mathf.Max(minSpawnInterval, spawnInterval - rampIntervalDelta);
             if (!Mathf.Approximately(newInterval, spawnInterval))
             {
                 spawnInterval = newInterval;
                 CancelInvoke();
-                InvokeRepeating("SpawnEnemy", 0f, spawnInterval);
+                if (!playerIsDead)
+                {
+                    InvokeRepeating("SpawnEnemy", 0f, spawnInterval);
+                }
+
             }
             rampApplied = true; // ensure this runs only once
         }

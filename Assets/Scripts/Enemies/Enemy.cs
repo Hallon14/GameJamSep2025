@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
 
     public bool hasTarget = true;
     public HitFlash hitFlash;
+    private bool playerIsAlive;
+
     [Header("Death Sequence")] public GameObject deathSequencePrefab; // assign same as archer/warrior death animation
 
     void OnEnable()
@@ -40,6 +42,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Start()
     {
+        playerIsAlive = true;
         rb2D = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         attackTarget = GameObject.Find("Player")?.transform;
@@ -114,7 +117,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerWeapon"))
         {
-            GetComponent<SoundPlayer>().PlayTakeDamageSound();
+            //GetComponent<SoundPlayer>().PlayTakeDamageSound();
             TakeDamage(other.gameObject.GetComponent<Projectile>().damage);
             Destroy(other.gameObject);
         }
@@ -152,31 +155,36 @@ public class Enemy : MonoBehaviour
 
     public virtual void Move()
     {
-        if (!hasTarget || !attackTarget)
+        if (playerIsAlive)
         {
-            attackTarget = player.transform;
-            //rb2D.AddForce((player.transform.position - transform.position).normalized * movementSpeed);
-            //return;
+            if (!hasTarget || !attackTarget)
+            {
+                attackTarget = player.transform;
+                //rb2D.AddForce((player.transform.position - transform.position).normalized * movementSpeed);
+                //return;
+            }
+
+            if ((attackTarget.position - transform.position).sqrMagnitude < Mathf.Pow(preferredDistance - preferredDistanceRange, 2))
+            {
+                rb2D.AddForce(-(attackTarget.position - transform.position).normalized * movementSpeed);
+                return;
+            }
+            else if ((attackTarget.position - transform.position).sqrMagnitude > Mathf.Pow(preferredDistance + preferredDistanceRange, 2))
+            {
+                rb2D.AddForce((attackTarget.position - transform.position).normalized * movementSpeed);
+                return;
+            }
+            else
+            {
+            }
         }
 
-        if ((attackTarget.position - transform.position).sqrMagnitude < Mathf.Pow(preferredDistance - preferredDistanceRange, 2))
-        {
-            rb2D.AddForce(-(attackTarget.position - transform.position).normalized * movementSpeed);
-            return;
-        }
-        else if ((attackTarget.position - transform.position).sqrMagnitude > Mathf.Pow(preferredDistance + preferredDistanceRange, 2))
-        {
-            rb2D.AddForce((attackTarget.position - transform.position).normalized * movementSpeed);
-            return;
-        }
-        else
-        {
-        }
     }
 
     public void DisableEnemy()
     {
+        playerIsAlive = false;
         hasTarget = false;
-
+        CancelInvoke();
     }
 }

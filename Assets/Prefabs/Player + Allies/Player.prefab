@@ -626,5 +626,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 64e60dcb91d5f8640949235beaa67360, type: 3}
   - {fileID: 8300000, guid: f6d8a1f033455fe44ae5ded6f6d2f50f, type: 3}
   - {fileID: 8300000, guid: 64e60dcb91d5f8640949235beaa67360, type: 3}
-  deathClips: []
+  deathClips:
+  - {fileID: 8300000, guid: bd780c76c2cd3824f8187bd09bdb7b4f, type: 3}
   audioSource: {fileID: 0}

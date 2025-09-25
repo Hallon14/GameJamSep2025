@@ -7,9 +7,14 @@ public class SoundPlayer : MonoBehaviour
     public AudioClip[] deathClips;
 
     public AudioSource audioSource;
-    void Start()
+
+    void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+    void Start()
+    {
+
 
     }
 

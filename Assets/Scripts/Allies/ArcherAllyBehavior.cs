@@ -17,8 +17,8 @@ public partial class ArcherAllyBehavior : MonoBehaviour
     private float currentHealth;
     public float startSpeed = 8f; // Slightly faster than brute
     private float rotationSpeed = 90f; // Faster orbit (degrees per second)
-    [Header("Dynamic Radius Settings")] 
-    [Tooltip("Base orbit radius when only one archer exists")] public float radius = 1.5f; 
+    [Header("Dynamic Radius Settings")]
+    [Tooltip("Base orbit radius when only one archer exists")] public float radius = 1.5f;
     [Tooltip("Additional radius added per extra archer")] public float radiusPerArcher = 0.05f; // reduced growth per added archer
     [Tooltip("Clamp the dynamic radius so it never exceeds this value")] public float maxRadius = 6f;
     [Tooltip("How quickly the orbit radius eases toward its new size when count changes")] public float radiusSmoothing = 6f;
@@ -61,6 +61,7 @@ public partial class ArcherAllyBehavior : MonoBehaviour
         currentOrbitRadius = radius; // start at base radius
 
         hitFlash = GetComponent<HitFlash>();
+        GetComponent<SoundPlayer>().PlayTakeDamageSound();
     }
 
     // Update is called once per frame
@@ -175,7 +176,7 @@ public partial class ArcherAllyBehavior : MonoBehaviour
             }
         }
     }
-    
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("EnemyWeapon"))

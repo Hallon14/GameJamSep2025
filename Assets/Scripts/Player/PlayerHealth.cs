@@ -62,6 +62,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void KillPlayer()
     {
+        GetComponent<SoundPlayer>().PlayDeathSound();
         if (isDead) return;
         isDead = true;
         // Spawn death sequence before hiding sprite

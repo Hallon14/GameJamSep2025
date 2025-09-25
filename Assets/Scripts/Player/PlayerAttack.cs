@@ -11,9 +11,20 @@ public class PlayerAttack : MonoBehaviour
     public GameObject projectile;
     public float projectileSpeed;
     public float projectileLifetime;
+    private bool playerIsDead;
+
+    void OnEnable()
+    {
+        PlayerHealth.onPlayerDeath += setPlayerDead;
+    }
+    void OnDisable()
+    {
+        PlayerHealth.onPlayerDeath -= setPlayerDead;
+    }
 
     public virtual void Start()
     {
+        playerIsDead = false;
         inputHandler = GetComponent<InputHandler>();
         enemyParent = GameObject.Find("EnemyParent")?.transform;
         if (!enemyParent)
@@ -30,9 +41,17 @@ public class PlayerAttack : MonoBehaviour
         InvokeRepeating("TryAttack", 0, attackRate);
     }
 
+    public void setPlayerDead()
+    {
+        playerIsDead = true;
+    }
+
     public void TryAttack()
     {
-        Attack(attackTarget);
+        if (enemyParent.childCount > 0 && !playerIsDead)
+        {
+            Attack(attackTarget);
+        }
     }
 
     public void Attack(GameObject target)

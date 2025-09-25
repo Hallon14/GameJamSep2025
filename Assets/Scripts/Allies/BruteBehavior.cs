@@ -68,6 +68,7 @@ public class BruteBehavior : MonoBehaviour
             angle = Mathf.Atan2(toBrute.y, toBrute.x) * Mathf.Rad2Deg;
         }
         hitflash = GetComponent<HitFlash>();
+        GetComponent<SoundPlayer>().PlayTakeDamageSound();
     }
 
     void FixedUpdate()
