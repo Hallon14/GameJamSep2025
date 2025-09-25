@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 983587884696551442}
   - component: {fileID: 1937732707282008592}
   - component: {fileID: 6041164073578514318}
+  - component: {fileID: 472246290011509785}
   - component: {fileID: 3733990865084455262}
   - component: {fileID: 4858809727307435466}
   m_Layer: 6
@@ -315,7 +316,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 1515540735, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -428,6 +429,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
+--- !u!114 &472246290011509785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8148824359126380828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfeabccd43eac04a972600c4fcbc2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitEffect
 --- !u!58 &3733990865084455262
 CircleCollider2D:
   m_ObjectHideFlags: 0
