@@ -3862,6 +3862,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
+--- !u!1 &44302150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4988043118722744783, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
+  m_PrefabInstance: {fileID: 44302149}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &52040443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4172,7 +4177,11 @@ MonoBehaviour:
   _levelData:
     portal: {fileID: 1488930159}
     levelTransition: {fileID: 458271990}
-    spawners: []
+    spawners:
+    - {fileID: 44302150}
+    - {fileID: 472779705}
+    - {fileID: 591394360}
+    - {fileID: 1674087183}
     healthBar: {fileID: 1028698206}
     portalUI: {fileID: 727026453}
     gameOver: {fileID: 2094003686}
@@ -4359,6 +4368,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
+--- !u!1 &472779705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4988043118722744783, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
+  m_PrefabInstance: {fileID: 472779704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &522797652
 GameObject:
   m_ObjectHideFlags: 0
@@ -4499,6 +4513,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
+--- !u!1 &591394360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4988043118722744783, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
+  m_PrefabInstance: {fileID: 591394359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &620713167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59361,6 +59380,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
+--- !u!1 &1674087183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4988043118722744783, guid: 77c870c639ab6604799bd5cf70367b31, type: 3}
+  m_PrefabInstance: {fileID: 1674087182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1734026354
 GameObject:
   m_ObjectHideFlags: 0
