@@ -63,7 +63,7 @@ public class BowHandler : MonoBehaviour
 
     [Header("Volley Timing")]
     [Tooltip("Upper bound (inclusive) for random delay before firing a volley.")]
-    public float volleyRandomDelayMax = 0.7f; // random delay 0..2 seconds
+    public float volleyRandomDelayMax = 0.5f; // random delay seconds
 
     public void ShootVolley(Vector2 aimDirection)
     {
