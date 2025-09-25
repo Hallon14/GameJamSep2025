@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6238028984202730367}
   - component: {fileID: 5881351384296567394}
   - component: {fileID: 397948702122150544}
+  - component: {fileID: 363522114953709819}
   - component: {fileID: 8030251530894938090}
   - component: {fileID: 5795916235486965996}
   m_Layer: 8
@@ -60,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5361b6d54a263574a8108a667183357a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -3599392025293366166, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,6 +121,20 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   allyParent: {fileID: 0}
   hasTarget: 1
+  hitFlash: {fileID: 0}
+--- !u!114 &363522114953709819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153667096512267768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfeabccd43eac04a972600c4fcbc2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitFlash
+  flashDuration: 0.05
 --- !u!50 &8030251530894938090
 Rigidbody2D:
   serializedVersion: 5

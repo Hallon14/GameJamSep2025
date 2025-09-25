@@ -28,6 +28,9 @@ public partial class ArcherAllyBehavior : MonoBehaviour
     float angle;
     bool reachedRadius = false;
 
+    //On hit effect
+    public HitFlash hitFlash;
+
     // --- Separation (kinematic friendly) static registry ---
     private static readonly System.Collections.Generic.List<ArcherAllyBehavior> AllArchers = new System.Collections.Generic.List<ArcherAllyBehavior>();
 
@@ -56,6 +59,8 @@ public partial class ArcherAllyBehavior : MonoBehaviour
             angle = Mathf.Atan2(toArcher.y, toArcher.x) * Mathf.Rad2Deg;
         }
         currentOrbitRadius = radius; // start at base radius
+
+        hitFlash = GetComponent<HitFlash>();
     }
 
     // Update is called once per frame
@@ -182,6 +187,7 @@ public partial class ArcherAllyBehavior : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        hitFlash.HitEffect();
         currentHealth -= damage;
         if (currentHealth <= 0f)
         {

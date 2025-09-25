@@ -1,60 +1,30 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.RenderGraphModule;
 
-public class HitEffect : MonoBehaviour
+public class HitFlash : MonoBehaviour
 {
-    private SpriteRenderer sprite;
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
 
-    public float transitionTime = 2f;
-    private float timer;
-    private float lerpTimer;
-    Color color = Color.white;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    private float flashDuration = 0.05f;
+
+    void Awake()
     {
-        // sprite = GetComponent<SpriteRenderer>();
-        // timer = transitionTime;
-        // lerpTimer = 1f - ((transitionTime - timer) / transitionTime);
-        // color = Color.white;
-        // StartCoroutine(SpriteColorEffect());
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
-    public virtual void TriggerEffect()
+    public void HitEffect()
     {
-
+        StartCoroutine(PlayHitEffect());
     }
 
-    public IEnumerator SpriteColorEffect()
+    IEnumerator PlayHitEffect()
     {
-
-        float transitionTime = 2f;
-        float timer = transitionTime;
-        float lerpTimer = 1f - ((transitionTime - timer) / transitionTime);
-        Color color = Color.white;
-        do
-        {
-            color = Color.Lerp(color, Color.black, lerpTimer);
-            sprite.color = color;
-            timer -= Time.deltaTime;
-            yield return null;
-
-        } while (timer <= transitionTime);
-        color = Color.white;
-        yield return null;
+        spriteRenderer.color = Color.white;
+        yield return new WaitForSeconds(flashDuration);
+        spriteRenderer.color = originalColor;
     }
 
-    public void ResetTransition()
-    {
-        timer = transitionTime;
-        lerpTimer = 1f - ((transitionTime - timer) / transitionTime);
-        color = Color.white;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

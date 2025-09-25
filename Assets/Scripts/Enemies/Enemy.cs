@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     public Transform allyParent;
 
     public bool hasTarget = true;
+    public HitFlash hitFlash;
 
     void OnEnable()
     {
@@ -39,6 +40,7 @@ public class Enemy : MonoBehaviour
         attackTarget = GameObject.Find("Player")?.transform;
         allyParent = GameObject.Find("AllyParent")?.transform;
         InvokeRepeating("TryAttack", 0, attackRate);
+        hitFlash = GetComponent<HitFlash>();
     }
 
     public virtual void TryAttack()
@@ -69,6 +71,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        hitFlash.HitEffect();
         currentHealth -= damage;
         if (currentHealth <= 0f)
         {

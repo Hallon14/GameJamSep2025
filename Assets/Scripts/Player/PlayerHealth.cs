@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     // send message whenever the Player's HP changes.
     public delegate void OnPlayerHPChanged(float newHP);
     public static event OnPlayerHPChanged onPlayerHPChanged;
+    public HitFlash hitFlash;
 
     void Start()
     {
@@ -25,6 +26,8 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = maxHealth;
         }
 
+        hitFlash = GetComponent<HitFlash>();
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -32,6 +35,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyWeapon"))
         {
             TakeDamage(other.gameObject.GetComponent<Projectile>().damage);
+            hitFlash.HitEffect();
         }
 
 

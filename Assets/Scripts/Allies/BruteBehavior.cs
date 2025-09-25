@@ -29,6 +29,9 @@ public class BruteBehavior : MonoBehaviour
     // Smoothed separation accumulator to prevent frame-to-frame oscillation
     private Vector2 smoothedSeparation;
 
+    //On hit effect
+    private HitFlash hitflash;
+
     // Static registry for manual separation (kinematic friendly)
     private static readonly System.Collections.Generic.List<BruteBehavior> AllBrutes = new System.Collections.Generic.List<BruteBehavior>();
 
@@ -62,6 +65,7 @@ public class BruteBehavior : MonoBehaviour
             Vector2 toBrute = rb.position - (Vector2)player.position;
             angle = Mathf.Atan2(toBrute.y, toBrute.x) * Mathf.Rad2Deg;
         }
+        hitflash = GetComponent<HitFlash>();
     }
 
     void FixedUpdate()
@@ -185,6 +189,7 @@ public class BruteBehavior : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        hitflash.HitEffect();
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
