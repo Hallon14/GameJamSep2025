@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728f03e9c820ac74baaf913caf671b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Archer
-  undeadVersion: {fileID: 9183417797936899427, guid: 9b84be974e677ca4887837bf32cb02e8, type: 3}
+  undeadVersion: {fileID: 9183417797936899427, guid: f2f6987e9570603468e391a8e4ed50e4, type: 3}
   maxHealth: 4
   attackTarget: {fileID: 0}
   attackRange: 6
