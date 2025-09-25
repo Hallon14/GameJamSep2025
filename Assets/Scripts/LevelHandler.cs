@@ -32,4 +32,6 @@ public class LevelData
     public Animator levelTransition = null;
     public List<GameObject> spawners = new List<GameObject>();
     public Slider healthBar = null;
+    public Image portalUI = null;
+    public GameObject gameOver = null;
 }

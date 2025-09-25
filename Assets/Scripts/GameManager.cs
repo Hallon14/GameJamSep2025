@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Slider healthBar;
 
-
+    public Image portalUI;
     public GameObject portal;
     private int totalFriends;
     [SerializeField]
@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
         levelTransition = levelData.levelTransition;
         spawners = levelData.spawners;
         healthBar = levelData.healthBar;
+        portalUI = levelData.portalUI;
+        gameOverUIElement = levelData.gameOver;
     }
 
     #region Main Menu and Victory Screen buttons
@@ -85,8 +87,11 @@ public class GameManager : MonoBehaviour
     public void levelComplete()
     {
         StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        activeFriends = 0;
+        updatePortalUI(SceneManager.GetActiveScene().buildIndex + 1);
+
     }
-    
+
     IEnumerator loadLevel(int levelIndex)
     {
         levelTransition.SetTrigger("Start");
@@ -109,12 +114,30 @@ public class GameManager : MonoBehaviour
         totalFriends++;
         activeFriends++;
         checkWinCondition(SceneManager.GetActiveScene().buildIndex);
-
+        updatePortalUI(SceneManager.GetActiveScene().buildIndex);
     }
+
     public void decreaseFriendCount()
     {
         activeFriends--;
         checkWinCondition(SceneManager.GetActiveScene().buildIndex);
+        updatePortalUI(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void updatePortalUI(int currentLevel)
+    {
+        int friendsNeeded = 0;
+        switch (currentLevel)
+        {
+            case 1:
+                friendsNeeded = 50;
+                break;
+            case 2:
+                friendsNeeded = 100;
+                break;
+        }
+
+        portalUI.fillAmount = Mathf.Clamp01((float)activeFriends / friendsNeeded);
     }
 
     //Checks wincondition, called everytime we update amount of active friends
@@ -126,14 +149,12 @@ public class GameManager : MonoBehaviour
                 if (activeFriends >= 50)
                 {
                     portal.SetActive(true);
-                    Debug.Log("Win level1");
                 }
                 break;
             case 2:
                 if (activeFriends >= 100)
                 {
                     portal.SetActive(true);
-                    Debug.Log("win level 2");
                 }
                 break;
         }
@@ -143,7 +164,6 @@ public class GameManager : MonoBehaviour
     {
         pauseGame();
         gameOverUIElement.SetActive(true);
-        Instantiate(gameOverUIElement, new Vector3(960,540,0), Quaternion.identity);
 
     }
     
