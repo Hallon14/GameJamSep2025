@@ -23,9 +23,10 @@ public class LevelHanlder : MonoBehaviour
         GameManager.Instance.InitLevel(_levelData);
     }
 
-    public void callGameOver()
+    //Allows us to press the button the game over screen. Couldnt attach a gamemanager since its not active in the hierarchy
+    public void callBack2Main()
     {
-        GameManager.Instance.gameOver();
+        GameManager.Instance.back2Main();
     }
 }
 

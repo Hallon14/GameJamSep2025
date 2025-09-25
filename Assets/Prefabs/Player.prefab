@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7ca59e465a6a043bcfdb74b5fb6865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  maxSpeed: 3
+  maxSpeed: 15
   sights: {fileID: 1666489880448269603}
 --- !u!114 &1937732707282008592
 MonoBehaviour:
@@ -427,6 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc57432e1c967004199090adba89d24a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 100
 --- !u!58 &3733990865084455262
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -476,8 +477,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_LinearDamping: 3
+  m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:

@@ -9,14 +9,17 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
+
+    //UI Elements
     [SerializeField]
     private Animator levelTransition;
     [SerializeField]
     private GameObject gameOverUIElement;
     [SerializeField]
     private Slider healthBar;
-
     public Image portalUI;
+
+    //Gameobject
     public GameObject portal;
     private int totalFriends;
     [SerializeField]
@@ -24,6 +27,8 @@ public class GameManager : MonoBehaviour
     public float playerHealth = 100;
     public List<GameObject> spawners = new List<GameObject>();
 
+
+    //Startup functions. Needed to make sure each level has a gamemanager
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -37,6 +42,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Sets variables for each individual level.
     public void InitLevel(LevelData levelData)
     {
         portal = levelData.portal;
@@ -47,7 +53,7 @@ public class GameManager : MonoBehaviour
         gameOverUIElement = levelData.gameOver;
     }
 
-    #region Main Menu and Victory Screen buttons
+    #region Buttons
     public void play()
     {
         // SceneManager.LoadScene("Level1", LoadSceneMode.Single);
@@ -64,34 +70,48 @@ public class GameManager : MonoBehaviour
 #endif
     }
 
-
     public void back2Main()
     {
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(loadLevel(0));
+        gameOverUIElement.SetActive(false);
     }
 
     #endregion
 
-    #region In-game Functions
-
-    public void pauseGame()
-    {
+    #region Basic Gamemanager Functions
+    //Play, Pause and Game over
+    public void pauseGame() {
         Time.timeScale = 0f;
     }
 
-    public void resumeGame()
-    {
+    public void resumeGame() {
         Time.timeScale = 1f;
     }
+
+    public void gameOver()
+    {
+        //pauseGame();
+        gameOverUIElement.SetActive(true);
+    }
+    #endregion
+
+    #region Level Transitions
+    /* 
+    Helper functions to make scene transitions smooth. Each scene has a transtion gameobject that automaticly plays
+    a "fade-in" when the scene is loaded. So all we do it fade out the active scene as it comes to and end
+    */
 
     public void levelComplete()
     {
         StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+
+        //Reset the portalvalues to 0. So the UI isnt half full when next level begins
         activeFriends = 0;
         updatePortalUI(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
 
+    //Helper function! Allows us to wait for animations to play before next level start
     IEnumerator loadLevel(int levelIndex)
     {
         levelTransition.SetTrigger("Start");
@@ -101,24 +121,25 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
     }
+    #endregion
 
-    public void updatePlayerHealth(float healthValue)
-    {
+
+    #region Updates on events
+
+    public void updatePlayerHealth(float healthValue){
         playerHealth = healthValue;
-        healthBar.value = playerHealth/100;
+        healthBar.value = playerHealth / 100;
     }
 
     //funcitons to calc active friends
-    public void increaseFriendCount()
-    {
+    public void increaseFriendCount() {
         totalFriends++;
         activeFriends++;
         checkWinCondition(SceneManager.GetActiveScene().buildIndex);
         updatePortalUI(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void decreaseFriendCount()
-    {
+    public void decreaseFriendCount(){
         activeFriends--;
         checkWinCondition(SceneManager.GetActiveScene().buildIndex);
         updatePortalUI(SceneManager.GetActiveScene().buildIndex);
@@ -160,11 +181,6 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    public void gameOver()
-    {
-        pauseGame();
-        gameOverUIElement.SetActive(true);
-    }
-    
     #endregion
+    
 }
