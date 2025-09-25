@@ -32,11 +32,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void TryAttack()
     {
-        attackTarget = GetTarget();
-        if (attackTarget)
-        {
-            Attack(attackTarget);
-        }
+
+        Attack(attackTarget);
+
 
     }
 
@@ -46,20 +44,19 @@ public class PlayerAttack : MonoBehaviour
         Vector2 projectileDirection = inputHandler.GetAimDirection();
         fireball.Initialize(projectileDirection, projectileSpeed, projectileLifetime);
     }
+    // public GameObject GetTarget()
+    // {
+    //     if (enemyParent)
+    //     {
+    //         foreach (Transform enemy in enemyParent)
+    //         {
+    //             if ((transform.position - enemy.position).sqrMagnitude < attackRange * attackRange)
+    //             {
+    //                 return enemy.gameObject;
+    //             }
+    //         }
+    //     }
 
-    public GameObject GetTarget()
-    {
-        if (enemyParent)
-        {
-            foreach (Transform enemy in enemyParent)
-            {
-                if ((transform.position - enemy.position).sqrMagnitude < attackRange * attackRange)
-                {
-                    return enemy.gameObject;
-                }
-            }
-        }
-
-        return null;
-    }
+    //     return null;
+    // }
 }
