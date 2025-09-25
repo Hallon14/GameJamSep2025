@@ -5,13 +5,14 @@ public class BruteBehavior : MonoBehaviour
     // Old AddForce-based separation removed (ineffective for kinematic bodies)
     [Tooltip("Minimum spacing to keep from other brutes")] public float separationDistance = 0.9f;
     [Tooltip("How strongly to apply separation positional offset (0-1 typical)")] public float separationWeight = 0.5f;
+    [Tooltip("Higher = snappier positional response; lower = smoother (for anti-jitter)")] public float movementSmoothing = 10f;
 
     public float maxHealth = 12;
     private float currentHealth;
     public float startSpeed = 6f; // Increased start speed
     public float chargeSpeed = 18f; // Much faster charge speed
     private float currentSpeed;
-    private float rotationspeed = 60f; // Slower orbit (degrees per second)
+    [Tooltip("Orbit angular speed in degrees per second")] public float orbitDegreesPerSecond = 110f; // was 60f
     [Header("Dynamic Radius Settings")]
     [Tooltip("Base orbit radius when only one brute exists")] public float radius = 2.5f; // reduced to sit a bit closer to player
     [Tooltip("Additional radius added per extra brute")] public float radiusPerBrute = 0.12f;
@@ -99,7 +100,7 @@ public class BruteBehavior : MonoBehaviour
         }
         else
         {
-            angle += rotationspeed * Time.fixedDeltaTime;
+            angle += orbitDegreesPerSecond * Time.fixedDeltaTime;
             float angleRad = angle * Mathf.Deg2Rad;
             Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * currentOrbitRadius;
             targetPos = orbitPos;
@@ -123,7 +124,25 @@ public class BruteBehavior : MonoBehaviour
             separationOffset = Vector2.ClampMagnitude(separationOffset, separationDistance) * separationWeight;
             targetPos += separationOffset;
         }
-        rb.MovePosition(targetPos);
+        if (!reachedRadius)
+        {
+            // While approaching the ring, move at full speed without smoothing to avoid sluggish feel.
+            rb.MovePosition(targetPos);
+        }
+        else
+        {
+            // Direct orbit placement (no smoothing so angular speed stays true)
+            rb.MovePosition(targetPos);
+            // Re-sync angle (should already match, but keep for safety after separation)
+            if (!isCharging)
+            {
+                Vector2 dir = rb.position - (Vector2)player.position;
+                if (dir.sqrMagnitude > 0.0001f)
+                {
+                    angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                }
+            }
+        }
     }
 
     void Charge(Vector2 direction)

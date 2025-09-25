@@ -1,11 +1,16 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ArcherAllyBehavior : MonoBehaviour
+public partial class ArcherAllyBehavior : MonoBehaviour
 {
     public float separationForce = 5f;
     [Tooltip("Minimum spacing to keep from other archers")] public float separationDistance = 0.6f;
     [Tooltip("How strongly to apply separation positional offset (0-1 typical)")] public float separationWeight = 0.5f;
+    [Tooltip("Higher = snappier positional response after reaching orbit; lower = smoother (anti-jitter)")] public float movementSmoothing = 10f;
+    [Header("Orbit Distribution")]
+    [Tooltip("Maintain evenly spaced angles instead of free-running angles")] public bool useSlotDistribution = true;
+    [Tooltip("(Deprecated) Linear speed along ring. Leave >0 only if you disable fixedAngularSpeed.")] public float tangentialSpeed = 6f;
+    [Tooltip("Use a constant angular speed (deg/sec) for slot orbiting")] public float fixedAngularSpeed = 90f;
 
     public float maxHealth = 4f;
     private float currentHealth;
@@ -84,10 +89,36 @@ public class ArcherAllyBehavior : MonoBehaviour
         }
         else
         {
-            angle -= rotationSpeed * Time.fixedDeltaTime;
-            float angleRad = angle * Mathf.Deg2Rad;
-            Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * currentOrbitRadius;
-            targetPos = orbitPos;
+            if (useSlotDistribution)
+            {
+                int slotCount = AllArchers.Count;
+                if (slotCount == 0) slotCount = 1;
+                int index = AllArchers.IndexOf(this);
+                if (index < 0) index = 0;
+
+                // Determine angular speed: prefer fixedAngularSpeed; fallback to tangentialSpeed if fixed is <= 0
+                float dynamicRotDegPerSec = fixedAngularSpeed > 0f ? fixedAngularSpeed :
+                    ((currentOrbitRadius > 0.05f && tangentialSpeed > 0f) ? (tangentialSpeed / currentOrbitRadius) * Mathf.Rad2Deg : rotationSpeed);
+
+                // Advance a shared phase using the first archer as the driver to avoid multi-increment
+                AdvanceGlobalPhase(dynamicRotDegPerSec * Time.fixedDeltaTime);
+
+                float spacing = 360f / slotCount;
+                float targetAngle = globalOrbitPhase + index * spacing;
+                // Directly lock to slot angle (constant speed determined solely by global phase advance)
+                angle = targetAngle;
+                float angleRad = angle * Mathf.Deg2Rad;
+                Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * currentOrbitRadius;
+                targetPos = orbitPos;
+            }
+            else
+            {
+                // Legacy free-spin mode
+                angle -= rotationSpeed * Time.fixedDeltaTime;
+                float angleRad = angle * Mathf.Deg2Rad;
+                Vector2 orbitPos = (Vector2)player.position + new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * currentOrbitRadius;
+                targetPos = orbitPos;
+            }
         }
 
         // --- Separation positional adjustment (works with kinematic bodies) ---
@@ -109,10 +140,31 @@ public class ArcherAllyBehavior : MonoBehaviour
             separationOffset = Vector2.ClampMagnitude(separationOffset, separationDistance) * separationWeight;
             targetPos += separationOffset;
         }
-        rb.MovePosition(targetPos);
-    }
-    // NOTE: Removed physics AddForce separation (ineffective for kinematic bodies) in favor of manual positional separation above.
+        if (!reachedRadius)
+        {
+            // Approach phase: no smoothing so archers settle quickly.
+            rb.MovePosition(targetPos);
+        }
+        else
+        {
+            // Orbit phase: apply smoothing to damp separation/orbit interplay jitter.
+            float lerpFactor = 1f - Mathf.Exp(-movementSmoothing * Time.fixedDeltaTime);
+            Vector2 finalPos = Vector2.Lerp(rb.position, targetPos, lerpFactor);
+            rb.MovePosition(finalPos);
 
+            // Re-sync angle to real position so separation offsets don't cause snap-back to mathematical circle.
+            if (!useSlotDistribution)
+            {
+                // Only resync in free mode; in slot mode angle is controlled.
+                Vector2 dir = finalPos - (Vector2)player.position;
+                if (dir.sqrMagnitude > 0.0001f)
+                {
+                    angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                }
+            }
+        }
+    }
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("EnemyWeapon"))
@@ -141,4 +193,25 @@ public class ArcherAllyBehavior : MonoBehaviour
         Destroy(gameObject);
     }
 
+}
+
+// Static helpers block (kept outside class scope intentionally if needed by future orbiting allies)
+public partial class ArcherAllyBehavior
+{
+    // Shared orbit phase used only when slot distribution is enabled.
+    private static float globalOrbitPhase = 0f;
+    private static void AdvanceGlobalPhase(float deltaDegrees)
+    {
+        if (AllArchers.Count == 0) return;
+        // Only the first active archer advances the shared phase to avoid accumulating multiple times per frame.
+        var first = AllArchers[0];
+        if (first == null) return;
+        // We can detect driver by reference equality
+        if (ReferenceEquals(first, AllArchers[0]))
+        {
+            // Clamp wrap
+            globalOrbitPhase = (globalOrbitPhase + deltaDegrees) % 360f;
+            if (globalOrbitPhase < 0f) globalOrbitPhase += 360f;
+        }
+    }
 }
