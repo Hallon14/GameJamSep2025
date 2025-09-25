@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -19,13 +20,13 @@ public class Enemy : MonoBehaviour
     public float contactDPS = 20;
 
     public Rigidbody2D rb2D;
+
+    [HideInInspector]
     public Transform allyParent;
 
     public bool hasTarget = true;
     public HitFlash hitFlash;
     [Header("Death Sequence")] public GameObject deathSequencePrefab; // assign same as archer/warrior death animation
-
-    UnityEngine.Vector3 bajs = new UnityEngine.Vector3(10,0,0);
 
     void OnEnable()
     {
@@ -40,7 +41,7 @@ public class Enemy : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        // This needs to move - attackTarget = GameObject.Find("Player")?.transform;
+        attackTarget = GameObject.Find("Player")?.transform;
         allyParent = GameObject.Find("AllyParent")?.transform;
         InvokeRepeating("TryAttack", Random.Range(0f, 1f), attackRate);
         hitFlash = GetComponent<HitFlash>();
@@ -56,7 +57,7 @@ public class Enemy : MonoBehaviour
         else
         {
             attackTarget = GetTargetInRange()?.transform;
-            if (!attackTarget)
+            if (attackTarget == null)
             {
                 hasTarget = false;
             }
@@ -73,18 +74,17 @@ public class Enemy : MonoBehaviour
     }
     public GameObject GetTargetInRange()
     {
-    if (allyParent)
+    foreach (Transform enemy in allyParent)
     {
-        foreach (Transform enemy in allyParent)
+        if ((transform.position - enemy.position).sqrMagnitude < attackRange * attackRange)
         {
-            if ((transform.position - enemy.position).sqrMagnitude < attackRange * attackRange)
-            {
-                return enemy.gameObject;
-            }
+            hasTarget = true;
+            return enemy.gameObject;
         }
     }
+    
 
-        return null;
+    return null;
     }
 
     public virtual void Attack()
@@ -94,11 +94,7 @@ public class Enemy : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (hasTarget)
-        {
             Move();
-        }
-
     }
 
     public virtual void TakeDamage(float damage)
@@ -155,15 +151,18 @@ public class Enemy : MonoBehaviour
         if (!hasTarget)
         {
             rb2D.AddForce((GameObject.Find("Player").transform.position - transform.position).normalized * movementSpeed);
+            return;
         }
 
-        else if((attackTarget.position - transform.position).sqrMagnitude < Mathf.Pow(preferredDistance - preferredDistanceRange, 2))
+        if ((attackTarget.position - transform.position).sqrMagnitude < Mathf.Pow(preferredDistance - preferredDistanceRange, 2))
         {
             rb2D.AddForce(-(attackTarget.position - transform.position).normalized * movementSpeed);
+            return;
         }
         else if ((attackTarget.position - transform.position).sqrMagnitude > Mathf.Pow(preferredDistance + preferredDistanceRange, 2))
         {
             rb2D.AddForce((attackTarget.position - transform.position).normalized * movementSpeed);
+            return;
         }
         else
         {
