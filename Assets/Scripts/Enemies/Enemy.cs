@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     private float currentHealth;
     public Transform attackTarget;
+    private GameObject player;
     public float attackRange;
     public float attackRate;
     public float movementSpeed = 2f;
@@ -42,6 +43,7 @@ public class Enemy : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         attackTarget = GameObject.Find("Player")?.transform;
+        player = GameObject.Find("Player");
         allyParent = GameObject.Find("AllyParent")?.transform;
         InvokeRepeating("TryAttack", Random.Range(0f, 1f), attackRate);
         hitFlash = GetComponent<HitFlash>();
@@ -49,9 +51,9 @@ public class Enemy : MonoBehaviour
 
     public virtual void TryAttack()
     {
-        if ((GameObject.Find("Player").transform.position - gameObject.transform.position).magnitude <= attackRange)
+        if ((player.transform.position - gameObject.transform.position).magnitude <= attackRange)
         {
-            attackTarget = GameObject.Find("Player").transform;
+            attackTarget = player.transform;
             hasTarget = true;
         }
         else
