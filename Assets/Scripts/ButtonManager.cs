@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
+    public GameObject credit;
     public void nextLevel()
     {
         GameManager.Instance.levelComplete();
@@ -13,5 +14,17 @@ public class ButtonManager : MonoBehaviour
     public void exitGame()
     {
         GameManager.Instance.exit();
+    }
+
+    public void creditsButton()
+    {
+        if (credit.activeSelf)
+        {
+            credit.SetActive(false);
+        }
+        else
+        {
+            credit.SetActive(true);
+        }
     }
 }
