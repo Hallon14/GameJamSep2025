@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 8678261276932856911}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5318, y: 0.362, z: 0}
-  m_LocalScale: {x: 0.9538559, y: 0.7511341, z: 1}
+  m_LocalPosition: {x: 0.45, y: 0.389, z: 0}
+  m_LocalScale: {x: 7, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   rb2D: {fileID: 0}
-  damage: 3
+  damage: 1
 --- !u!212 &2762542142406384592
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 929772260624882074, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
+  m_Sprite: {fileID: 2750013499942926676, guid: 4f7f28c39f13fca47802df6c0bab1da5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -168,5 +168,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.55
+  m_Offset: {x: 0.08, y: 0}
+  m_Radius: 0.03
