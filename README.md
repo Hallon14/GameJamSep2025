@@ -62,13 +62,13 @@ Till detta önskas två olika "levels" varav en lite mer öppen. Så våra spela
 
 **In Progress**
 - Sounds (Work in progress by Ludvid)
+- Deathanimations? (Work in progress by Nicolas)
+- Stats display (On death and complete game) (Work in progress by Otto)
 
 **More to do**
 - Kamerarörelser - follow-kamera istället för parentad kamera? (Lägre prioritet)
 - Better transitions (Otto has an idea about this!)
-- Deathanimations?
 - Particles for projectiles. (Lägre prioritet)
-- Stats display (On death and complete game)
       
 
 
