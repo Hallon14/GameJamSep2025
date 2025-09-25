@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -27,6 +29,12 @@ public class GameManager : MonoBehaviour
     public float playerHealth = 100;
     public List<GameObject> spawners = new List<GameObject>();
 
+    //winconditions
+    [HideInInspector]
+    public int friendsNeededForLevel1 = 100;
+    [HideInInspector]
+    public int friendsNeededForLevel2 = 200;
+
 
     //Startup functions. Needed to make sure each level has a gamemanager
     private void Awake()
@@ -45,12 +53,33 @@ public class GameManager : MonoBehaviour
     //Sets variables for each individual level.
     public void InitLevel(LevelData levelData)
     {
-        portal = levelData.portal;
-        levelTransition = levelData.levelTransition;
-        spawners = levelData.spawners;
-        healthBar = levelData.healthBar;
-        portalUI = levelData.portalUI;
-        gameOverUIElement = levelData.gameOver;
+        if (levelData.portal){
+            portal = levelData.portal;
+        }
+
+        if (levelData.levelTransition){
+            levelTransition = levelData.levelTransition;
+        }
+
+        if (levelData.spawners.Count > 0){
+        spawners = levelData.spawners;    
+        }
+
+        if (levelData.healthBar)
+        {
+            healthBar = levelData.healthBar;
+        }
+
+        if (levelData.portalUI)
+        {
+            portalUI = levelData.portalUI;
+        }
+
+        if (levelData.gameOver)
+        {
+            gameOverUIElement = levelData.gameOver;
+        }
+
     }
 
     #region Buttons
@@ -58,6 +87,7 @@ public class GameManager : MonoBehaviour
     {
         // SceneManager.LoadScene("Level1", LoadSceneMode.Single);
         StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        playerHealth = 100;
     }
 
     public void exit()
@@ -151,10 +181,10 @@ public class GameManager : MonoBehaviour
         switch (currentLevel)
         {
             case 1:
-                friendsNeeded = 50;
+                friendsNeeded = friendsNeededForLevel1;
                 break;
             case 2:
-                friendsNeeded = 100;
+                friendsNeeded = friendsNeededForLevel2;
                 break;
         }
 
@@ -167,13 +197,13 @@ public class GameManager : MonoBehaviour
         switch (currentLevel)
         {
             case 1:
-                if (activeFriends >= 50)
+                if (activeFriends >= friendsNeededForLevel1)
                 {
                     portal.SetActive(true);
                 }
                 break;
             case 2:
-                if (activeFriends >= 100)
+                if (activeFriends >= friendsNeededForLevel2)
                 {
                     portal.SetActive(true);
                 }

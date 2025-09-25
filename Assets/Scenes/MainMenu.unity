@@ -6238,7 +6238,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4861376069381317340}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: nextLevel
+        m_MethodName: play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -33,7 +33,6 @@ public class LevelHanlder : MonoBehaviour
 [System.Serializable]
 public class LevelData
 {
-    //Testing with two variables
     public GameObject portal = null;
     public Animator levelTransition = null;
     public List<GameObject> spawners = new List<GameObject>();

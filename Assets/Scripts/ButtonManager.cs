@@ -3,6 +3,11 @@ using UnityEngine;
 public class ButtonManager : MonoBehaviour
 {
     public GameObject credit;
+
+    public void play()
+    {
+        GameManager.Instance.play();
+    }
     public void nextLevel()
     {
         GameManager.Instance.levelComplete();
