@@ -48,7 +48,7 @@ MonoBehaviour:
   enemyTypes:
   - {fileID: 7153667096512267768, guid: b48c174695fc7a0469fcb341921b042b, type: 3}
   - {fileID: 7153667096512267768, guid: ded3acf4b21483446b999bc7dfb239f9, type: 3}
-  spawnInterval: 2
+  startDelay: 15
 --- !u!212 &-7512793516435328119
 SpriteRenderer:
   m_ObjectHideFlags: 0

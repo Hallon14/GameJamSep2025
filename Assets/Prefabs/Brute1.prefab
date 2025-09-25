@@ -142,13 +142,13 @@ MonoBehaviour:
   separationWeight: 0.5
   movementSmoothing: 10
   separationSmoothing: 12
-  maxHealth: 10
+  maxHealth: 15
   startSpeed: 5
   chargeSpeed: 7
   orbitDegreesPerSecond: 20
   radius: 2
   radiusPerBrute: 0.12
-  maxRadius: 10
+  maxRadius: 8
   radiusSmoothing: 5
 --- !u!212 &4402251252176589523
 SpriteRenderer:
