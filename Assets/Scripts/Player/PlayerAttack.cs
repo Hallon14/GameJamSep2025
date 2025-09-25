@@ -4,6 +4,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private GameObject attackTarget;
     public Transform enemyParent;
+    public Transform allyParent;
     public float attackRange;
     public float attackRate;
     public GameObject projectile;
@@ -12,7 +13,18 @@ public class PlayerAttack : MonoBehaviour
 
     public virtual void Start()
     {
-        enemyParent = GameObject.Find("EnemyParent").transform;
+        enemyParent = GameObject.Find("EnemyParent")?.transform;
+        if (!enemyParent)
+        {
+            enemyParent = new GameObject("EnemyParent").transform;
+        }
+
+        allyParent = GameObject.Find("AllyParent")?.transform;
+        if (!allyParent)
+        {
+            allyParent = new GameObject("AllyParent").transform;
+        }
+
         InvokeRepeating("TryAttack", 0, attackRate);
     }
 

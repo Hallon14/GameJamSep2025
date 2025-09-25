@@ -14,6 +14,7 @@ public class level1Manager : MonoBehaviour
     private int robertSpeechIndex = 0;
 
     public GameObject healthBar;
+    public GameObject friendsBar;
 
     List<String> robertSpeech = new List<String>() {
         "Looks like you've lost your way on this ¨epic¨ quest of yours",
@@ -39,6 +40,7 @@ public class level1Manager : MonoBehaviour
             robertUI.SetActive(false);
             robert.SetActive(false);
             healthBar.SetActive(true);
+            friendsBar.SetActive(true);
             foreach (GameObject spawner in GameManager.Instance.spawners)
             {
                 spawner.SetActive(true);

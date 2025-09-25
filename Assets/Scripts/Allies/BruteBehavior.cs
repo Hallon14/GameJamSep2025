@@ -12,7 +12,7 @@ public class BruteBehavior : MonoBehaviour
     public float chargeSpeed = 18f; // Much faster charge speed
     private float currentSpeed;
     private float rotationspeed = 60f; // Slower orbit (degrees per second)
-    [Header("Dynamic Radius Settings")] 
+    [Header("Dynamic Radius Settings")]
     [Tooltip("Base orbit radius when only one brute exists")] public float radius = 2.5f; // reduced to sit a bit closer to player
     [Tooltip("Additional radius added per extra brute")] public float radiusPerBrute = 0.12f;
     [Tooltip("Clamp the dynamic radius so it never exceeds this value")] public float maxRadius = 10f;
@@ -72,14 +72,14 @@ public class BruteBehavior : MonoBehaviour
             return;
         }
 
-    Vector2 toBrute = rb.position - (Vector2)player.position;
-    float currentDistance = toBrute.magnitude;
+        Vector2 toBrute = rb.position - (Vector2)player.position;
+        float currentDistance = toBrute.magnitude;
 
-    // --- Dynamic radius calculation ---
-    int bruteCount = AllBrutes.Count;
-    float desiredRadius = Mathf.Min(radius + (bruteCount - 1) * radiusPerBrute, maxRadius);
-    float rsLerp = 1f - Mathf.Exp(-radiusSmoothing * Time.fixedDeltaTime);
-    currentOrbitRadius = Mathf.Lerp(currentOrbitRadius, desiredRadius, rsLerp);
+        // --- Dynamic radius calculation ---
+        int bruteCount = AllBrutes.Count;
+        float desiredRadius = Mathf.Min(radius + (bruteCount - 1) * radiusPerBrute, maxRadius);
+        float rsLerp = 1f - Mathf.Exp(-radiusSmoothing * Time.fixedDeltaTime);
+        currentOrbitRadius = Mathf.Lerp(currentOrbitRadius, desiredRadius, rsLerp);
         Vector2 targetPos;
         if (!reachedRadius)
         {

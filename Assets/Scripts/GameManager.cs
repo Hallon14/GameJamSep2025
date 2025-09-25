@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,12 +13,15 @@ public class GameManager : MonoBehaviour
     private Animator levelTransition;
     [SerializeField]
     private GameObject gameOverUIElement;
+    [SerializeField]
+    private Slider healthBar;
 
-
+    public Image portalUI;
     public GameObject portal;
     private int totalFriends;
+    [SerializeField]
     private int activeFriends;
-    public float playerHealth;
+    public float playerHealth = 100;
     public List<GameObject> spawners = new List<GameObject>();
 
     private void Awake()
@@ -38,6 +42,9 @@ public class GameManager : MonoBehaviour
         portal = levelData.portal;
         levelTransition = levelData.levelTransition;
         spawners = levelData.spawners;
+        healthBar = levelData.healthBar;
+        portalUI = levelData.portalUI;
+        gameOverUIElement = levelData.gameOver;
     }
 
     #region Main Menu and Victory Screen buttons
@@ -80,8 +87,11 @@ public class GameManager : MonoBehaviour
     public void levelComplete()
     {
         StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        activeFriends = 0;
+        updatePortalUI(SceneManager.GetActiveScene().buildIndex + 1);
+
     }
-    
+
     IEnumerator loadLevel(int levelIndex)
     {
         levelTransition.SetTrigger("Start");
@@ -95,6 +105,7 @@ public class GameManager : MonoBehaviour
     public void updatePlayerHealth(float healthValue)
     {
         playerHealth = healthValue;
+        healthBar.value = playerHealth/100;
     }
 
     //funcitons to calc active friends
@@ -103,12 +114,30 @@ public class GameManager : MonoBehaviour
         totalFriends++;
         activeFriends++;
         checkWinCondition(SceneManager.GetActiveScene().buildIndex);
-
+        updatePortalUI(SceneManager.GetActiveScene().buildIndex);
     }
+
     public void decreaseFriendCount()
     {
         activeFriends--;
         checkWinCondition(SceneManager.GetActiveScene().buildIndex);
+        updatePortalUI(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void updatePortalUI(int currentLevel)
+    {
+        int friendsNeeded = 0;
+        switch (currentLevel)
+        {
+            case 1:
+                friendsNeeded = 50;
+                break;
+            case 2:
+                friendsNeeded = 100;
+                break;
+        }
+
+        portalUI.fillAmount = Mathf.Clamp01((float)activeFriends / friendsNeeded);
     }
 
     //Checks wincondition, called everytime we update amount of active friends
@@ -135,7 +164,6 @@ public class GameManager : MonoBehaviour
     {
         pauseGame();
         gameOverUIElement.SetActive(true);
-        Instantiate(gameOverUIElement, new Vector3(960,540,0), Quaternion.identity);
 
     }
     

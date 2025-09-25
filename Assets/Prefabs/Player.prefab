@@ -69,7 +69,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -409,8 +409,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   enemyParent: {fileID: 0}
+  allyParent: {fileID: 0}
   attackRange: 7
-  attackRate: 0.5
+  attackRate: 2
   projectile: {fileID: 6459682172970791448, guid: 0977758fa89d1c947b3ced90a35b74f9, type: 3}
   projectileSpeed: 5
   projectileLifetime: 3
@@ -426,8 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc57432e1c967004199090adba89d24a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 100
-  currentHealth: 0
 --- !u!58 &3733990865084455262
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -490,4 +489,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4

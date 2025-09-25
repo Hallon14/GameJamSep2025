@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelHanlder : MonoBehaviour
 {
@@ -26,9 +27,11 @@ public class LevelHanlder : MonoBehaviour
 [System.Serializable]
 public class LevelData
 {
-
     //Testing with two variables
     public GameObject portal = null;
     public Animator levelTransition = null;
     public List<GameObject> spawners = new List<GameObject>();
+    public Slider healthBar = null;
+    public Image portalUI = null;
+    public GameObject gameOver = null;
 }
