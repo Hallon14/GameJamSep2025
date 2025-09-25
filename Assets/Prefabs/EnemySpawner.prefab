@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: -7512793516435328119}
   m_Layer: 0
   m_Name: EnemySpawner
-  m_TagString: Untagged
+  m_TagString: LateSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7032855013643278750
 Transform:
   m_ObjectHideFlags: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   enemyTypes:
   - {fileID: 7153667096512267768, guid: b48c174695fc7a0469fcb341921b042b, type: 3}
   - {fileID: 7153667096512267768, guid: ded3acf4b21483446b999bc7dfb239f9, type: 3}
-  startDelay: 15
+  startDelay: 10
 --- !u!212 &-7512793516435328119
 SpriteRenderer:
   m_ObjectHideFlags: 0
