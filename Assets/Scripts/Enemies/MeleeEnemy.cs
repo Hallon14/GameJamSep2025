@@ -12,8 +12,6 @@ public class MeleeEnemy : Enemy
     {
         base.Attack();
         SwingSword();
-
-
     }
 
     public void SwingSword()

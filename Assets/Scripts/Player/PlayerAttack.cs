@@ -32,12 +32,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void TryAttack()
     {
-        attackTarget = GetTarget();
-        if (attackTarget)
-        {
-            Attack(attackTarget);
-        }
-
+        Attack(attackTarget);
     }
 
     public void Attack(GameObject target)
@@ -47,19 +42,5 @@ public class PlayerAttack : MonoBehaviour
         fireball.Initialize(projectileDirection, projectileSpeed, projectileLifetime);
     }
 
-    public GameObject GetTarget()
-    {
-        if (enemyParent)
-        {
-            foreach (Transform enemy in enemyParent)
-            {
-                if ((transform.position - enemy.position).sqrMagnitude < attackRange * attackRange)
-                {
-                    return enemy.gameObject;
-                }
-            }
-        }
 
-        return null;
-    }
 }

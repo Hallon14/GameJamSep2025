@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
     public bool hasTarget = true;
     public HitFlash hitFlash;
 
+    UnityEngine.Vector3 bajs = new UnityEngine.Vector3(10,0,0);
+
     void OnEnable()
     {
         PlayerHealth.onPlayerDeath += DisableEnemy;
@@ -37,7 +39,7 @@ public class Enemy : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        attackTarget = GameObject.Find("Player")?.transform;
+        // This needs to move - attackTarget = GameObject.Find("Player")?.transform;
         allyParent = GameObject.Find("AllyParent")?.transform;
         InvokeRepeating("TryAttack", 0, attackRate);
         hitFlash = GetComponent<HitFlash>();
@@ -45,6 +47,20 @@ public class Enemy : MonoBehaviour
 
     public virtual void TryAttack()
     {
+        if ((GameObject.Find("Player").transform.position - gameObject.transform.position).magnitude <= attackRange)
+        {
+            attackTarget = GameObject.Find("Player").transform;
+            hasTarget = true;
+        }
+        else
+        {
+            attackTarget = GetTargetInRange()?.transform;
+            if (!attackTarget)
+            {
+                hasTarget = false;
+            }
+        }
+        
         if (hasTarget)
         {
             if ((transform.position - attackTarget.position).sqrMagnitude < attackRange * attackRange)
@@ -54,10 +70,25 @@ public class Enemy : MonoBehaviour
         }
 
     }
+    public GameObject GetTargetInRange()
+    {
+    if (allyParent)
+    {
+        foreach (Transform enemy in allyParent)
+        {
+            if ((transform.position - enemy.position).sqrMagnitude < attackRange * attackRange)
+            {
+                return enemy.gameObject;
+            }
+        }
+    }
+
+        return null;
+    }
 
     public virtual void Attack()
     {
-
+        //Function overrides in children
     }
 
     public void FixedUpdate()
@@ -94,7 +125,6 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("BruteAlly"))
         {
-
             TakeDamage(contactDPS * Time.deltaTime);
         }
     }
@@ -113,13 +143,16 @@ public class Enemy : MonoBehaviour
     {
         //allyParent = GameObject.Find("AllyParent").transform;
         Instantiate(undeadVersion, transform.position, Quaternion.identity, allyParent);
-
-    }
+    }   
 
     public virtual void Move()
     {
+        if (!hasTarget)
+        {
+            rb2D.AddForce((GameObject.Find("Player").transform.position - transform.position).normalized * movementSpeed);
+        }
 
-        if ((attackTarget.position - transform.position).sqrMagnitude < Mathf.Pow(preferredDistance - preferredDistanceRange, 2))
+        else if((attackTarget.position - transform.position).sqrMagnitude < Mathf.Pow(preferredDistance - preferredDistanceRange, 2))
         {
             rb2D.AddForce(-(attackTarget.position - transform.position).normalized * movementSpeed);
         }
@@ -129,9 +162,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-
         }
-
     }
 
     public void DisableEnemy()
