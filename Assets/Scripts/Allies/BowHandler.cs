@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BowHandler : MonoBehaviour
 {
@@ -60,10 +61,27 @@ public class BowHandler : MonoBehaviour
         canShoot = true;
     }
 
+    [Header("Volley Timing")]
+    [Tooltip("Upper bound (inclusive) for random delay before firing a volley.")]
+    public float volleyRandomDelayMax = 1f; // random delay 0..2 seconds
+
     public void ShootVolley(Vector2 aimDirection)
     {
+        if (!canShoot) return; // ignore if still reloading
         if (aimDirection == Vector2.zero) aimDirection = Vector2.right;
-        ShootArrow(aimDirection);
+        float delay = (volleyRandomDelayMax > 0f) ? Random.Range(0f, volleyRandomDelayMax) : 0f;
+        StartCoroutine(DelayedVolley(aimDirection, delay));
+    }
+
+    private IEnumerator DelayedVolley(Vector2 direction, float delay)
+    {
+        if (delay > 0f)
+            yield return new WaitForSeconds(delay);
+        // Re-check before firing in case state changed
+        if (canShoot)
+        {
+            ShootArrow(direction);
+        }
     }
 }
 
