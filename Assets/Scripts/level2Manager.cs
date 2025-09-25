@@ -14,9 +14,10 @@ public class level2Manager : MonoBehaviour
     public Sprite antonSprite;
     public Sprite robertSprite;
     public GameObject healthbar;
+    public GameObject friendsCounter;
 
     private int dialougeIndex;
-    List<String> lines = new List<String>()
+    private List<String> lines = new List<String>()
     {
         "Lets gather up some more! Set your sights on " + GameManager.Instance.friendsNeededForLevel2 + "! You know, humans commonly use the phrase the more the merrier.",
         "Oh! Hi! Sir! Sir! Sir! You are sooooooo coool!!!!",
@@ -58,11 +59,12 @@ public class level2Manager : MonoBehaviour
             robert.SetActive(false);
             anton.SetActive(false);
             healthbar.SetActive(true);
-            InputHandler.onInteract -= levelTwoSpeech;
+            friendsCounter.SetActive(true);
             foreach (GameObject spawner in GameManager.Instance.spawners)
             {
                 spawner.SetActive(true);
             }
+            InputHandler.onInteract -= levelTwoSpeech;
         }
 
         dialougeIndex++;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,4 +40,5 @@ public class LevelData
     public Slider healthBar = null;
     public Image portalUI = null;
     public GameObject gameOver = null;
+    public TextMeshProUGUI statText = null;
 }
