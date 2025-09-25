@@ -22,6 +22,11 @@ public class LevelHanlder : MonoBehaviour
     {
         GameManager.Instance.InitLevel(_levelData);
     }
+
+    public void callGameOver()
+    {
+        GameManager.Instance.gameOver();
+    }
 }
 
 [System.Serializable]
