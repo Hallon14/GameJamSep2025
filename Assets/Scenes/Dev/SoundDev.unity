@@ -119,46 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &242983048
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 242983050}
-  - component: {fileID: 242983051}
-  m_Layer: 0
-  m_Name: SoundManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &242983050
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242983048}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &242983051
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242983048}
-  m_Enabled: 1
 --- !u!1001 &759511813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,10 +345,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 472246290011509785, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5403568058531698415, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -427,18 +383,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5403568058531698415, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502520178054861356, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502520178054861356, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502520178054861356, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
-      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8148824359126380828, guid: d7aa4f331a4838c4283d0daff743f07b, type: 3}
@@ -519,6 +463,5 @@ SceneRoots:
   - {fileID: 5974736418990096482}
   - {fileID: 1061384358}
   - {fileID: 1212793250}
-  - {fileID: 242983050}
   - {fileID: 759511813}
   - {fileID: 2052178591}
