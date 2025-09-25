@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
                 hasTarget = false;
             }
         }
-        
+
         if (hasTarget)
         {
             if ((transform.position - attackTarget.position).sqrMagnitude < attackRange * attackRange)
@@ -76,17 +76,17 @@ public class Enemy : MonoBehaviour
     }
     public GameObject GetTargetInRange()
     {
-    foreach (Transform enemy in allyParent)
-    {
-        if ((transform.position - enemy.position).sqrMagnitude < attackRange * attackRange)
+        foreach (Transform enemy in allyParent)
         {
-            hasTarget = true;
-            return enemy.gameObject;
+            if ((transform.position - enemy.position).sqrMagnitude < attackRange * attackRange)
+            {
+                hasTarget = true;
+                return enemy.gameObject;
+            }
         }
-    }
-    
 
-    return null;
+
+        return null;
     }
 
     public virtual void Attack()
@@ -96,12 +96,13 @@ public class Enemy : MonoBehaviour
 
     public void FixedUpdate()
     {
-            Move();
+        Move();
     }
 
     public virtual void TakeDamage(float damage)
     {
         hitFlash.HitEffect();
+
         currentHealth -= damage;
         if (currentHealth <= 0f)
         {
@@ -113,6 +114,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerWeapon"))
         {
+            GetComponent<SoundPlayer>().PlayTakeDamageSound();
             TakeDamage(other.gameObject.GetComponent<Projectile>().damage);
             Destroy(other.gameObject);
         }
@@ -146,14 +148,15 @@ public class Enemy : MonoBehaviour
     {
         //allyParent = GameObject.Find("AllyParent").transform;
         Instantiate(undeadVersion, transform.position, Quaternion.identity, allyParent);
-    }   
+    }
 
     public virtual void Move()
     {
-        if (!hasTarget)
+        if (!hasTarget || !attackTarget)
         {
-            rb2D.AddForce((GameObject.Find("Player").transform.position - transform.position).normalized * movementSpeed);
-            return;
+            attackTarget = player.transform;
+            //rb2D.AddForce((player.transform.position - transform.position).normalized * movementSpeed);
+            //return;
         }
 
         if ((attackTarget.position - transform.position).sqrMagnitude < Mathf.Pow(preferredDistance - preferredDistanceRange, 2))
@@ -174,5 +177,6 @@ public class Enemy : MonoBehaviour
     public void DisableEnemy()
     {
         hasTarget = false;
+
     }
 }

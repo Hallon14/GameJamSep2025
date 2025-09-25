@@ -141,6 +141,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bc7f6f3458905c9418c92be83bdf5b22, type: 3}
   - {fileID: 8300000, guid: daa78c1d39c9612489e1343870a89632, type: 3}
   - {fileID: 8300000, guid: 864da4c033c886d45b8ff836b22fbf2a, type: 3}
+  takeDamageClips:
+  - {fileID: 8300000, guid: e4a97c6bbc8ff3242b34073c61d5d1bc, type: 3}
+  - {fileID: 8300000, guid: f6d8a1f033455fe44ae5ded6f6d2f50f, type: 3}
+  - {fileID: 8300000, guid: 02447640d445ee342af66379e54c98bb, type: 3}
+  - {fileID: 8300000, guid: 0c776de0b4268c14ab0c63c5794d5b66, type: 3}
+  - {fileID: 8300000, guid: 9e94eb6e35733174f9d35c542b061888, type: 3}
+  - {fileID: 8300000, guid: 64e60dcb91d5f8640949235beaa67360, type: 3}
+  - {fileID: 8300000, guid: 16c3fb48fba85994fa5814f8a27d0e3e, type: 3}
+  - {fileID: 8300000, guid: 2b0ff28df6627cf488885b9842df01c7, type: 3}
+  - {fileID: 8300000, guid: a2db2eaf226273546b2df32e7ece13f1, type: 3}
+  - {fileID: 8300000, guid: 2c551c41d55911d45af9c71f1da9e545, type: 3}
+  - {fileID: 8300000, guid: 94c32cdfceb1a7f4d9023a0995b730c6, type: 3}
+  deathClips: []
   audioSource: {fileID: 8097562503953720872}
 --- !u!82 &8097562503953720872
 AudioSource:
