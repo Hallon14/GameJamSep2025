@@ -38397,6 +38397,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6016621202011003451, guid: 720c4aa645bfdcd4fb500ca1261de38e, type: 3}
   m_PrefabInstance: {fileID: 727026452}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &727026455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8263920772192283901, guid: 720c4aa645bfdcd4fb500ca1261de38e, type: 3}
+  m_PrefabInstance: {fileID: 727026452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &821119952
 GameObject:
   m_ObjectHideFlags: 0
@@ -63354,6 +63359,7 @@ MonoBehaviour:
   antonSprite: {fileID: -1228391995241359810, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
   robertSprite: {fileID: 2900542193166959505, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
   healthbar: {fileID: 1028698205}
+  friendsCounter: {fileID: 727026455}
 --- !u!1001 &2094003685
 PrefabInstance:
   m_ObjectHideFlags: 0
