@@ -130,6 +130,7 @@ public class GameManager : MonoBehaviour
     {
         statText.text = "During your adventure you collected " + totalFriends + " friends!";
         gameOverUIElement.SetActive(true);
+        activeFriends = 0;
     }
     #endregion
 
