@@ -32,10 +32,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> spawners = new List<GameObject>();
 
     //winconditions
-    [HideInInspector]
-    public float friendsNeededForLevel1 = 75;
-    [HideInInspector]
-    public float friendsNeededForLevel2 = 150;
+    public float friendsNeededForLevel1 = 75.0f;
+    public float friendsNeededForLevel2 = 150.0f;
 
     //Friend Variables
     private int totalFriends;

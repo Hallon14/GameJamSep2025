@@ -2584,7 +2584,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5045f25031cf3a240ac7d2b270265fcc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7410,6 +7410,14 @@ PrefabInstance:
     - target: {fileID: 3402769389718203494, guid: 7c7ad886e6b8e664c8f5a1fe6c106c6a, type: 3}
       propertyPath: levelTransition
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402769389718203494, guid: 7c7ad886e6b8e664c8f5a1fe6c106c6a, type: 3}
+      propertyPath: friendsNeededForLevel1
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402769389718203494, guid: 7c7ad886e6b8e664c8f5a1fe6c106c6a, type: 3}
+      propertyPath: friendsNeededForLevel2
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3838685203044872570, guid: 7c7ad886e6b8e664c8f5a1fe6c106c6a, type: 3}
       propertyPath: m_LocalPosition.x
