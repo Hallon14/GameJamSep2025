@@ -14,6 +14,7 @@ public class Spawner : MonoBehaviour
     [Header("Optional Start Delay")]
     [Tooltip("If > 0, wait this many seconds before starting spawns.")]
     public int friendCountModifier;
+    private int maxEnemiesCount = 300;
     [SerializeField] private float startDelay = 0f;
     private bool playerIsDead;
 
@@ -96,7 +97,7 @@ public class Spawner : MonoBehaviour
             {
                 spawnInterval = newInterval;
                 CancelInvoke();
-                if (!playerIsDead)
+                if (!playerIsDead && enemyParent.transform.childCount < maxEnemiesCount)
                 {
                     InvokeRepeating("SpawnEnemy", 0f, spawnInterval);
                 }
