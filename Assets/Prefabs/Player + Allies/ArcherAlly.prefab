@@ -100,10 +100,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8540005871450333824}
   - component: {fileID: 3818921128227688201}
+  - component: {fileID: 8947671788960434718}
   - component: {fileID: 1080119211371524558}
   - component: {fileID: 119603249285304802}
   - component: {fileID: 7365775419894925242}
-  - component: {fileID: 8947671788960434718}
   - component: {fileID: 5788657880989260472}
   - component: {fileID: 8653281391221213040}
   m_Layer: 3
@@ -188,6 +188,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8947671788960434718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9183417797936899427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77cc48005d6da0498040c8a9ac95fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArcherAllyBehavior
+  separationForce: 2
+  separationDistance: 1
+  separationWeight: 0.5
+  movementSmoothing: 10
+  useSlotDistribution: 1
+  tangentialSpeed: 6
+  fixedAngularSpeed: 15
+  orbitClockwise: 1
+  maxHealth: 6
+  startSpeed: 8
+  spawnInvincibilityDuration: 1
+  radius: 1.5
+  radiusPerArcher: 0.1
+  maxRadius: 6
+  radiusSmoothing: 6
+  hitFlash: {fileID: 0}
+  deathSequencePrefab: {fileID: 8687357410651530461, guid: 24b87d2da6898f74da6ae5ac27fb98d0, type: 3}
 --- !u!50 &1080119211371524558
 Rigidbody2D:
   serializedVersion: 5
@@ -264,34 +293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitFlash
   flashDuration: 0.05
---- !u!114 &8947671788960434718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9183417797936899427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f77cc48005d6da0498040c8a9ac95fbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ArcherAllyBehavior
-  separationForce: 2
-  separationDistance: 1
-  separationWeight: 0.5
-  movementSmoothing: 10
-  useSlotDistribution: 1
-  tangentialSpeed: 6
-  fixedAngularSpeed: 15
-  orbitClockwise: 1
-  maxHealth: 6
-  startSpeed: 4
-  radius: 1.5
-  radiusPerArcher: 0.1
-  maxRadius: 6
-  radiusSmoothing: 6
-  hitFlash: {fileID: 0}
-  deathSequencePrefab: {fileID: 8687357410651530461, guid: 24b87d2da6898f74da6ae5ac27fb98d0, type: 3}
 --- !u!82 &5788657880989260472
 AudioSource:
   m_ObjectHideFlags: 0
