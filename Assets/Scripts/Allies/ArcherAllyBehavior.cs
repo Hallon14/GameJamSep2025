@@ -17,6 +17,8 @@ public partial class ArcherAllyBehavior : MonoBehaviour
     private float currentHealth;
     public float startSpeed = 8f; // Slightly faster than brute
     private float rotationSpeed = 90f; // Faster orbit (degrees per second)
+    [Header("Spawn Invincibility")] public float spawnInvincibilityDuration = 1f; // seconds
+    private float spawnInvincibleUntil;
     [Header("Dynamic Radius Settings")]
     [Tooltip("Base orbit radius when only one archer exists")] public float radius = 1.5f;
     [Tooltip("Additional radius added per extra archer")] public float radiusPerArcher = 0.05f; // reduced growth per added archer
@@ -62,6 +64,9 @@ public partial class ArcherAllyBehavior : MonoBehaviour
 
         hitFlash = GetComponent<HitFlash>();
         GetComponent<SoundPlayer>().PlayTakeDamageSound();
+
+        // Set invincibility window
+        spawnInvincibleUntil = Time.time + spawnInvincibilityDuration;
     }
 
     // Update is called once per frame
@@ -188,6 +193,8 @@ public partial class ArcherAllyBehavior : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        // Ignore damage if still within spawn invincibility window
+        if (Time.time < spawnInvincibleUntil) return;
         hitFlash.HitEffect();
         currentHealth -= damage;
         if (currentHealth <= 0f)

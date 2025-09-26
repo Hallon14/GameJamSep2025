@@ -64,12 +64,12 @@ Till detta önskas två olika "levels" varav en lite mer öppen. Så våra spela
 - Better transitions *done*
 - Animate fireball *done*
 - Sounds *done*
+- Allies dies at spawn (due to being in range of the enemies)*done*
 
 **In Progress**
 
 **Lastmin changes**
 - Easy difficulty mode
-- Allies dies at spawn (due to being in range of the enemies)
 
 
 **Fuck these**

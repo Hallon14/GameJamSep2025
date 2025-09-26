@@ -64,5 +64,4 @@ public class PlayerAttack : MonoBehaviour
         fireball.Initialize(projectileDirection, projectileSpeed, projectileLifetime);
     }
 
-
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class ButtonManager : MonoBehaviour
 {
     public GameObject credit;
+    public GameObject controlScheme;
 
     public void play()
     {
@@ -21,6 +22,7 @@ public class ButtonManager : MonoBehaviour
         GameManager.Instance.exit();
     }
 
+    //Show/Hide Credits
     public void creditsButton()
     {
         if (credit.activeSelf)
@@ -30,6 +32,19 @@ public class ButtonManager : MonoBehaviour
         else
         {
             credit.SetActive(true);
+        }
+    }
+
+    //Show/Hide Controls
+    public void controlButton()
+    {
+        if (controlScheme.activeSelf)
+        {
+            controlScheme.SetActive(false);
+        }
+        else
+        {
+            controlScheme.SetActive(true);
         }
     }
 }

@@ -107,6 +107,7 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   projectile: {fileID: 8678261276932856911, guid: 77907dccdbeb2124ca4f444002ad55c5, type: 3}
   projectileSpeed: 10
-  projectileLifetime: 2
+  projectileLifetime: 3
   volleyCount: 5
   volleySpread: 30
+  volleyRandomDelayMax: 0.5

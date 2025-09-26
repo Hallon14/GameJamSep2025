@@ -13,6 +13,8 @@ public class BruteBehavior : MonoBehaviour
     public float startSpeed = 6f; // Increased start speed
     public float chargeSpeed = 18f; // Much faster charge speed
     private float currentSpeed;
+    [Header("Spawn Invincibility")] public float spawnInvincibilityDuration = 1f;
+    private float spawnInvincibleUntil;
     [Tooltip("Orbit angular speed in degrees per second")] public float orbitDegreesPerSecond = 110f; // was 60f
     [Header("Dynamic Radius Settings")]
     [Tooltip("Base orbit radius when only one brute exists")] public float radius = 2.5f; // reduced to sit a bit closer to player
@@ -69,6 +71,7 @@ public class BruteBehavior : MonoBehaviour
         }
         hitflash = GetComponent<HitFlash>();
         GetComponent<SoundPlayer>().PlayTakeDamageSound();
+        spawnInvincibleUntil = Time.time + spawnInvincibilityDuration;
     }
 
     void FixedUpdate()
@@ -192,6 +195,7 @@ public class BruteBehavior : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        if (Time.time < spawnInvincibleUntil) return; // still invincible
         hitflash.HitEffect();
         currentHealth -= damage;
         if (currentHealth <= 0)
