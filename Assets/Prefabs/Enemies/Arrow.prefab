@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   rb2D: {fileID: 0}
-  damage: 2
+  damage: 4
 --- !u!61 &6805957069316065173
 BoxCollider2D:
   m_ObjectHideFlags: 0
