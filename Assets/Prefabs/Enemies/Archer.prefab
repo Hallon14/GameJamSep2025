@@ -113,7 +113,7 @@ MonoBehaviour:
   maxHealth: 2
   attackTarget: {fileID: 0}
   attackRange: 10
-  attackRate: 2
+  attackRate: 3
   movementSpeed: 5
   preferredDistance: 5
   preferredDistanceRange: 2
