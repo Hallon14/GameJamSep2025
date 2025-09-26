@@ -13,6 +13,7 @@ public class Spawner : MonoBehaviour
     private GameObject allyParent;
     [Header("Optional Start Delay")]
     [Tooltip("If > 0, wait this many seconds before starting spawns.")]
+    public int friendCountModifier;
     [SerializeField] private float startDelay = 0f;
     private bool playerIsDead;
 
@@ -66,8 +67,22 @@ public class Spawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        int enemyIndex = Random.Range(0, enemyTypes.Length);
-        Instantiate(enemyTypes[enemyIndex], transform.position, Quaternion.identity, enemyParent.transform);
+        if (friendCountModifier > 0)
+        {
+            for (int i = 0; i < (allyParent.transform.childCount + friendCountModifier) / friendCountModifier; i++)
+            {
+                int enemyIndex = Random.Range(0, enemyTypes.Length);
+                Instantiate(enemyTypes[enemyIndex], transform.position + new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0), Quaternion.identity, enemyParent.transform);
+            }
+        }
+        else
+        {
+            int enemyIndex = Random.Range(0, enemyTypes.Length);
+            Instantiate(enemyTypes[enemyIndex], transform.position, Quaternion.identity, enemyParent.transform);
+        }
+
+
+
     }
 
 
