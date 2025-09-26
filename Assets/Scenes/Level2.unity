@@ -4186,7 +4186,7 @@ MonoBehaviour:
     portalUI: {fileID: 727026453}
     gameOver: {fileID: 2094003686}
     statText: {fileID: 2094003687}
-  _gameManagerPrefab: {fileID: 4936902757927583721, guid: 7c7ad886e6b8e664c8f5a1fe6c106c6a, type: 3}
+  _gameManagerPrefab: {fileID: 7505016123491127728, guid: 7c7ad886e6b8e664c8f5a1fe6c106c6a, type: 3}
 --- !u!4 &396799103
 Transform:
   m_ObjectHideFlags: 0

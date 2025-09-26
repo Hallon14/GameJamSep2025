@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public float friendsNeededForLevel2 = 150.0f;
 
     //Friend Variables
-    private int totalFriends;
+    public int totalFriends;
     [SerializeField]
     private float activeFriends;
 
@@ -142,11 +142,6 @@ public class GameManager : MonoBehaviour
     public void levelComplete()
     {
         StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-
-        if (SceneManager.GetActiveScene().buildIndex + 1 == 3)
-        {
-            statText.text = "During your adventure you collected " + totalFriends + " friends!";
-        }
 
         //Reset the portalvalues to 0. So the UI isnt half full when next level begins
         activeFriends = 0;
