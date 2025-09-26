@@ -33,9 +33,9 @@ public class GameManager : MonoBehaviour
 
     //winconditions
     [HideInInspector]
-    public float friendsNeededForLevel1 = 100;
+    public float friendsNeededForLevel1 = 75;
     [HideInInspector]
-    public float friendsNeededForLevel2 = 200;
+    public float friendsNeededForLevel2 = 150;
 
     //Friend Variables
     private int totalFriends;
