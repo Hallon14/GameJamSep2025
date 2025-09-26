@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(loadLevel(SceneManager.GetActiveScene().buildIndex + 1));
 
-        if (SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.GetSceneByName("VictoryScreen").buildIndex)
+        if (SceneManager.GetActiveScene().buildIndex + 1 == 3)
         {
             statText.text = "During your adventure you collected " + totalFriends + " friends!";
         }
