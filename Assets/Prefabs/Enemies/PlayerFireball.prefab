@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7545219477182267391}
   - component: {fileID: 6805957069316065173}
   - component: {fileID: 1144615971799769294}
+  - component: {fileID: 1476663025158367250}
   m_Layer: 11
   m_Name: PlayerFireball
   m_TagString: PlayerWeapon
@@ -180,3 +181,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1476663025158367250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6459682172970791448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7bd837353b81648baf71a41efc1d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  fireBall:
+  - {fileID: 6271209775162594135, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
+  - {fileID: 6914362664867694734, guid: 221c24ecd751cc545bbef134cd9a8e86, type: 3}
