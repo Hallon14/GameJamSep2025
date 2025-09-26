@@ -48,10 +48,12 @@ MonoBehaviour:
   enemyTypes:
   - {fileID: 7153667096512267768, guid: b48c174695fc7a0469fcb341921b042b, type: 3}
   - {fileID: 7153667096512267768, guid: ded3acf4b21483446b999bc7dfb239f9, type: 3}
+  - {fileID: 7153667096512267768, guid: ded3acf4b21483446b999bc7dfb239f9, type: 3}
   spawnInterval: 7
   firstRampTime: 20
   rampIntervalDelta: 0.5
   minSpawnInterval: 2.5
+  friendCountModifier: 5
   startDelay: 10
 --- !u!212 &-7512793516435328119
 SpriteRenderer:
