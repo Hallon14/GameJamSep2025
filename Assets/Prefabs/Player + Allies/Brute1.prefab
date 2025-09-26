@@ -149,11 +149,11 @@ MonoBehaviour:
   startSpeed: 8
   chargeSpeed: 12
   spawnInvincibilityDuration: 1
-  orbitDegreesPerSecond: 20
+  orbitDegreesPerSecond: 40
   radius: 2
   radiusPerBrute: 0.12
-  maxRadius: 8
-  radiusSmoothing: 5
+  maxRadius: 7
+  radiusSmoothing: 3
   deathSequencePrefab: {fileID: 8687357410651530461, guid: 15e942a960d9d234dae63f633650d322, type: 3}
 --- !u!114 &32430564525387994
 MonoBehaviour:
