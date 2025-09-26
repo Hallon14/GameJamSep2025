@@ -191,22 +191,23 @@ public class GameManager : MonoBehaviour
     public void updatePortalUI(int currentLevel)
     {
         float friendsNeeded = 0;
-        switch (currentLevel)
+        if (currentLevel == 1)
         {
-            case 1:
-                friendsNeeded = friendsNeededForLevel1;
-                break;
-            case 2:
-                friendsNeeded = friendsNeededForLevel2;
-                break;
+            friendsNeeded = friendsNeededForLevel1;
         }
+        else {
+            friendsNeeded = friendsNeededForLevel2;
+        }
+        
+
+
         if (activeFriends / friendsNeeded > 1)
         {
             portalUI.fillAmount = 1;
         }
         else
         {
-        portalUI.fillAmount = activeFriends / friendsNeeded;  
+            portalUI.fillAmount = activeFriends / friendsNeeded;
         }
     }
 
