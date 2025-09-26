@@ -146,8 +146,8 @@ MonoBehaviour:
   movementSmoothing: 10
   separationSmoothing: 12
   maxHealth: 12
-  startSpeed: 5
-  chargeSpeed: 7
+  startSpeed: 8
+  chargeSpeed: 12
   spawnInvincibilityDuration: 1
   orbitDegreesPerSecond: 20
   radius: 2
