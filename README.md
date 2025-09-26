@@ -62,14 +62,14 @@ Till detta önskas två olika "levels" varav en lite mer öppen. Så våra spela
 - Stats display (On death and complete game) *Done*
 - Deathanimations? *done*
 - Better transitions *done*
+- Animate fireball *done*
+- Sounds *done*
 
 **In Progress**
-- Sounds (Work in progress by Ludvid)
 
 **Lastmin changes**
 - Easy difficulty mode
 - Allies dies at spawn (due to being in range of the enemies)
-- Animate fireball
 
 
 **Fuck these**
