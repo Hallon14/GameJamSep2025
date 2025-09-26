@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     public float preferredDistance;
     public float preferredDistanceRange;
 
+    private int allySpawnCap = 200;
+
     public GameObject projectile;
     public float projectileSpeed = 10f;
     public float projectileLifetime = 2f;
@@ -150,7 +152,11 @@ public class Enemy : MonoBehaviour
     public void SpawnUndead()
     {
         //allyParent = GameObject.Find("AllyParent").transform;
-        Instantiate(undeadVersion, transform.position, Quaternion.identity, allyParent);
+        if (allyParent.childCount < allySpawnCap)
+        {
+            Instantiate(undeadVersion, transform.position, Quaternion.identity, allyParent);
+        }
+
     }
 
     public virtual void Move()
