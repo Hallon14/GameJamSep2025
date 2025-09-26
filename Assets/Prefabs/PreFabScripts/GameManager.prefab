@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5966207315288760522
+--- !u!1 &4936902757927583721
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3838685203044872570}
-  - component: {fileID: 3402769389718203494}
+  - component: {fileID: 3179490432803656512}
+  - component: {fileID: 2983686639474117059}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17,33 +17,41 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3838685203044872570
+--- !u!4 &3179490432803656512
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5966207315288760522}
+  m_GameObject: {fileID: 4936902757927583721}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 680.4175, y: 550.10223, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3402769389718203494
+--- !u!114 &2983686639474117059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5966207315288760522}
+  m_GameObject: {fileID: 4936902757927583721}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 088d90e63ffaf8544b0672e9273535b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  levelTransition: {fileID: 3656450036060269528, guid: 4d80bc79dd961fb49adca67f31f8af6c, type: 3}
-  gameOverUIElement: {fileID: 5074664194611165755, guid: a2b4588b15c8288468e3e82a36c3510d, type: 3}
+  levelTransition: {fileID: 0}
+  gameOverUIElement: {fileID: 0}
+  healthBar: {fileID: 0}
+  portalUI: {fileID: 0}
+  statText: {fileID: 0}
   portal: {fileID: 0}
+  playerHealth: 100
+  spawners: []
+  friendsNeededForLevel1: 75
+  friendsNeededForLevel2: 150
+  activeFriends: 0
